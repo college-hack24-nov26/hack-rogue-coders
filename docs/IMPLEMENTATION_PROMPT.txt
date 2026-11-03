@@ -1,0 +1,104 @@
+Build JalSathi using the attached PRD as the implementation specification.
+
+Read the entire PRD before coding, especially the final section separating confirmed decisions, recommendations and unresolved dependencies. Distinguish intended capabilities from features already implemented in the old prototype.
+
+Create the new project in:
+E:\Z-PROJECTS\JalSathi-Platform
+
+The existing prototype at E:\Z-PROJECTS\JalSathi is a reference. Inspect its useful calculations, integrations and documented limitations without overwriting it.
+
+PRODUCT SURFACES
+
+1. Farmer mobile app
+   React Native + Expo + TypeScript.
+   Implement the farmer features described in the PRD: village selection, farm profiles, 7/15-day outlook, irrigation planning, markets/economics, schemes/notices, Marathi/English assistant, complaint submission and complaint tracking.
+
+2. Admin website
+   React + TypeScript.
+   Implement complaint review, geographic routing, village consumption baselines, estimates, model diagnostics, data-source monitoring, visual data flow, background-job status and audit history.
+
+3. Officials’ demo website
+   React + TypeScript.
+   Show only admin-accepted complaints within the signed-in account’s jurisdiction. Support acknowledgement, assignment, progress notes and resolution. Clearly identify this as a demo rather than a connected government service.
+
+4. WhatsApp complaint integration
+   Use the WhatsApp Business Platform/Cloud API.
+   Receive complaints through verified webhooks, collect missing location/details, preserve original messages, deduplicate provider retries and create tickets in the same complaint system used by the mobile app.
+
+ARCHITECTURE
+
+Use:
+- FastAPI, Pydantic, SQLAlchemy and Alembic.
+- Neon PostgreSQL with PostGIS.
+- Neon Auth, after verifying its current React Native/session and onboarding capabilities.
+- Private Neon Object Storage where supported.
+- Python/XGBoost for numerical forecasting.
+- Gemini for Marathi/English explanations and optional structured complaint extraction.
+- A separate durable background worker for ingestion, inference and integration retries.
+
+Use a monorepo with separate mobile, admin, officials, API and worker applications. Share API contracts and domain definitions where useful.
+
+All authoritative endpoints belong in FastAPI. Enforce authentication, ownership, roles, geographic jurisdiction and complaint transitions on the backend.
+
+COMPLAINT WORKFLOW
+
+App/WhatsApp → submitted → admin review.
+
+Admin may request information, reject, identify a duplicate or accept with jurisdiction assignment.
+
+Only accepted, publishable complaints become visible to officials’ demo users. Pending/rejected complaints must remain inaccessible through direct API requests too.
+
+Keep review status separate from service progress. Preserve the original report and an auditable event timeline. Use idempotency and durable outbox/retry handling.
+
+FORECASTING AND ESTIMATION
+
+- Run daily inference using an approved trained model; do not retrain daily.
+- Target daily predictions through day 15.
+- Summarize days 1–7 and days 1–15.
+- Prepare for approximately 50,000 village records using batched processing and shared weather-grid caching.
+- Use location-specific observations and verified source connections.
+- Store approximate daily village consumption baselines once and reuse them, retaining sector, method, source, date, assumptions and version.
+- Keep household and agricultural budgets separate.
+- Groundwater depth changes must not be converted directly into litres consumed.
+- Publish shortage-in-litres estimates only when credible supply inputs exist.
+- The current prototype’s seven-day model is not proof of validated statewide or 15-day forecasting. Implement and evaluate additional horizons properly.
+- Never silently extrapolate missing inputs or invent observations, model scores or confidence.
+
+DATA AND AI
+
+Reuse verified real-data integrations where appropriate. Preserve dates, units, source identity, spatial resolution and freshness.
+
+Gemini explains retrieved evidence and approved numerical outputs. It cannot independently verify complaints, accept them, invent measurements or make operational decisions.
+
+Keep all secrets server-side in environment configuration. Provide .env.example files without real credentials. Do not put database, Gemini, storage or WhatsApp secrets in frontend/mobile bundles.
+
+EXECUTION
+
+Start by inspecting the PRD and existing prototype. Produce a concise implementation plan and a requirements checklist, then begin implementation.
+
+Work in functioning vertical slices:
+1. Shared foundation and authentication/authorization.
+2. App complaint → admin review → officials’ demo workflow.
+3. WhatsApp integration.
+4. Baselines, real-data ingestion and daily estimates.
+5. Forecasting, farmer planning, markets, schemes and Gemini.
+6. Integration validation and scale benchmarks.
+
+Make reasonable reversible implementation decisions and document them. Ask only for genuinely blocking information, credentials or approvals. Never request that secrets be pasted into chat.
+
+If an external credential or dataset is unavailable, complete the integration code and clearly expose its unavailable state. Continue independent work. Do not substitute fabricated production data.
+
+Use explicitly labelled fixtures for tests only. Do not claim a live integration, trained model or successful benchmark unless actually verified.
+
+DELIVERABLES
+
+- Working source code for all four surfaces and shared backend.
+- Database migrations and environment templates.
+- Setup/run instructions.
+- API documentation.
+- Meaningful authorization, complaint-lifecycle, retry and calculation tests.
+- Validation of Marathi explanations and numerical consistency.
+- Actual runtime measurements before making scale claims.
+- A requirement-by-requirement completion report listing implemented, verified, credential-blocked and data-blocked items.
+
+Run locally and verify the complete flows. Do not stop after scaffolding or UI mockups. Do not deploy publicly or send messages to real users without explicit authorization.

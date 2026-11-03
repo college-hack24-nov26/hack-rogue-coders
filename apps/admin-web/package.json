@@ -1,0 +1,1 @@
+{"name":"@jalsathi/admin","private":true,"version":"0.1.0","type":"module","scripts":{"dev":"vite --host 127.0.0.1 --port 5173","build":"vite build"},"dependencies":{"react":"19.2.0","react-dom":"19.2.0"}}

@@ -1,0 +1,24 @@
+[project]
+name = "jalsathi-platform"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115,<1",
+    "uvicorn>=0.34,<1",
+    "sqlalchemy>=2,<3",
+    "alembic>=1.14,<2",
+    "psycopg[binary]>=3.2,<4",
+    "pydantic-settings>=2.7,<3",
+    "pyjwt[crypto]>=2.10,<3",
+    "httpx>=0.28,<1",
+    "boto3>=1.36,<2",
+    "xgboost>=3,<4",
+    "numpy>=2,<3",
+    "pillow>=12,<13",
+    "scikit-learn>=1.7,<2",
+]
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

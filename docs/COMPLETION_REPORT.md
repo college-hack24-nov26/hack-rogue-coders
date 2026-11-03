@@ -1,0 +1,41 @@
+# PRD implementation and release status — 30 October 2026
+
+Project: `C:\Jalsathi`. No public deployment, government handoff or messages to real people were performed. **The official directory is complete and the revised research model passes the existing numerical gates.** Production sign-off still requires provider credentials, source semantics/publication-availability evidence, reviewed geographic mappings and prospective/human validation. See `FIX_STATUS.md` for the latest repair evidence.
+
+| PRD area | Implemented and locally verified | External/release status |
+|---|---|---|
+| Four surfaces | Expo farmer app, separate React admin/officials portals, FastAPI, durable worker, shared SQLAlchemy/Alembic records | Web builds, tests and Android export available; no public deployment |
+| Neon database/PostGIS | PostgreSQL driver, extension/boundary-index migration, spatial updates and versioned lineage | SQLite tested; Neon project/connection absent; PostgreSQL concurrency remains unverified |
+| Authentication | Local development auth; Neon email signup/login proxy, JWKS validation, encrypted provider sessions, refresh/logout/recovery; native SecureStore and browser-memory credentials | Neon protocol mocked/tested, not live-verified. Provider signup/recovery emails disabled by default. No phone-first onboarding claim |
+| Access | Backend roles/ownership/jurisdiction, staff invitations, production verified-email redemption, scoped roles and immediate revocation, audit | System-admin bootstrap is operator-only; existing JWTs lose removed privileges |
+| Complaints | Original report, sanitized publication, separate review/service states, reasons, duplicates, clarification, acceptance, withdrawal, progress and admin reopening | Direct API boundaries and Chrome app→admin→official→farmer timeline tested. Officials never receive unaccepted/private/other-scope records |
+| Filtering/routing | Category/channel/state/search/age controls, village routing, unknown-location queue for system administrators | Unknown locations remain incomplete; no inferred land ownership or government verification |
+| Attachments | App checksum/upload/finalize, owner-scoped local/S3-compatible private storage, size/hash/type checks, decoder inspection/re-encoding/metadata removal; separate approval for officials | Private local pipeline and denied-access cases tested. Neon bucket/region/signed PUT behavior requires credentials |
+| WhatsApp | Signed/business-number-checked webhooks, original message preservation, provider-ID dedup, location continuation, same-sender status lookup, consent and reply-window/template gates, durable status jobs/retries | Signed fixture tests pass. Business account/number/token/API version/template approval absent. External sending disabled; unsupported media references retained for review |
+| Village registry | Official LGD API, hash-validated checkpoints, retries, per-district commits, identity/count reconciliation, geography editor | 44,929 unique villages across all 36 source districts, matching the official catalogue. Coordinates and reviewed station/aquifer mappings are separately unavailable |
+| Farm tools | Multiple own farms, editing, crop/area/sowing/method, explicit village and permission-based coordinates, reviewed weather/coefficient plans, transparent irrigation calculator | Ownership/unit/7–15-day tests and Chrome editing pass. Reviewed agronomy inputs and village coordinates are required for automatic plans |
+| Daily outlook | 15 daily horizons, overlapping 7/15-day views, artifact hashes, schema/freshness/issue-time/mapping/release gates, calibrated intervals, exact lineage, stale labels and manual reruns | Revised research model passes all existing numerical gates but remains unapproved. No operational village prediction is claimed |
+| Model evaluation | Persistence-anchored XGBoost, relative lags, robust loss, independent tuning/calibration/test windows and held-out districts, 15-day purges | 5,017,465 raw observations, 1,492 derived identities, 730,287 complete examples. Final experiment trains through 2023, tunes in 2024, calibrates in 2025 and evaluates 2026. Both 15-horizon gates pass; prior holdout exposure is disclosed. Source semantics, availability, mapping and prospective review remain open |
+| Consumption/supply | Sector baseline versions, validity through horizon, methods/dates/source/assumptions/reviewer; reviewed sources and allocations; cross-village yield cap, refill/storage/delivery simulation | Calculations and shared allocation boundaries tested. Actual baseline/flow/allocation datasets absent. Missing comparable supply keeps shortage litres unavailable; constant supply remains a labelled scenario |
+| Ingestion | Grid-cached Open-Meteo, bounded official directory/MSAMB/document adapters, optional AGMARKNET, source hashes/raw samples/errors, durable retries and optional daily refresh | Live 16-day weather and two official document pages verified. Checked market request returned no usable dated quotes. AGMARKNET key absent |
+| Markets/economics | Quote market/date/variety/unit filters, comparison cards, explicit yield/price/cost/transport INR scenario | Chrome economics test passes. No fabricated quotes or harvest-price forecasts |
+| Schemes/notices | Official-page evidence retrieval, separate retrieval/publication dates, reviewed village notices/applicability and source links | Two live pages retrieved. Individual eligibility/applicability is not automatically certified |
+| Gemini/Marathi | Sharing consent, server-side adapter, canonical numerical evidence, lexical official passages/citations, returned usage/latency, labelled Marathi/English fallback and numeric-addition rejection | Fallback consistency/retrieval tested. Gemini credentials absent; live language quality and human Marathi usability remain unverified |
+| Admin operations | Baselines/budgets, maps/crosswalks, metric charts, data flow/raw samples, retries, access, notices, AI/complaint quality and audit; secret-free integration setup panel | Builds and Chrome flows pass; missing provider variables and complete registry counts are visible to system administrators |
+| Offline/privacy | Native SQLite caches/drafts, secure credentials, cached labels, server acknowledgement, account/IP/complaint/AI limits, encrypted sessions, private photos, deletion-review requests, transient-retention CLI | Physical-device/offline restart and formal production retention review pending. No complaint/audit deletion performed |
+| Scale | Synthetic registry benchmark and actual research model inference/writes on 1,000/50,000 real historical feature rows | Exact timings retained. Station/date feature rows are not distinct villages or statewide operational coverage |
+
+## Evidence and blockers
+
+- `VALIDATION.md`: backend/browser workflows, builds and known dependency findings.
+- `LIVE_INTEGRATIONS.json`: actual provider checks and absent configuration.
+- `LIVE_DIRECTORY_IMPORT.json`: all 36 district receipts, hashes and 44,929 reconciled unique villages.
+- `READINESS.json`: exact missing variable names and read-only probe results; no secrets.
+- `REAL_MODEL_EVALUATION.json`, `RESIDUAL_MODEL_EVALUATION.json`, `MULTIYEAR_MODEL_EVALUATION.json`: preserved earlier experiments, including failures.
+- `SEASONAL_MODEL_EVALUATION.json`: revised candidate, both numerical gates passing, still unapproved with explicit source/mapping/prospective-review blockers.
+- `REAL_INFERENCE_BENCHMARK.json`: measured cache/model loading, inference and database writes on real historical rows.
+- `BENCHMARK.json`: separate synthetic registry/unavailable-output benchmark.
+
+Configure Neon database/auth/private storage, Gemini and WhatsApp locally in `.env` using `LIVE_SETUP.md`; optional AGMARKNET also needs its key. Do not paste secrets into chat. Numerical evaluation passing does not supply verified source semantics/availability or reviewed mappings. Human Marathi/operational sign-off is not claimed.
+
+The latest public-source recheck retrieved weather and both official document pages. Per-page failures now preserve successful document retrievals. Dated market quotes remain unavailable in the checked response. See `LIVE_INTEGRATIONS.json`.

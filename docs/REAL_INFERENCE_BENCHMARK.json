@@ -1,0 +1,26 @@
+[
+  {
+    "real_feature_rows": 1000,
+    "geography": "historical station/date feature rows, NOT distinct villages",
+    "download_seconds": null,
+    "feature_cache_load_seconds": 0.07464480001362972,
+    "model_load_seconds": 0.20684060000348836,
+    "inference_seconds": 0.023032500001136214,
+    "write_seconds": 0.13547200000903104,
+    "total_seconds": 0.43998990002728533,
+    "published_operational_forecasts": 0,
+    "note": "Candidate failed release gates; outputs written only to a temporary research database"
+  },
+  {
+    "real_feature_rows": 50000,
+    "geography": "historical station/date feature rows, NOT distinct villages",
+    "download_seconds": null,
+    "feature_cache_load_seconds": 0.07464480001362972,
+    "model_load_seconds": 0.20684060000348836,
+    "inference_seconds": 0.3898210999905132,
+    "write_seconds": 3.0195281999913277,
+    "total_seconds": 3.690834699998959,
+    "published_operational_forecasts": 0,
+    "note": "Candidate failed release gates; outputs written only to a temporary research database"
+  }
+]

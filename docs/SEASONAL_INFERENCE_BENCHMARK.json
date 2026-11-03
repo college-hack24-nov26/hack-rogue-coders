@@ -1,0 +1,28 @@
+[
+  {
+    "model_sha256": "baa0a0b2ab484b9d9912c75c5f5e053579647d523eb6ccfaac7c503232f199c1",
+    "real_feature_rows": 1000,
+    "geography": "historical station/date feature rows, NOT distinct villages",
+    "download_seconds": null,
+    "feature_cache_load_seconds": 0.1416353000095114,
+    "model_load_seconds": 0.611852900008671,
+    "inference_seconds": 0.01905360000091605,
+    "write_seconds": 0.18458070000633597,
+    "total_seconds": 0.9571225000254344,
+    "published_operational_forecasts": 0,
+    "note": "Research candidate remains unapproved; outputs written only to a temporary research database"
+  },
+  {
+    "model_sha256": "baa0a0b2ab484b9d9912c75c5f5e053579647d523eb6ccfaac7c503232f199c1",
+    "real_feature_rows": 50000,
+    "geography": "historical station/date feature rows, NOT distinct villages",
+    "download_seconds": null,
+    "feature_cache_load_seconds": 0.1416353000095114,
+    "model_load_seconds": 0.611852900008671,
+    "inference_seconds": 0.8045668999839108,
+    "write_seconds": 4.199148699990474,
+    "total_seconds": 5.757203799992567,
+    "published_operational_forecasts": 0,
+    "note": "Research candidate remains unapproved; outputs written only to a temporary research database"
+  }
+]

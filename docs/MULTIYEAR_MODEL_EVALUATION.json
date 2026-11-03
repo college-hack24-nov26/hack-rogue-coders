@@ -1,0 +1,630 @@
+{
+  "feature_names": [
+    "level_t",
+    "level_t_minus_1",
+    "level_t_minus_3",
+    "level_t_minus_7",
+    "level_t_minus_14",
+    "level_t_minus_28",
+    "trend_7",
+    "season_sin",
+    "season_cos",
+    "latitude",
+    "longitude"
+  ],
+  "input_transform": "relative_lags_v1",
+  "prediction_transform": "delta_from_latest_v1",
+  "residual_weights": [
+    0.5,
+    0.5,
+    0.5,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    0.75,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0.75
+  ],
+  "source_files": [
+    {
+      "file": "data\\raw\\nwic-maharashtra-2021-2025.csv",
+      "sha256": "b4bf746c09eae07b7998328a5699ddc22989f7ec829509919b60421e7a366822"
+    },
+    {
+      "file": "data\\raw\\nwic-maharashtra-2026.csv",
+      "sha256": "ce6e4f31f351ffd9c149659eaea6f84781add0a0d013ea950a03deae630884ec"
+    }
+  ],
+  "rows_read": 5017465,
+  "rejected_rows": 15,
+  "stations": 1492,
+  "approved": false,
+  "purpose": "research_evaluation_only",
+  "source": "https://nwdp.nwic.gov.in/dataset/ground-water-level-telemetry-daily-maharashtra-gw",
+  "source_file_sha256": null,
+  "sha256": "f4b5696733897582ede59dce86348fa376e1afeedc9bd048b05bafc7d15d7f0d",
+  "artifact": "artifacts\\nwic-multiyear\\model.json",
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "issue_time_features": true,
+  "availability_verified": false,
+  "source_sign_verified": false,
+  "geographic_holdout": [
+    "466",
+    "470",
+    "474",
+    "478",
+    "484",
+    "488",
+    "492",
+    "496",
+    "500"
+  ],
+  "purge_days": 15,
+  "units": "original_source_signed_meter",
+  "daily_aggregation": "Last recorded six-hourly value at end of Asia/Kolkata day; no labels filled",
+  "samples": 730287,
+  "training_samples": 333304,
+  "calibration_samples": 10051,
+  "training_period": [
+    "2022-10-14",
+    "2024-12-16"
+  ],
+  "evaluation_start": "2026-01-02",
+  "partitions": {
+    "train": {
+      "samples": 333304,
+      "start": "2022-10-14",
+      "end": "2024-12-16"
+    },
+    "tuning": {
+      "samples": 31420,
+      "start": "2025-01-01",
+      "end": "2025-06-03"
+    },
+    "calibration": {
+      "samples": 10051,
+      "start": "2025-07-30",
+      "end": "2025-11-11"
+    },
+    "chronological": {
+      "samples": 85184,
+      "start": "2026-01-02",
+      "end": "2026-09-14"
+    },
+    "geographic": {
+      "samples": 50145,
+      "start": "2026-01-02",
+      "end": "2026-09-14"
+    }
+  },
+  "selection": {
+    "method": "Minimum MAE on separate tuning dates only; no refit on calibration or test",
+    "candidates": [
+      {
+        "objective": "reg:absoluteerror",
+        "n_estimators": 100,
+        "max_depth": 3,
+        "residual_weights": [
+          0.5,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          1,
+          1,
+          0.75,
+          0.75,
+          0.75,
+          0.75
+        ],
+        "tuning_mae": 0.7957943049393025
+      },
+      {
+        "objective": "reg:absoluteerror",
+        "n_estimators": 180,
+        "max_depth": 4,
+        "residual_weights": [
+          0.5,
+          0.5,
+          0.5,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0.75
+        ],
+        "tuning_mae": 0.7875156310554159
+      },
+      {
+        "objective": "reg:pseudohubererror",
+        "n_estimators": 100,
+        "max_depth": 3,
+        "residual_weights": [
+          0.25,
+          0.25,
+          0.25,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75,
+          0.75
+        ],
+        "tuning_mae": 0.7951982640478323
+      }
+    ],
+    "selected": {
+      "objective": "reg:absoluteerror",
+      "n_estimators": 180,
+      "max_depth": 4,
+      "residual_weights": [
+        0.5,
+        0.5,
+        0.5,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        0.75,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0.75
+      ],
+      "tuning_mae": 0.7875156310554159
+    },
+    "prior_holdout_exposure": "The earlier absolute-level experiment used the same final dates/districts; a new prospective evaluation is required before operational release"
+  },
+  "evaluations": {
+    "chronological": {
+      "samples": 85184,
+      "metrics": {
+        "1": {
+          "mae": 0.46695791534995734,
+          "rmse": 2.9511507086036106,
+          "persistence_mae": 0.47918258454648194,
+          "coverage": 0.8374694778362134,
+          "interval_width": 1.1538950018584728,
+          "persistence_skill": 0.025511505615535945
+        },
+        "2": {
+          "mae": 0.5855573128545095,
+          "rmse": 3.1565439299232287,
+          "persistence_mae": 0.6044177674852789,
+          "coverage": 0.7982602366641622,
+          "interval_width": 1.0949420407414436,
+          "persistence_skill": 0.0312043352220428
+        },
+        "3": {
+          "mae": 0.6790111234760124,
+          "rmse": 3.339872174473191,
+          "persistence_mae": 0.7033888520322403,
+          "coverage": 0.7833630728775357,
+          "interval_width": 1.150786854326725,
+          "persistence_skill": 0.03465754182170422
+        },
+        "4": {
+          "mae": 0.7458323488305224,
+          "rmse": 3.305825293281617,
+          "persistence_mae": 0.7850736288346497,
+          "coverage": 0.7676206799398948,
+          "interval_width": 1.172884021885693,
+          "persistence_skill": 0.04998420347194232
+        },
+        "5": {
+          "mae": 0.8191754406094458,
+          "rmse": 3.451200763794613,
+          "persistence_mae": 0.8606427590402786,
+          "coverage": 0.7601310105184073,
+          "interval_width": 1.2515835911035538,
+          "persistence_skill": 0.04818180132843264
+        },
+        "6": {
+          "mae": 0.8915922800939662,
+          "rmse": 3.7739579226247826,
+          "persistence_mae": 0.9350229297791233,
+          "coverage": 0.7479573628850489,
+          "interval_width": 1.2699956856667995,
+          "persistence_skill": 0.046448753610156435
+        },
+        "7": {
+          "mae": 0.9591901519125133,
+          "rmse": 3.8095378695946422,
+          "persistence_mae": 1.0043735687276458,
+          "coverage": 0.7409020473328325,
+          "interval_width": 1.3386340849101543,
+          "persistence_skill": 0.04498666454591338
+        },
+        "8": {
+          "mae": 1.0175162690961255,
+          "rmse": 3.827474884584684,
+          "persistence_mae": 1.0674719545470208,
+          "coverage": 0.7330015026296018,
+          "interval_width": 1.3790356367826462,
+          "persistence_skill": 0.04679812452037102
+        },
+        "9": {
+          "mae": 1.0814558666091358,
+          "rmse": 4.0054818626382716,
+          "persistence_mae": 1.1318564363430628,
+          "coverage": 0.7201939331329827,
+          "interval_width": 1.3898204863071442,
+          "persistence_skill": 0.04452911881366073
+        },
+        "10": {
+          "mae": 1.131197288678065,
+          "rmse": 3.9454558164676525,
+          "persistence_mae": 1.1892851205111932,
+          "coverage": 0.7144768970698723,
+          "interval_width": 1.4488920643925667,
+          "persistence_skill": 0.048842645746850155
+        },
+        "11": {
+          "mae": 1.186626159395492,
+          "rmse": 4.142764584539906,
+          "persistence_mae": 1.2469022316883986,
+          "coverage": 0.7098868332081142,
+          "interval_width": 1.498410403728485,
+          "persistence_skill": 0.04834065635706519
+        },
+        "12": {
+          "mae": 1.2451751771778368,
+          "rmse": 4.24322670729198,
+          "persistence_mae": 1.308505607036886,
+          "coverage": 0.6980536250939143,
+          "interval_width": 1.512524887919426,
+          "persistence_skill": 0.04839905119127541
+        },
+        "13": {
+          "mae": 1.3018861741854488,
+          "rmse": 4.331070706446557,
+          "persistence_mae": 1.361887662264911,
+          "coverage": 0.6940270473328325,
+          "interval_width": 1.564299814403057,
+          "persistence_skill": 0.04405758987468589
+        },
+        "14": {
+          "mae": 1.3577218980607764,
+          "rmse": 4.427205139503949,
+          "persistence_mae": 1.4165373980693314,
+          "coverage": 0.6858212809917356,
+          "interval_width": 1.5886323489248753,
+          "persistence_skill": 0.04152061222578207
+        },
+        "15": {
+          "mae": 1.417915083928336,
+          "rmse": 4.505349457022565,
+          "persistence_mae": 1.474807484314517,
+          "coverage": 0.6711823816679189,
+          "interval_width": 1.5601488891988993,
+          "persistence_skill": 0.038576153831104354
+        }
+      }
+    },
+    "geographic": {
+      "samples": 50145,
+      "metrics": {
+        "1": {
+          "mae": 0.5117063990951338,
+          "rmse": 3.0944041595513556,
+          "persistence_mae": 0.5214448520329797,
+          "coverage": 0.8589689899292053,
+          "interval_width": 1.1538950018584728,
+          "persistence_skill": 0.018675901967155628
+        },
+        "2": {
+          "mae": 0.693883800912048,
+          "rmse": 3.707700894461345,
+          "persistence_mae": 0.7095949584435085,
+          "coverage": 0.8108884235716423,
+          "interval_width": 1.0949420407414436,
+          "persistence_skill": 0.022141021923158477
+        },
+        "3": {
+          "mae": 0.8237274418732673,
+          "rmse": 4.013619687951403,
+          "persistence_mae": 0.8437702708578326,
+          "coverage": 0.7897297836274803,
+          "interval_width": 1.150786854326725,
+          "persistence_skill": 0.023753893301062257
+        },
+        "4": {
+          "mae": 0.9346403235775155,
+          "rmse": 4.332479853230926,
+          "persistence_mae": 0.9672660708531622,
+          "coverage": 0.7720011965300628,
+          "interval_width": 1.172884021885693,
+          "persistence_skill": 0.03372985805949924
+        },
+        "5": {
+          "mae": 1.0325630704423927,
+          "rmse": 4.540229913764394,
+          "persistence_mae": 1.0677871017700389,
+          "coverage": 0.7629873367235018,
+          "interval_width": 1.2515835911035538,
+          "persistence_skill": 0.032987878641029034
+        },
+        "6": {
+          "mae": 1.1207171802082814,
+          "rmse": 4.687484723421961,
+          "persistence_mae": 1.1584250472517779,
+          "coverage": 0.7499252168710739,
+          "interval_width": 1.2699956856667995,
+          "persistence_skill": 0.03255097697771103
+        },
+        "7": {
+          "mae": 1.2017412985411164,
+          "rmse": 4.842171437287481,
+          "persistence_mae": 1.2429149463242897,
+          "coverage": 0.7448798484395254,
+          "interval_width": 1.3386340849101543,
+          "persistence_skill": 0.03312668168078381
+        },
+        "8": {
+          "mae": 1.2969473030820742,
+          "rmse": 5.094846765756353,
+          "persistence_mae": 1.3412920496430145,
+          "coverage": 0.7336524080167515,
+          "interval_width": 1.3790356367826462,
+          "persistence_skill": 0.033061216289728024
+        },
+        "9": {
+          "mae": 1.3799864757531537,
+          "rmse": 5.341593257251355,
+          "persistence_mae": 1.4268520858158673,
+          "coverage": 0.7218267025625685,
+          "interval_width": 1.3898204863071442,
+          "persistence_skill": 0.03284545786392157
+        },
+        "10": {
+          "mae": 1.4475412321041805,
+          "rmse": 5.458089287924492,
+          "persistence_mae": 1.5021840421581356,
+          "coverage": 0.7161631269318975,
+          "interval_width": 1.4488920643925667,
+          "persistence_skill": 0.03637557617470866
+        },
+        "11": {
+          "mae": 1.5201700038872035,
+          "rmse": 5.62787264749953,
+          "persistence_mae": 1.5798937673327884,
+          "coverage": 0.7113171801774852,
+          "interval_width": 1.498410403728485,
+          "persistence_skill": 0.037802391958550396
+        },
+        "12": {
+          "mae": 1.5861648957145515,
+          "rmse": 5.764423507230288,
+          "persistence_mae": 1.6469323339112745,
+          "coverage": 0.7013261541529564,
+          "interval_width": 1.512524887919426,
+          "persistence_skill": 0.036897349663666645
+        },
+        "13": {
+          "mae": 1.6513266553163382,
+          "rmse": 5.8926474210148125,
+          "persistence_mae": 1.7118723334514458,
+          "coverage": 0.697517200119653,
+          "interval_width": 1.564299814403057,
+          "persistence_skill": 0.03536810365585885
+        },
+        "14": {
+          "mae": 1.7059794767558982,
+          "rmse": 5.9945696121942635,
+          "persistence_mae": 1.7663276905565748,
+          "coverage": 0.6907368630970186,
+          "interval_width": 1.5886323489248753,
+          "persistence_skill": 0.03416592182940903
+        },
+        "15": {
+          "mae": 1.7785686515446688,
+          "rmse": 6.142604540092806,
+          "persistence_mae": 1.834567276369964,
+          "coverage": 0.6790706949845449,
+          "interval_width": 1.5601488891988993,
+          "persistence_skill": 0.030524159864062872
+        }
+      }
+    }
+  },
+  "metrics": {
+    "1": {
+      "mae": 0.5117063990951338,
+      "rmse": 3.0944041595513556,
+      "persistence_mae": 0.5214448520329797,
+      "coverage": 0.8589689899292053,
+      "interval_width": 1.1538950018584728,
+      "persistence_skill": 0.018675901967155628
+    },
+    "2": {
+      "mae": 0.693883800912048,
+      "rmse": 3.707700894461345,
+      "persistence_mae": 0.7095949584435085,
+      "coverage": 0.8108884235716423,
+      "interval_width": 1.0949420407414436,
+      "persistence_skill": 0.022141021923158477
+    },
+    "3": {
+      "mae": 0.8237274418732673,
+      "rmse": 4.013619687951403,
+      "persistence_mae": 0.8437702708578326,
+      "coverage": 0.7897297836274803,
+      "interval_width": 1.150786854326725,
+      "persistence_skill": 0.023753893301062257
+    },
+    "4": {
+      "mae": 0.9346403235775155,
+      "rmse": 4.332479853230926,
+      "persistence_mae": 0.9672660708531622,
+      "coverage": 0.7720011965300628,
+      "interval_width": 1.172884021885693,
+      "persistence_skill": 0.03372985805949924
+    },
+    "5": {
+      "mae": 1.0325630704423927,
+      "rmse": 4.540229913764394,
+      "persistence_mae": 1.0677871017700389,
+      "coverage": 0.7629873367235018,
+      "interval_width": 1.2515835911035538,
+      "persistence_skill": 0.032987878641029034
+    },
+    "6": {
+      "mae": 1.1207171802082814,
+      "rmse": 4.687484723421961,
+      "persistence_mae": 1.1584250472517779,
+      "coverage": 0.7499252168710739,
+      "interval_width": 1.2699956856667995,
+      "persistence_skill": 0.03255097697771103
+    },
+    "7": {
+      "mae": 1.2017412985411164,
+      "rmse": 4.842171437287481,
+      "persistence_mae": 1.2429149463242897,
+      "coverage": 0.7448798484395254,
+      "interval_width": 1.3386340849101543,
+      "persistence_skill": 0.03312668168078381
+    },
+    "8": {
+      "mae": 1.2969473030820742,
+      "rmse": 5.094846765756353,
+      "persistence_mae": 1.3412920496430145,
+      "coverage": 0.7336524080167515,
+      "interval_width": 1.3790356367826462,
+      "persistence_skill": 0.033061216289728024
+    },
+    "9": {
+      "mae": 1.3799864757531537,
+      "rmse": 5.341593257251355,
+      "persistence_mae": 1.4268520858158673,
+      "coverage": 0.7218267025625685,
+      "interval_width": 1.3898204863071442,
+      "persistence_skill": 0.03284545786392157
+    },
+    "10": {
+      "mae": 1.4475412321041805,
+      "rmse": 5.458089287924492,
+      "persistence_mae": 1.5021840421581356,
+      "coverage": 0.7161631269318975,
+      "interval_width": 1.4488920643925667,
+      "persistence_skill": 0.03637557617470866
+    },
+    "11": {
+      "mae": 1.5201700038872035,
+      "rmse": 5.62787264749953,
+      "persistence_mae": 1.5798937673327884,
+      "coverage": 0.7113171801774852,
+      "interval_width": 1.498410403728485,
+      "persistence_skill": 0.037802391958550396
+    },
+    "12": {
+      "mae": 1.5861648957145515,
+      "rmse": 5.764423507230288,
+      "persistence_mae": 1.6469323339112745,
+      "coverage": 0.7013261541529564,
+      "interval_width": 1.512524887919426,
+      "persistence_skill": 0.036897349663666645
+    },
+    "13": {
+      "mae": 1.6513266553163382,
+      "rmse": 5.8926474210148125,
+      "persistence_mae": 1.7118723334514458,
+      "coverage": 0.697517200119653,
+      "interval_width": 1.564299814403057,
+      "persistence_skill": 0.03536810365585885
+    },
+    "14": {
+      "mae": 1.7059794767558982,
+      "rmse": 5.9945696121942635,
+      "persistence_mae": 1.7663276905565748,
+      "coverage": 0.6907368630970186,
+      "interval_width": 1.5886323489248753,
+      "persistence_skill": 0.03416592182940903
+    },
+    "15": {
+      "mae": 1.7785686515446688,
+      "rmse": 6.142604540092806,
+      "persistence_mae": 1.834567276369964,
+      "coverage": 0.6790706949845449,
+      "interval_width": 1.5601488891988993,
+      "persistence_skill": 0.030524159864062872
+    }
+  },
+  "gates": {
+    "chronological": false,
+    "geographic": false
+  },
+  "calibration_abs_error_quantile": [
+    0.5769475009292364,
+    0.5474710203707218,
+    0.5753934271633625,
+    0.5864420109428465,
+    0.6257917955517769,
+    0.6349978428333998,
+    0.6693170424550772,
+    0.6895178183913231,
+    0.6949102431535721,
+    0.7244460321962833,
+    0.7492052018642426,
+    0.756262443959713,
+    0.7821499072015285,
+    0.7943161744624376,
+    0.7800744445994496
+  ],
+  "uncertainty_target": 0.9,
+  "release_blockers": [
+    "Source sign convention requires authoritative review",
+    "Historical source publication availability is not supplied",
+    "Derived station identity requires reviewed source crosswalk",
+    "No reviewed village/aquifer mappings",
+    "Fresh prospective evaluation and human release review required",
+    "chronological failed persistence/coverage gates",
+    "geographic failed persistence/coverage gates"
+  ],
+  "feature_seconds": 192.40193279998493,
+  "total_seconds": 370.92380309998407,
+  "shortage_event_metrics": null,
+  "selection_and_evaluation_seconds": 178.52186939999228,
+  "timing_note": "Selection/evaluation includes all candidate fits, tuning, calibration and final scoring. Feature time may load the existing cache."
+}

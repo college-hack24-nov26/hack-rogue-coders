@@ -1,0 +1,3504 @@
+    
+    <!DOCTYPE html>
+    <html class="loaded" lang="en" data-textdirection="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <title>Admin Panel</title>
+        <link rel="shortcut icon" type="image/x-icon" href="http://localhost/04032021/webrootiomou/app-assets/images/logo/fevicon.png">
+
+        <!-- BEGIN: Vendor CSS-->
+        <link rel="stylesheet" type="text/css" href="commonFile/vendors.min.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/allfont.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/oswald.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/open-sans.css">    
+        <link rel="stylesheet" type="text/css" href="commonFile/palette-switch.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="commonFile/skyknight.css">
+
+
+        <!-- END: Vendor CSS-->
+
+        <!-- BEGIN: Theme CSS-->
+        <link rel="stylesheet" type="text/css" href="commonFile/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/skyknight.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/bootstrap-extended.min.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/colors.min.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/components.min.css">
+        <link rel="stylesheet" type="text/css" href="commonFile/datatables.min.css">
+        <script src="commonFile/jquery-3.3.1.js"></script> 
+         <script src="commonFile/salert.js"></script>
+        
+        <script>
+            $(document).ready(function(){
+              $(".menu-toggle").click(function(){
+                $(".profile").toggle();
+            });
+          });
+      </script>
+	<br><br><br><br>
+       <div class="fixed-top">
+        <header class="topbar">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        
+
+                    </div>
+
+                </div>
+            </div>
+
+            <title>MAH LGD</title>
+            <style>
+                body {
+                    margin: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 1rem;
+                    font-weight: 100;
+                    line-height: 1.5;
+                    color: #212529;
+                    background-color: #f7f7f7;
+                }
+
+                .navbar {
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    -ms-flex-pack: justify;
+                    justify-content: space-between;
+                    padding: 5px;
+                }
+
+                /*
+headeer top
+*/
+               
+                .btn_color{
+                    background-color:#01303c;
+                }
+
+                ul.social-network {
+                    border: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                ul.social-network li {
+                    border: none;
+                    margin: 0;
+                }
+
+                ul.social-network li i {
+                    margin: 0;
+                }
+
+                ul.social-network li {
+                    display: inline;
+                    margin: 0 5px;
+                    border: 0px solid #2D2D2D;
+                    padding: 5px 0 0;
+                    width: 32px;
+                    display: inline-block;
+                    text-align: center;
+                    height: 32px;
+                    vertical-align: baseline;
+                    color: #000;
+                }
+
+                ul.social-network {
+                    list-style: none;
+                    margin: 5px 0 10px -25px;
+                    float: right;
+                }
+
+                .waves-effect {
+                    position: relative;
+                    cursor: pointer;
+                    display: inline-block;
+                    overflow: hidden;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    -webkit-tap-highlight-color: transparent;
+                    vertical-align: middle;
+                    z-index: 1;
+                    will-change: opacity, transform;
+                    transition: .3s ease-out;
+                    color: #fff;
+                }
+
+                a {
+                    color: #f13c1f;
+                    font-size: 13px;
+
+                }
+
+                li {
+                    list-style-type: none;
+                }
+
+                .bg-image-full {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    background-size: cover;
+                    -o-background-size: cover;
+                }
+
+                .bg-dark {
+                    background-color: #222 !important;
+                }
+
+                .mx-background-top-linear {
+                     background: -webkit-linear-gradient(45deg, #054450 51%, #158081 48%);
+                    background: -webkit-linear-gradient(left, #054450 51%, #158081 48%);
+                    background: linear-gradient(45deg, #054450 51%, #158081 48%);
+                }
+
+                .tbcard.d1 {
+                   background-color: #ffc056;
+                 
+
+
+                }
+
+                .tbcard.d2 {
+                    background-color: #efe1ba;
+                   
+               
+                }
+
+
+                .zoom:hover {
+                    transform: scale(1.5);
+                    -o-transition: .5s;
+                    -ms-transition: .5s;
+                    -moz-transition: .5s;
+                    -webkit-transition: .5s;
+                    /* ...and now for the proper property */
+                    transition: .5s;
+                    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+                }
+
+                .tbcard {
+                    
+                    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+                    margin-bottom: 4px;
+                    margin-left: 10px;
+                   
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+                .tbcardBody{
+                    color:  #df4517;;
+                }
+
+                .center {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+
+                .feedbackcss {
+                    border-radius: 25px;
+                    border: 1px solid #2883fa;
+                    padding: 5px;
+                    width: 90%;
+                    margin-left: 2px;
+                    margin-right: auto;
+                }
+
+                .footer {
+
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    background-color: red;
+                    color: white;
+                    text-align: center;
+                }
+            </style>
+            <style>
+    .loading
+    {
+        /* z-index: 999; */
+        position: absolute;
+        left: 0px;      
+        width: 100%;
+        /* height: 53%; */
+        z-index: 9999;
+        top: 260px;
+    }
+
+</style>
+           <nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear" style="background-color: #158081;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src="images/pngegg1.png" width="50" height="50" class="d-inline-block " alt="">
+              
+ <h1><a class="navbar-brand " rel="nofollow" href="mahvil_index.php"
+        style="font-size :15px; margin-left: 20px;">
+        <p style="font-size: 25px;color: #e5bf24;">C</p>ommon<p style="font-size: 25px;color: #e5bf24;">V</p>illage <p style="font-size: 25px;color: #e5bf24;">M</p>aster  <p style="font-size: 25px;color: #e5bf24;">o</p>f <p style="font-size: 25px;color: #e5bf24;">M</p>aharashtra</a>
+    </a></h1>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item active">
+
+                        <li class="nav-item ">
+                            <a class="nav-link" href="mahvil_index.php" style="color: white; font-weight: bold;"> <img src="images/home_home.png" width="25px" height="25px"> &nbsp; Home
+                            </a>
+                        </li>
+
+                        
+                        
+                       <li>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       </li>
+
+                    </ul>
+                    <img src="images/emblem1.png" width="30" height="50" class="d-inline-block " alt="">
+
+                       
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       
+                   
+                </div>
+
+            </nav>    </div>
+
+
+      <style>
+        .loading
+        {
+            /* z-index: 999; */
+            position: fixed ;
+            left: 0px;      
+            width: 100%;
+            /* height: 53%; */
+            z-index: 9999;
+            top: 260px;
+        }
+
+        .myDIV {
+
+          background: BLUE;
+          animation: mymove 5s infinite;
+      }
+
+      @keyframes my {
+          from {background-color: red;}
+          to {background-color: blue;}
+      }
+  </style>
+</style>
+<script>
+    document.onreadystatechange = function () {
+      var state = document.readyState
+
+      if(state == 'complete')
+      {
+          document.getElementById("load-popup").style.display="none"; 
+      }
+      else
+          document.getElementById("load-popup").style.display="block";
+
+          //document.getElementById("load-popup").style.display="block";
+      }
+  </SCRIPT>
+  <script>
+
+    $(document).ready(function(){
+
+
+
+        // $("#LGD_dataentry_card").click(function(){
+
+        //  $("#frmLGD").slideToggle(2000);
+        //     //$("LGD_dataentry_card").animate({left: '250px'});
+        // });
+        // $("#refreststattable_header").click(function(){
+
+        //  $("#refreststattable").slideToggle(2000);
+        //     //$("LGD_dataentry_card").animate({left: '250px'});
+        // });
+        
+
+      $('#rejection_group').hide();
+
+        $('#lbl_Vadivibhajan').prop('disabled',true);
+        $('input:radio[name="vadivibhajan_radio"]').prop('disabled',true);
+        $('#lbl_vadivibhajan_radio_yes').prop('disabled',true);
+        $('#lbl_vadivibhajan_radio_no').prop('disabled',true);
+        $('#lbl_Plocalbody').prop('disabled',true);
+        $('#parenttext').prop('disabled',true);
+        $('#txtDistrictCodep').prop('disabled',true);
+        $('#txtTalukaCodep').prop('disabled',true);
+        $('#txtVillageCodep').prop('disabled',true);
+        $('#pADDbtn').prop('disabled',true);
+        $('#lgd_vadivibhajan_name').prop('disabled',true);
+
+        $("#txtDistrictCodep").prop('disabled',true);
+
+        $("#txtTalukaCodep").prop('disabled',true);
+        $("#txtVillageCodep").prop('disabled',true);
+
+          $('#txtLGDnotificationnum').prop('required',false);
+        $("#tctNotificationLGDdate").prop("required", false);
+        $("#txtLGDnotifyauth").prop("required", false);
+
+        $('#lgdDistrict').prop('disabled',true);
+        $('#lgdTaluka').prop('disabled',true);
+
+
+       // Country dependent ajax
+      /* $("#lgdDistrict").on("change",function(){
+       var lgdDistrict = $(this).val();
+
+       $('#lgdTaluka').html('<option value="">All Taluka</option>');
+       $('#lgdVillage').html('<option value="">All Village</option>');
+       
+       if (lgdDistrict) {
+        $.ajax({
+            url :"lgdajaxpro.php",
+        type:"POST",
+        cache:false,
+        data:{lgddistrict:lgdDistrict},
+        success:function(data){
+               $('select[name="lgdTaluka"]').empty();
+               $('#lgdTaluka').html(data);
+        }
+        });
+       }else{
+            $('#lgdTaluka').html('<option value="">All Taluka</option>');
+        }*/
+    //parent dropdown
+     $("#txtLGDLBCode").on("change",function(){
+
+         
+$("#parenttext").val($(this).val());
+         });
+
+
+    $("#parenttext").on("change",function(){
+       var plocalbody = $(this).val();
+      // swal(plocalbody);
+        //txtVillageCodep
+        if(plocalbody=='D'){
+         $("#txtDistrictCodep").prop('disabled',false);
+         $("#txtTalukaCodep").prop('disabled',true);
+         $("#txtVillageCodep").prop('disabled',true);
+     }
+     if(plocalbody=='T'){
+         $("#txtTalukaCodep").prop('disabled',false);
+         $("#txtDistrictCodep").prop('disabled',false);
+         $("#txtVillageCodep").prop('disabled',true);
+     }
+     if(plocalbody=='V'){
+         $("#txtTalukaCodep").prop('disabled',false);
+         $("#txtDistrictCodep").prop('disabled',false);
+         $("#txtVillageCodep").prop('disabled',false);
+     }
+     if(plocalbody==00){
+         $("#txtDistrictCodep").prop('disabled',true);
+
+         $("#txtTalukaCodep").prop('disabled',true);
+         $("#txtVillageCodep").prop('disabled',true);
+     }
+
+ });
+    $("#pADDbtn").on("click",function() {
+
+       //Distict check
+       if($("#parenttext").val()=='D')
+       { 
+        if( $("#txtDistrictCodep option:selected").val()!='dist'){
+            var lgd_vadivibhajan_name= $("#lgd_vadivibhajan_name").val();
+            $("#lgd_vadivibhajan_name").val(lgd_vadivibhajan_name + "(D)"+$("#txtDistrictCodep option:selected").text()+"!" );
+        }
+    }
+
+        //Taluka check
+        if($("#parenttext").val()=='T')
+        { 
+            if( $("#txtDistrictCodep option:selected").val()!='dist' && $("#txtTalukaCodep option:selected").val()!=''){
+                var lgd_vadivibhajan_name= $("#lgd_vadivibhajan_name").val();
+                $("#lgd_vadivibhajan_name").val(lgd_vadivibhajan_name + "(D)"+$("#txtDistrictCodep option:selected").text()+", (T)"+$("#txtTalukaCodep option:selected").text()+"!" );
+            }
+        }
+
+        //Village check
+        if($("#parenttext").val()=='V')
+        { 
+            if( $("#txtDistrictCodep option:selected").val()!='dist' && $("#txtTalukaCodep option:selected").val()!='' && $("#txtVillageCodep option:selected").val()!=''){
+                var lgd_vadivibhajan_name= $("#lgd_vadivibhajan_name").val();
+                $("#lgd_vadivibhajan_name").val(lgd_vadivibhajan_name + "(D)"+$("#txtDistrictCodep option:selected").text()+", (T)"+$("#txtTalukaCodep option:selected").text()+", (V)"+$("#txtVillageCodep option:selected").text()+"!" );
+            }
+        }
+    /*
+         var lgd_vadivibhajan_name= $("#lgd_vadivibhajan_name").val();
+         var lgd_dist = "(D)" + $("#txtDistrictCodep option:selected").text()+",";
+         var lgd_tal = "(T)" + $("#txtTalukaCodep option:selected").text() +",";
+         var lgd_vill = "(V)" + $("#txtVillageCodep option:selected").text()+",";
+
+         if (lgd_dist=="(D)District,") {
+            lgd_dist="";
+         }
+         if (lgd_tal=="(T)Taluka,") {
+            lgd_tal="";
+         }
+         if (lgd_vill=="(V)Village,") {
+            lgd_vill="";
+         }
+         $("#lgd_vadivibhajan_name").val(lgd_vadivibhajan_name +lgd_dist+lgd_tal+lgd_vill+"\n" );
+         /*
+         var txtDistrictCodep = $("#txtDistrictCodep option:selected").text();
+         var txtTalukaCodep = $("#txtTalukaCodep option:selected").text();
+         var txtVillageCodep = $("#txtVillageCodep option:selected").text();
+         var total = lgd_vadivibhajan_name + " "+ txtDistrictCodep " " +txtTalukaCodep + " " + txtVillageCodep+"\n";
+         $("#lgd_vadivibhajan_name").val()=total;
+         */
+         //swal(lgd_vadivibhajan_name + " "+ txtDistrictCodep " " +txtTalukaCodep + " " + txtVillageCodep+"\n");
+
+        // lgd_vadivibhajan_name.append("(D)"+$("#txtDistrictCodep option:selected").text()+", (T)"+$("#txtTalukaCodep option:selected").text()+", (V)"+$("#txtVillageCodep option:selected").text()+"\n");
+        // $("#lgd_vadivibhajan_name").val()=lgd_vadivibhajan_name;
+
+       //$("#lgd_vadivibhajan_name").append("(D)"+$("#txtDistrictCodep option:selected").text()+", (T)"+$("#txtTalukaCodep option:selected").text()+", (V)"+$("#txtVillageCodep option:selected").text()+"\n");
+
+   });
+
+    $("#lgd_notification_file_btn").click(function() {
+
+     var fd = new FormData();
+     var files = $('#lgd_notification_file')[0].files[0];
+     if(files){
+
+        fd.append('file', files);
+
+        $.ajax({
+          url: 'fileuploadback.php',
+          type: 'post',
+          data: fd,
+          contentType: false,
+          processData: false,
+          success: function(response){
+            if(response != 0){
+                swal(response);
+
+            }
+            else{
+              swal('file not uploaded');
+          }
+      },
+  });
+    }else{swal("Please Select The File","","warning");}
+
+
+});
+
+      // vadivibhajan radio function
+    $("#localbodyradio" ).on("click",function() {
+      // swal("yes");
+     //  document.getElementsByName('txtLGDnotificationnum').setAttribute('required','required');
+       $('#txtLGDnotificationnum').prop('required',true);
+        $("#tctNotificationLGDdate").prop("required", true);
+        $("#txtLGDnotifyauth").prop("required", true);
+        $("#lgd_notification_file").prop("required",true);
+});
+    $("#localbodyradio1" ).on("click",function() {
+     //  swal("No");
+     $('#txtLGDnotificationnum').prop('required',false);
+        $("#tctNotificationLGDdate").prop("required", false);
+        $("#txtLGDnotifyauth").prop("required", false);
+         $("#lgd_notification_file").prop("required",false);
+});
+
+      $('input:radio[name="localbodyradio"]').change(function(){
+
+    //swal($('input:radio[name="localbodyradio"]:checked').val());
+
+    if($('input:radio[name="localbodyradio"]:checked').val()=='N')
+    {
+        $('#lbl_Vadivibhajan').prop('disabled',true);
+        $('input:radio[name="vadivibhajan_radio"]').prop('disabled',true);
+        $('#lbl_vadivibhajan_radio_yes').prop('disabled',true);
+        $('#lbl_vadivibhajan_radio_no').prop('disabled',true);
+        $('#lbl_Plocalbody').prop('disabled',true);
+        $('#parenttext').prop('disabled',true);
+        $('#txtDistrictCodep').prop('disabled',true);
+        $('#txtTalukaCodep').prop('disabled',true);
+        $('#txtVillageCodep').prop('disabled',true);
+        $('#pADDbtn').prop('disabled',true);
+        $('#lgd_vadivibhajan_name').prop('disabled',true);
+        $("#vadivibhajan_radio1").prop('disabled',true);
+        $("#vadivibhajan_radio1").prop("checked", true);
+    }
+    if($('input:radio[name="localbodyradio"]:checked').val()=='Y')
+    {
+        $('#lbl_Vadivibhajan').prop('disabled',false);
+        $('input:radio[name="vadivibhajan_radio"]').prop('disabled',false);
+        $('#lbl_vadivibhajan_radio_yes').prop('disabled',false);
+        $('#lbl_vadivibhajan_radio_no').prop('disabled',false);
+    //$('#lgd_vadivibhajan_name').prop('disabled',false);
+
+
+
+
+}
+
+
+});
+
+      $('input:radio[name="vadivibhajan_radio"]').change(function(){
+
+
+    //swal($('input:radio[name="vadivibhajan_radio"]:checked').val());
+
+    if($('input:radio[name="vadivibhajan_radio"]:checked').val()=='N')
+    {
+        $('#lbl_Plocalbody').prop('disabled',true);
+
+        $('#parenttext').prop('disabled',true);
+        $('#txtDistrictCodep').prop('disabled',true);
+        $('#txtTalukaCodep').prop('disabled',true);
+        $('#txtVillageCodep').prop('disabled',true);
+        $('#pADDbtn').prop('disabled',true);
+        $('#lgd_vadivibhajan_name').prop('disabled',true);
+        $('#lgd_vadivibhajan_name').val('');
+    }
+    if($('input:radio[name="vadivibhajan_radio"]:checked').val()=='Y')
+        { $('#lbl_Plocalbody').prop('disabled',false);
+    $('#lbl_Vadivibhajan').prop('disabled',false);
+    $('#parenttext').prop('disabled',true);
+    $('#pADDbtn').prop('disabled',false);
+    $('#lgd_vadivibhajan_name').prop('disabled',false);
+
+
+
+
+    // vadivibhajan dependant
+
+     var plocalbody = $('#parenttext').val();
+      // swal(plocalbody);
+        //txtVillageCodep
+        if(plocalbody=='D'){
+         $("#txtDistrictCodep").prop('disabled',false);
+         $("#txtTalukaCodep").prop('disabled',true);
+         $("#txtVillageCodep").prop('disabled',true);
+     }
+     if(plocalbody=='T'){
+         $("#txtTalukaCodep").prop('disabled',false);
+         $("#txtDistrictCodep").prop('disabled',false);
+         $("#txtVillageCodep").prop('disabled',true);
+     }
+     if(plocalbody=='V'){
+         $("#txtTalukaCodep").prop('disabled',false);
+         $("#txtDistrictCodep").prop('disabled',false);
+         $("#txtVillageCodep").prop('disabled',false);
+     }
+     if(plocalbody==00){
+         $("#txtDistrictCodep").prop('disabled',true);
+
+         $("#txtTalukaCodep").prop('disabled',true);
+         $("#txtVillageCodep").prop('disabled',true);
+     }
+}
+
+
+});
+
+
+
+  });
+
+
+
+
+
+
+
+    $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        $('#myTable thead tr')
+        .clone(true)
+        .addClass('filters')
+        //.appendTo('#myTable thead');
+
+        var match = ['LGD Code','Village','Taluka'];
+        var match2 = ['Village'];
+
+        var table = $('#myTable').DataTable({
+            orderCellsTop: true,
+            //fixedHeader: true,      
+            initComplete: function () {
+                var api = this.api();
+
+                // For each column
+                api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                            );
+                        //swal(cell);
+                        var title = $(cell).text();
+                        //swal($(api.column(colIdx).header()).index()+"==="+title +" ==== "+ match + "==>"+ jQuery.inArray(title, match));
+                        if($(api.column(colIdx).header()).index() == 0)  {
+                            $(cell).html(''); 
+                        }
+                        else if($(api.column(colIdx).header()).index()==9)
+                        {
+                            $(cell).html('');
+                        }
+                        else
+                        {
+                            $(cell).html('<input type="text" placeholder="' + title + '" />');
+                                // On every keypress in this000 input
+                                $(
+                                    'input',
+                                    $('.filters th').eq($(api.column(colIdx).header()).index())
+                                    )
+                                .off('keyup change')
+                                .on('keyup change', function (e) {
+                                    e.stopPropagation();
+
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                .column(colIdx)
+                                .search(
+                                    this.value != ''
+                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                    : '',
+                                    this.value != '',
+                                    this.value == ''
+                                    )
+                                .draw();
+
+                                $(this)
+                                .focus()[0]
+                                .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                            }
+
+
+                        });
+            },
+        });
+    });
+
+</script>
+
+
+
+<script type="text/javascript">
+
+
+
+  $(document).ready(function () {     
+        // onload disable fields code   
+        $("#txtStateCode").prop("disabled", true);
+        $("#txtDistrictCode").prop("disabled", true);
+        $("#txtTalukaCode").prop("disabled", true);
+        $("#txtVillagecode").prop("disabled", true);
+        $("#txtLGDMarName").prop("disabled", true);
+        $("#txtLGDEngName").prop("disabled", true);
+        $("#txtLGDCode").prop("disabled", true);    
+        $("#formbtnAdd").prop("disabled", true);
+        $("#formresetAdd").prop("disabled", true);
+        $("#txtLGDnotificationnum").prop("disabled", true);
+        $("#tctNotificationLGDdate").prop("disabled", true);
+        $("#parenttext").prop("disabled", true);
+        $("#lgd_notification_file").prop("disabled", true);
+        $("#txtLGDnotifyauth").prop("disabled", true);
+    });
+
+    /*  $(document).ready( function () {$('#myTable').dataTable({
+        "bSort": true,
+            "searching": true,
+             "lengthChange": false
+        });
+    }); */
+
+    function colorChoice()
+    {  
+      var option = document.querySelector('input[name = "choice"]:checked').value;
+      if(option == 'V1')
+      {
+        $("#lgdState").prop("disabled", false);
+        $("#lgdDistrict").prop("disabled", false);
+        $("#lgdTaluka").prop("disabled", false);
+        $("#lgdVillage").prop("disabled", false);
+        $("#formbtnSearch").prop("disabled", false);
+        $("#formresetSearch").prop("disabled", false);  
+    }
+    else
+    {
+        $("#lgdState").prop("disabled", true);
+        $("#lgdDistrict").prop("disabled", true);
+        $("#lgdTaluka").prop("disabled", true);
+        $("#lgdVillage").prop("disabled", true);
+        $("#formbtnSearch").prop("disabled", false);
+        $("#formresetSearch").prop("disabled", false);
+
+        $('#lgdTaluka').html('<option value="">All Taluka</option>');
+        $('#lgdVillage').html('<option value="">All Village</option>');
+    }
+}
+
+
+$(document).ready(function(){
+       // Country dependent ajax
+       $("#lgdDistrict").on("change",function(){
+           var lgdDistrict = $(this).val();
+
+           $('#lgdTaluka').html('<option value="">All Taluka</option>');
+           $('#lgdVillage').html('<option value="">All Village</option>');
+
+           if (lgdDistrict) {
+            $.ajax({
+                url :"lgdajaxpro.php",
+                type:"POST",
+                cache:false,
+                data:{lgddistrict:lgdDistrict},
+                success:function(data){
+                   $('select[name="lgdTaluka"]').empty();
+                   $('#lgdTaluka').html(data);
+               }
+           });
+        }else{
+            $('#lgdTaluka').html('<option value="">All Taluka</option>');
+        }
+    });
+   });
+       //my taluka load village load
+       $(document).ready(function(){
+       // Country dependent ajax
+       $("#txtDistrictCodep").on("change",function(){
+           var lgdDistrict = $(this).val();
+
+           $('#txtTalukaCodep').html('<option value="">All Taluka</option>');
+           $('#txtVillageCodep').html('<option value="">All Village</option>');
+
+           if (lgdDistrict) {
+            $.ajax({
+                url :"lgdajaxpro.php",
+                type:"POST",
+                cache:false,
+                data:{lgddistrict:lgdDistrict},
+                success:function(data){
+                   $('select[name="txtTalukaCodep"]').empty();
+                   $('#txtTalukaCodep').html(data);
+               }
+           });
+        }else{
+            $('#txtTalukaCodep').html('<option value="">All Taluka</option>');
+        }
+    });
+   });
+       // my village load
+       $(document).ready(function(){
+       // Country dependent ajax
+       $("#txtTalukaCodep").on("change",function(){
+
+           $('#txtVillageCodep').html('<option value="">All Village</option>');
+
+           var lgdDistrict = document.getElementById("txtDistrictCodep").value;
+           var lgdTaluka = $('#txtTalukaCodep').val();
+           var lgdlocalbody = $('#parenttext').val();
+
+           if (lgdlocalbody) {
+            $.ajax({
+                url :"lgdajaxpro.php",
+                type:"POST",
+                cache:false,
+                data:{lgdTaluka:lgdTaluka,lgdDistrict:lgdDistrict,lgdlocalbody:lgdlocalbody,"action":"vilLocal"},
+                success:function(data){
+                   $('select[name="txtVillageCodep"]').empty();
+                   $('#txtVillageCodep').html(data);
+               }
+           });
+        }else{
+            $('#txtVillageCodep').html('<option value="">All Village</option>');
+        }
+    });
+   });
+
+
+      //inserting data
+      $(document).ready(function () {   
+         var lgd_notification_file;
+         $('#lgd_notification_file').change(function(e) {
+            lgd_notification_file = e.target.files[0].name;
+
+        });
+
+
+        // onload disable fields code   
+        $(document).on('click', "#formbtnAdd", function (e) {
+            var txtStateCodeV = '';
+            var txtDistrictCodeV = '';
+            var txtTalukaCodeV = '';
+
+            if($('#txtLGDLBCode').val() == 'S')
+            {
+                txtStateCodeV = $('#txtStateCode1').val();  
+                txtDistrictCodeV = $('#txtDistrictCode1').val();
+                txtTalukaCodeV = $('#txtTalukaCode1').val();
+            }
+            else if ($('#txtLGDLBCode').val() == 'D')
+            {
+                txtStateCodeV = $('#txtStateCode').val();   
+                txtDistrictCodeV = $('#txtDistrictCode1').val();    
+                txtTalukaCodeV = $('#txtTalukaCode1').val();   
+
+            }
+            else if ($('#txtLGDLBCode').val() == 'T')
+            {
+                txtStateCodeV = $('#txtStateCode').val();   
+                txtDistrictCodeV = $('#txtDistrictCode').val(); 
+                txtTalukaCodeV = $('#txtTalukaCode1').val();    
+            }
+            else
+            {
+                if ($('#txtLGDLBCode').val() == 'V' || $('#txtLGDLBCode').val() == 'B' || $('#txtLGDLBCode').val() == 'M' || $('#txtLGDLBCode').val() == 'C' || $('#txtLGDLBCode').val() == 'N')
+                {
+                    txtStateCodeV = $('#txtStateCode').val();   
+                    txtDistrictCodeV = $('#txtDistrictCode').val(); 
+                    txtTalukaCodeV = $('#txtTalukaCode').val();
+                }
+            }
+
+            $('#frmLGD').validate();
+        if ($('#frmLGD').valid()) // check if form is valid
+        {
+
+         e.preventDefault();
+         var formData = new FormData();
+         formData.append('txtStateCode', txtStateCodeV);
+         formData.append('txtDistrictCode', txtDistrictCodeV);
+         formData.append('txtTalukaCode', txtTalukaCodeV);
+         formData.append('txtVillagecode', $('#txtVillagecode').val());
+         formData.append('txtLGDEngName', $('#txtLGDEngName').val());
+         formData.append('txtLGDMarName', $('#txtLGDMarName').val());
+         formData.append('txtLGDCode',$('#txtLGDCode').val());
+         formData.append('txtLGDLBCode',$('#txtLGDLBCode').val());
+         formData.append('txtLGDnotificationnum', $('#txtLGDnotificationnum').val());  
+         formData.append('lgd_vadivibhajan_name', $('#lgd_vadivibhajan_name').val());  
+         formData.append('tctNotificationLGDdate', $('#tctNotificationLGDdate').val());  
+         const rbs = document.querySelectorAll('input[name="localbodyradio"]');
+         let selectedValue;
+         for (const rb of rbs) {
+            if (rb.checked) {
+                selectedValue = rb.value;
+                break;
+            }
+        }
+
+        formData.append('localbodyradio',selectedValue );  
+        const rba = document.querySelectorAll('input[name="vadivibhajan_radio"]');
+        let selectedValue2;
+        for (const rb of rba) {
+            if (rb.checked) {
+                selectedValue2 = rb.value;
+                break;
+            }
+        }
+
+        formData.append('vadivibhajan_radio',selectedValue2);
+            //txtLGDnotifyauth
+            formData.append('txtLGDnotifyauth', $('#txtLGDnotifyauth').val()); 
+            formData.append('lgd_notification_file', lgd_notification_file); 
+            formData.append('postAction', 'insertData');    
+            
+            // do some stuff
+            let data = {
+              txtStateCode: txtStateCodeV,
+              txtDistrictCode: $('#txtDistrictCode').val(),
+              txtTalukaCode: $('#txtTalukaCode').val(),
+              txtVillagecode: $('#txtVillagecode').val(),
+              txtLGDEngName: $('#txtLGDEngName').val(),
+              txtLGDMarName: $('#txtLGDMarName').val(),
+              txtLGDCode: $('#txtLGDCode').val(),
+              txtLGDLBCode: $('#txtLGDLBCode').val(),
+              txtLGDnotificationnum : $('#txtLGDnotificationnum').val(),
+              lgd_vadivibhajan_name : $('#lgd_vadivibhajan_name').val(),
+              lgd_notification_file : $('#lgd_notification_file').val(),
+              postAction: 'insertData'
+             
+          }
+          $.ajax({
+              url: 'lgdrecord_search.php',
+              method: "POST",
+              processData: false,
+              contentType: false,
+              data: formData,
+              enctype: 'multipart/form-data',
+              success: function (res) {
+                //alert(res);
+                var dataResult = JSON.parse(res);
+                if(dataResult.statusCode==200){
+                  // $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#9fe797; color:#fff;">Data added successfully !</div>');
+                  swal("Record Saved !","Forworded to Admin For Approval","success");
+                  $("select#txtLGDLBCode")[0].selectedIndex = 0;
+                  calldisable();
+                  autoRefreshNewRecord();
+                  autoRefreshRecordStat();
+              }
+              else if(dataResult.statusCode==201){
+                  $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">State code already exist. Duplicate Key Error !</div>');
+              }
+              else if(dataResult.statusCode==202){
+                  $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">District code already exist. Duplicate Key Error !</div>');
+              }
+              else if(dataResult.statusCode==203){
+                  $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Taluka code already exist. Duplicate Key Error !</div>');
+              }
+              else if(dataResult.statusCode==204){
+                  $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Village code already exist. Duplicate Key Error !</div>');
+              }
+              else if(dataResult.statusCode==205){
+                  $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Error While Insert !!</div>');
+              }
+              else if(dataResult.statusCode==206){
+                  $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Error While Update !!</div>');
+              }
+              else if (dataResult.error)
+              {
+                  $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">'+ dataResult.error +'</div>');             
+              }
+          },
+          error: function (jqXHR, exception) {
+              var msg = '';
+              if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">'+msg+'</div>');
+        }
+    })
+          setInterval(function(){
+            $('#swal_message').html('');
+        }, 5000);
+      }
+      else 
+      {
+            //swal('INVForm');
+            // just show validation errors, dont post
+        }
+    });
+});
+
+    function toTitleCase(str) {
+        $('#txtLGDEngName').css('textTransform', 'capitalize');  
+    }
+
+    function calldisable()
+
+    {
+    
+      $('#rejection_group').hide();  
+        $('#lgd_notification_file').val('');
+        $("#hst1").show();
+        $('#hst2').hide();
+
+        $("#hdi1").show();
+        $('#hdi2').hide();
+
+        $("#hta1").show();
+        $('#hta2').hide();
+        $("#vadivibhajan_radio1").prop("checked", true);
+        
+        $("#localbodyradio1").prop("checked", true);
+        $("select#txtLGDLBCode")[0].selectedIndex = 0;
+        $("select#parenttext")[0].selectedIndex = 0;
+        $("select#txtDistrictCodep")[0].selectedIndex = 0;
+        $("select#txtTalukaCodep")[0].selectedIndex = 0;
+        $("select#txtVillageCodep")[0].selectedIndex = 0;
+        $("#parenttext").prop("disabled", true);
+        $("#lgd_notification_file").prop("disabled", true);
+        $("#tctNotificationLGDdate").prop("disabled", true);
+        $("#txtLGDnotificationnum").prop("disabled", true);
+        $("#txtLGDnotifyauth").prop("disabled", true);
+        $('#lbl_Vadivibhajan').prop("disabled", true);
+        $('input:radio[name="vadivibhajan_radio"]').prop("disabled", true);
+        $('#lbl_vadivibhajan_radio_yes').prop("disabled", true);
+        $('#lbl_vadivibhajan_radio_no').prop("disabled", true);
+        $('#lbl_Plocalbody').prop("disabled", true);
+        $('#parenttext').prop("disabled", true);
+        $('#txtDistrictCodep').prop("disabled", true);
+        $('#txtTalukaCodep').prop("disabled", true);
+        $('#txtVillageCodep').prop("disabled", true);
+        $('#pADDbtn').prop("disabled", true);
+        $('#lgd_vadivibhajan_name').prop("disabled", true);
+        $('#lgd_vadivibhajan_name').val('');
+        $('#lgd_notification_file_label').text('');
+
+        $('#txtLGDnotificationnum').prop('required',false);
+        $("#tctNotificationLGDdate").prop("required", false);
+        $("#txtLGDnotifyauth").prop("required", false);
+
+        $("#txtLGDLBCode").prop("disabled", false);
+
+        $("select#txtDistrictCode")[0].selectedIndex = 0;
+
+        if($("#txtStateCode1").val()!='')
+        {   
+            $("#txtStateCode1").val('');
+            $("#txtStateCode1").prop("disabled", true);
+        }
+        if($("#txtDistrictCode1").val()!='')
+        {
+            $("#txtDistrictCode1").val('');     
+            $("#txtDistrictCode1").prop("disabled", true);  
+        }
+        if($("#txtTalukaCode1").val()!='')
+        {
+            $("#txtTalukaCode1").val('');
+            $("#txtTalukaCode1").prop("disabled", true);
+        }
+
+        if($("#txtStateCode").val()!='')
+        {
+            $("select#txtStateCode")[0].selectedIndex = 0;
+            //$('select[name="txtStateCode"]').empty();
+            $("#txtStateCode").prop("disabled", true);
+        }
+        else 
+            $("#txtStateCode").prop("disabled", true);
+
+        if($("#txtDistrictCode").val()!='')
+        {
+            $("select#txtDistrictCode")[0].selectedIndex = 0;
+            //$('select[name="txtDistrictCode"]').empty();
+            $("#txtDistrictCode").prop("disabled", true);
+        }
+        else 
+            $("#txtDistrictCode").prop("disabled", true);
+
+        if($("#txtTalukaCode").val()!='')
+        {
+            $("select#txtTalukaCode")[0].selectedIndex = 0;
+            //$('select[name="txtTalukaCode"]').empty();
+            $("#txtTalukaCode").prop("disabled", true);
+        }
+        else 
+            $("#txtTalukaCode").prop("disabled", true); 
+        
+        $("#txtVillagecode").prop("disabled", true);
+        $('#txtVillagecode').val('');
+
+        $("#txtLGDMarName").prop("disabled", true);
+        $('#txtLGDMarName').val('');
+
+        $("#txtLGDEngName").prop("disabled", true);
+        $('#txtLGDEngName').val('');
+
+        $("#txtLGDCode").prop("disabled", true);
+        $('#txtLGDCode').val('');
+
+        $("#formbtnAdd").prop("disabled", true);
+        $("#formresetAdd").prop("disabled", true);
+         //$("#tctNotificationLGDdate").clear();
+         $("#tctNotificationLGDdate").val("YYYY-MM-DD");
+         $("#txtLGDnotificationnum").val('');
+         $("#txtLGDnotifyauth").val('');
+         $("#txtLGDnotificationnum").val('');
+         //$("#lgd_notification_file").val('');
+        // $("#lgd_vadivibhajan_name").val('');
+
+
+
+    }
+
+    $(document).ready(function(){
+       // Country dependent ajax
+       $("#lgdTaluka").on("change",function(){
+
+           $('#lgdVillage').html('<option value="">All Village</option>');
+
+           var lgdDistrict = document.getElementById("lgdDistrict").value;
+           var lgdTaluka = $(this).val();
+           var lgdlocalbody = $('#lgdlocalbody').val();
+
+
+           if (lgdTaluka) {
+            $.ajax({
+                url :"lgdajaxpro.php",
+                type:"POST",
+                cache:false,
+                data:{lgdTaluka:lgdTaluka,lgdDistrict:lgdDistrict,lgdlocalbody:lgdlocalbody,"action":"vil"},
+                success:function(data){
+                   $('select[name="lgdVillage"]').empty();
+                   $('#lgdVillage').html(data);
+               }
+           });
+        }else{
+            $('#lgdVillage').html('<option value="">All Village</option>');
+        }
+    });
+   });
+
+    $(document).ready(function(){
+       // Country dependent ajax
+       $("#lgdlocalbody").on("change",function(){
+
+           $('#lgdVillage').html('<option value="">All Village</option>');
+
+           var lgdDistrict = document.getElementById("lgdDistrict").value;
+           var lgdTaluka = $('#lgdTaluka').val();
+           var lgdlocalbody = $('#lgdlocalbody').val();
+
+           if (lgdlocalbody) {
+            $.ajax({
+                url :"lgdajaxpro.php",
+                type:"POST",
+                cache:false,
+                data:{lgdTaluka:lgdTaluka,lgdDistrict:lgdDistrict,lgdlocalbody:lgdlocalbody,"action":"vilLocal"},
+                success:function(data){
+                   $('select[name="lgdVillage"]').empty();
+                   $('#lgdVillage').html(data);
+               }
+           });
+        }else{
+            $('#lgdVillage').html('<option value="">All Village</option>');
+        }
+    });
+   });
+
+    // concat LGD Code values
+
+    $(document).ready(function() {
+      $('.in').on('input',function() {
+        var allvals = $('.in').map(function() { 
+            return this.value; 
+        }).get().join('');
+        $('.out').val( allvals );
+    });
+  });
+
+    function printTableFormatA()
+    {
+        var info = $('#myTable').DataTable().page.info();
+        //swal(info.page+1);
+        var lengthMenuSetting = info.length;
+        //swal(lengthMenuSetting);
+        let lgdlocalbody = $('#lgdlocalbody').val()
+        var pageNo  = (info.page+1);
+        var entryLength  = lengthMenuSetting;
+
+        if(lgdlocalbody=='D'){
+            var postAction = 'Districtprint';
+        }
+        if(lgdlocalbody=='T'){
+            var postAction = 'Talukaprint';
+        }
+         if(lgdlocalbody!='D' &&  lgdlocalbody!='T'){
+            var postAction = 'Villageprint';
+        }
+        
+        let lgdState = $('#lgdState').val()
+        let lgdDistrict = $('#lgdDistrict').val()
+        let lgdTaluka = $('#lgdTaluka').val()
+        let lgdVillage = $('#lgdVillage').val()
+        let heading = $('#captiontable').text();
+       // let lgdlocalbody = $('#lgdlocalbody').val()
+        
+        var RepLink = "statPrintPDFall.php?pageNo=" + pageNo + "&entryLength=" + entryLength + "&postAction=" + postAction + "&lgdState=" + lgdState + "&lgdDistrict=" + lgdDistrict + "&lgdTaluka=" + lgdTaluka + "&lgdVillage=" + lgdVillage + "&lgdlocalbody=" + lgdlocalbody + "&heading=" + heading;
+        window.open(RepLink);
+    }
+
+    //btnbunny code
+    $(document).on('click', "#btnbunny", function (e){
+        dist_list();
+        autoRefreshRecordStat();
+        e.preventDefault();  e.stopImmediatePropagation();
+        let lgdState = $('#lgdState').val()
+        let lgdDistrict = $('#lgdDistrict').val()
+        let lgdTaluka = $('#lgdTaluka').val()
+        let lgdVillage = $('#lgdVillage').val()
+        let lgdlocalbody = $('#lgdlocalbody').val()
+            //let Roption = document.querySelector('input[name = "choice"]:checked').value;
+            let Roption = 'V1';
+            let postAction = 'Reset';
+            $('#load-popup').show();
+            $.ajax({
+                url: 'lgdrecord_search.php',
+                data: { lgdState: lgdState , lgdDistrict: lgdDistrict, lgdTaluka: lgdTaluka, lgdVillage: lgdVillage, lgdlocalbody: lgdlocalbody, Roption: Roption, postAction: postAction },
+                method: "POST",
+                dataType: 'JSON',
+                success: function(response){
+
+                        $("#myTable tbody").empty(); // this will remove all <tr>.
+                        var table = $('#myTable').DataTable();
+                        table.clear();
+                        var len = response.length
+                        document.getElementById("tCount").style.fontSize = '13px';
+                        document.getElementById("tCount").style.color = '#54A7DF';
+
+                        //document.getElementById("tmsg").innerHTML = "<p class='card-text'><span style='color:red;'>My Requests</span></p>";
+                        document.getElementById("tCount").innerHTML = "<p> <i class='fa fa-tag'></i> (Total Records: <font color='white' style='background-color:#985DFE;'>"+  response.length +" </font> )<br/></P>"; 
+                        
+
+                        for(var i=0; i<len; i++)
+                        {
+                            var tlgdstate = response[i].tlgdstate;
+                            var tlgddistrict = response[i].tlgddistrict;        
+                            var tlgdTaluka = response[i].tlgdTaluka;        
+                            var tlgdVillage = response[i].tlgdVillage;
+                            var tlgdnameenglish = response[i].tlgdnameenglish;
+                            var tlgdnamelocal = response[i].tlgdnamelocal;
+                            var lgdlbtype = response[i].lgdlbtype;
+                            var lgdcode = response[i].lgdcode;   
+                             var lgdstatus = response[i].lgdstatus; 
+                             var lgdstatusvalue='';
+                            var distname = response[i].distname;
+                            var talukaname = response[i].talukaname;
+
+                         if (lgdstatus=='N') {
+                            lgdstatusvalue="Pending"
+                         }
+                        if (lgdstatus=='R') {
+                            lgdstatusvalue="Rejected"
+                        }    
+
+                        var tr_str = "<tr>" +
+                        "<td align='center'>" + (i+1) + " ("+lgdstatusvalue+")</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"'  align='center'>" + tlgdstate + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"' align='center'>"+distname + "("+ tlgddistrict + ")</td>" +
+                        "<td align='center' data-editor-field='protocol'>"+talukaname+"("+ tlgdTaluka + ")</td>" +
+                        "<td align='center'>" + tlgdVillage + "</td>" +
+                        "<td align='center'>" + lgdcode + "</td>" +
+                        "<td align='center'>" + tlgdnameenglish + "</td>" +
+                        "<td align='center'>" + tlgdnamelocal + "</td>" +
+                        "<td align='center'>" + lgdlbtype + "</td>" +
+                                            // "<td align='center'>" + lgdstatusvalue + "</td>" +
+                                            "<td class='text-center'> <a href='javascript:void(0);' onclick='topFunction()' class='edit1' title='edit1' id='"+lgdcode+"' )> <i class=' far fa-edit' style='font-size:18px; color: #47b9fe;'></i> | </a>  <a href='javascript:void(0);' class='delete1' title='Delete' id='"+lgdcode+"' )> <i class=' fas fa-trash-alt' style='font-size:18px;color:red'></i></a></td></tr>";
+                                            table.row.add($(tr_str));
+                                        }
+                                        table.draw(false);
+                                    },error:function(errormsg){
+                                         //document.getElementById("tmsg").innerHTML = "<p class='card-text'><span style='color:red;'>No Records</span></p>";
+                                         swal("No Request found","","warning");
+                                        document.getElementById("tCount").innerHTML = '';
+                        $("#myTable tbody").empty(); // this will remove all <tr>.
+                        var table = $('#myTable').DataTable();
+                        table.clear();
+                        table.draw(false);
+                    },
+                    complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                     //swal(state+'2');
+                     $('#load-popup').hide();
+                 }
+             });
+
+});
+
+
+    
+
+    // edit in master 
+    $(document).on('click', '.edit1', function (e) {
+         // swal('edit'+flag);
+         //swal("Edit 1");
+         e.stopImmediatePropagation();
+         $("#frmLGD").validate().resetForm();
+         let id_value = $(this).attr('id');
+         var ListD1 = '';
+         var ListT1 = '';
+         var ListT2 = '';
+         var ListD2 = '';
+         $.ajax({
+          url: 'lgdrecord_search.php',
+          method: "POST",
+          data: { id: id_value , postAction: 'editData1'},
+          success: function (res) {
+            //parsing data from json to object
+            let data = $.parseJSON(res);
+           // swal('demo');
+            //swal(data.lgd_notification_no);
+            $.ajax({
+                type: "POST",
+                url: "lgdlist_Ajax.php",
+                data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListS1=ListS1",
+                success: function(data){
+                  $('select[name="txtStateCode"]').empty();
+                  $('#txtStateCode').html(data);
+              }
+          });
+
+
+            if(data.lgd_lbtype == 'S')
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD2=ListD2",
+                    success: function(data){
+                        $("#hdi1").hide();
+                        $('#hdi2').show();
+
+                        $('#txtStateCode1').val(data);      
+                        $("#txtStateCode1").prop("disabled", true);  // prev false
+                    }
+                });
+                
+                $('#txtDistrictCode1').val('000');
+                $("#txtDistrictCode1").prop("disabled", true);
+
+                $('#txtTalukaCode1').val('0000');
+                $("#txtTalukaCode1").prop("disabled", true);
+                
+                $('#txtVillagecode').val('000000');
+                $("#txtVillagecode").prop("disabled", true);                        
+            }
+
+            if(data.lgd_lbtype == 'D')
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD2=ListD2",
+                    success: function(data){
+                        $("#hdi1").hide();
+                        $('#hdi2').show();
+
+                        $("#hta1").hide();
+                        $('#hta2').show();
+
+                        $('#txtDistrictCode1').val(data);
+                        $("#txtDistrictCode1").prop("disabled", true);
+                        $('#txtTalukaCode1').val('0000');
+                        $("#txtTalukaCode1").prop("disabled", true);
+
+                        $('#txtVillagecode').val('000000');
+                        $("#txtVillagecode").prop("disabled", true);
+                        $("#txtLGDnotificationnum").prop("disabled", false);
+                        $("#txtLGDnotifyauth").prop("disabled", false);
+                        $("#tctNotificationLGDdate").prop("disabled", false);
+                        $("#lgd_notification_file").prop("disabled", false);
+                    }
+                });                         
+            }
+
+            if(data.lgd_lbtype == 'T')
+            {
+                $("#hdi1").show();
+                $('#hdi2').hide();
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD1=ListD1",
+                    success: function(data){
+                      $('select[name="txtDistrictCode"]').empty();
+                      $('#txtDistrictCode').html(data);
+                  }
+              });
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListT2=ListT2",
+                    success: function(data){
+                        $("#hta1").hide();
+                        $('#hta2').show();      
+                        $('#txtTalukaCode1').val(data);
+                        $("#txtTalukaCode1").prop("disabled", true);   // prev false
+                        $('#txtVillagecode').val('000000');
+                        $("#txtVillagecode").prop("disabled", true);
+                        $("#txtLGDnotificationnum").prop("disabled", false);
+                        $("#txtLGDnotifyauth").prop("disabled", false);
+                        $("#tctNotificationLGDdate").prop("disabled", false);
+                        $("#lgd_notification_file").prop("disabled", false);
+                        $("#txtDistrictCode").prop("disabled", false);
+
+                    }
+                });
+            }
+
+            if(data.lgd_lbtype == 'V' || data.lgd_lbtype == 'C' || data.lgd_lbtype == 'M' || data.lgd_lbtype == 'B' || data.lgd_lbtype == 'N')
+            {
+                $("#hdi1").show();
+                $('#hdi2').hide();
+
+                $("#hta1").show();
+                $('#hta2').hide();
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD1=ListD1",
+                    success: function(data){
+                      $('select[name="txtDistrictCode"]').empty();
+                      $('#txtDistrictCode').html(data);
+
+                      $("#txtVillagecode").prop("disabled", true);
+                      $("#txtLGDnotificationnum").prop("disabled", false);
+                      $("#txtLGDnotifyauth").prop("disabled", false);
+                      $("#tctNotificationLGDdate").prop("disabled", false);
+                      $("#lgd_notification_file").prop("disabled", false);
+                      $("#txtDistrictCode").prop("disabled", false);
+                      $("#txtTalukaCode").prop("disabled", false);
+                  }
+              });
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListT1=ListT1",
+                    success: function(data){
+                      $('select[name="txtTalukaCode"]').empty();
+                      $('#txtTalukaCode').html(data);
+                  }
+              });
+            }
+
+            //console.log(data.theme_logo);
+            $('#txtStateCode').val(data.lgd_state_code);
+           // $('#txtDistrictCode').val(data.lgd_dist_code);
+           // $('#txtTalukaCode').val(data.lgd_taluka_code);
+           $('#txtVillagecode').val(data.lgd_village_code);
+           $('#txtLGDEngName').val(data.lgd_english_name);
+           $('#txtLGDMarName').val(data.lgd_local_name);
+           $('#txtLGDLBCode').val(data.lgd_lbtype);
+              $('#parenttext').val(data.lgd_lbtype);
+           $('#txtLGDCode').val(data.lgd_code);
+           $('#dataid').val(data.lgd_code);
+           $('#txtLGDnotificationnum').val(data.lgd_notification_no);
+           $('#lgd_vadivibhajan_name').val(data.lgd_vadivibhajan_name);
+           $('#txtLGDnotifyauth').val(data.lgd_notification_auth);
+           $('#tctNotificationLGDdate').val(data.lgd_notification_date);
+           $('#txt_Rejection').text(data.lgd_rejection);
+ //$('#lgd_notification_file_label').text(data.lgd_notification_file);
+        
+   //undefined file
+        if(data.lgd_notification_file=='undefined' || data.lgd_notification_file=='' )
+            { $('#lgd_notification_file_label').text('File does not exixts');
+       
+       
+
+        //$('#lgd_notification_file').val('');
+
+    }
+           else{
+          $('#lgd_notification_file_label').text(data.lgd_notification_file);
+
+       }
+
+
+           if(data.lgd_is_new=='Y'){
+                //swal(data.lgd_is_new);
+                $("#localbodyradio").prop("checked", true);
+                $('#lbl_Vadivibhajan').prop('disabled',false);
+                $('input:radio[name="vadivibhajan_radio"]').prop('disabled',false);
+                $('#lbl_vadivibhajan_radio_yes').prop('disabled',false);
+                $('#lbl_vadivibhajan_radio_no').prop('disabled',false);
+                $('#lgd_vadivibhajan_name').prop('disabled',false);
+
+            }
+            else{
+                $("#localbodyradio1").prop("checked", true);
+
+
+                $('#lbl_Vadivibhajan').prop('disabled',true);
+                $('input:radio[name="vadivibhajan_radio"]').prop('disabled',true);
+                $('#lbl_vadivibhajan_radio_yes').prop('disabled',true);
+                $('#lbl_vadivibhajan_radio_no').prop('disabled',true);
+                $('#lbl_Plocalbody').prop('disabled',true);
+                $('#parenttext').prop('disabled',true);
+                $('#txtDistrictCodep').prop('disabled',true);
+                $('#txtTalukaCodep').prop('disabled',true);
+                $('#txtVillageCodep').prop('disabled',true);
+                $('#pADDbtn').prop('disabled',true);
+                $('#lgd_vadivibhajan_name').prop('disabled',true);
+                $("#vadivibhajan_radio1").prop('disabled',true);
+            }
+            if(data.lgd_is_vadivibhajan=='Y'){
+                //swal(data.lgd_is_new);
+                $("#vadivibhajan_radio").prop("checked", true);
+
+
+                $('#lbl_Plocalbody').prop('disabled',false);
+                $('#lbl_Vadivibhajan').prop('disabled',false);
+                $('#parenttext').prop('disabled',false);
+                $('#pADDbtn').prop('disabled',false);
+                $('#lgd_vadivibhajan_name').prop('disabled',false);
+            }
+            else{
+                $("#vadivibhajan_radio1").prop("checked", true);
+
+
+
+
+
+                $('#lbl_Plocalbody').prop('disabled',true);
+
+                $('#parenttext').prop('disabled',true);
+                $('#txtDistrictCodep').prop('disabled',true);
+                $('#txtTalukaCodep').prop('disabled',true);
+                $('#txtVillageCodep').prop('disabled',true);
+                $('#pADDbtn').prop('disabled',true);
+                $('#lgd_vadivibhajan_name').prop('disabled',true);
+
+            }
+             $('#rejection_group').show();
+            
+            $('#formbtnAdd').text("Update Data").attr('id', "updatebtn").attr('type', '');
+            $('#formresetAdd').text("Cancel").attr('id', "formresetAdd").attr('type', '');
+
+            $("#txtStateCode").prop("disabled", true);
+            /*$("#txtDistrictCode").prop("disabled", false);
+            $("#txtTalukaCode").prop("disabled",false); */
+            $("#txtVillagecode").prop("disabled", true);     // prev false
+            $("#txtLGDEngName").prop("disabled", false);
+            $("#txtLGDMarName").prop("disabled", false);
+            $("#txtLGDLBCode").prop("disabled", true);
+            $("#updatebtn").prop("disabled", false);
+            $("#formresetAdd").prop("disabled", false);
+        }
+    })
+});
+
+
+      //edit get data
+      $(document).on('click', '.edit', function (e) {
+        //  swal('edit'+flag);
+        e.stopImmediatePropagation();
+        $("#frmLGD").validate().resetForm();
+        let id_value = $(this).attr('id');
+        var ListD1 = '';
+        var ListT1 = '';
+        var ListT2 = '';
+        var ListD2 = '';
+        
+        $.ajax({
+          url: 'lgdrecord_search.php',
+          method: "POST",
+          data: { id: id_value , postAction: 'editData'},
+          success: function (res) {
+            //parsing data from json to object
+            let data = $.parseJSON(res);
+
+            //swal(data.lgd_notification_no);
+            $.ajax({
+                type: "POST",
+                url: "lgdlist_Ajax.php",
+                data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListS1=ListS1",
+                success: function(data){
+                  $('select[name="txtStateCode"]').empty();
+                  $('#txtStateCode').html(data);
+              }
+          });
+
+
+            if(data.lgd_lbtype == 'S')
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD2=ListD2",
+                    success: function(data){
+                        $("#hdi1").hide();
+                        $('#hdi2').show();
+
+                        $('#txtStateCode1').val(data);      
+                        $("#txtStateCode1").prop("disabled", true);  // prev false
+                    }
+                });
+                
+                $('#txtDistrictCode1').val('000');
+                $("#txtDistrictCode1").prop("disabled", true);
+
+                $('#txtTalukaCode1').val('0000');
+                $("#txtTalukaCode1").prop("disabled", true);
+                
+                $('#txtVillagecode').val('000000');
+                $("#txtVillagecode").prop("disabled", true);                        
+            }
+
+            if(data.lgd_lbtype == 'D')
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD2=ListD2",
+                    success: function(data){
+                        $("#hdi1").hide();
+                        $('#hdi2').show();
+
+                        $("#hta1").hide();
+                        $('#hta2').show();
+
+                        $('#txtDistrictCode1').val(data);
+                        $("#txtDistrictCode1").prop("disabled", true);
+                        $('#txtTalukaCode1').val('0000');
+                        $("#txtTalukaCode1").prop("disabled", true);
+
+                        $('#txtVillagecode').val('000000');
+                        $("#txtVillagecode").prop("disabled", true);
+                    }
+                });                         
+            }
+
+            if(data.lgd_lbtype == 'T')
+            {
+                $("#hdi1").show();
+                $('#hdi2').hide();
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD1=ListD1",
+                    success: function(data){
+                      $('select[name="txtDistrictCode"]').empty();
+                      $('#txtDistrictCode').html(data);
+                  }
+              });
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListT2=ListT2",
+                    success: function(data){
+                        $("#hta1").hide();
+                        $('#hta2').show();      
+                        $('#txtTalukaCode1').val(data);
+                        $("#txtTalukaCode1").prop("disabled", true);   // prev false
+                        $('#txtVillagecode').val('000000');
+                        $("#txtVillagecode").prop("disabled", true);
+                    }
+                });
+            }
+
+            if(data.lgd_lbtype == 'V' || data.lgd_lbtype == 'C' || data.lgd_lbtype == 'M' || data.lgd_lbtype == 'B' || data.lgd_lbtype == 'N')
+            {
+                $("#hdi1").show();
+                $('#hdi2').hide();
+
+                $("#hta1").show();
+                $('#hta2').hide();
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListD1=ListD1",
+                    success: function(data){
+                      $('select[name="txtDistrictCode"]').empty();
+                      $('#txtDistrictCode').html(data);
+                  }
+              });
+
+                $.ajax({
+                    type: "POST",
+                    url: "lgdlist_Ajax.php",
+                    data:'txtStateCode='+data.lgd_state_code+"&txtDistrictCode="+data.lgd_dist_code+"&txtTalukaCode="+data.lgd_taluka_code+"&txtLBCode="+data.lgd_lbtype+"&ListT1=ListT1",
+                    success: function(data){
+                      $('select[name="txtTalukaCode"]').empty();
+                      $('#txtTalukaCode').html(data);
+                  }
+              });
+            }
+
+            //console.log(data.theme_logo);
+            $('#txtStateCode').val(data.lgd_state_code);
+           // $('#txtDistrictCode').val(data.lgd_dist_code);
+           // $('#txtTalukaCode').val(data.lgd_taluka_code);
+           $('#txtVillagecode').val(data.lgd_village_code);
+           $('#txtLGDEngName').val(data.lgd_english_name);
+           $('#txtLGDMarName').val(data.lgd_local_name);
+           $('#txtLGDLBCode').val(data.lgd_lbtype);
+           $('#txtLGDCode').val(data.lgd_code);
+           $('#dataid').val(data.lgd_code);
+           $('#txtLGDnotificationnum').val(data.lgd_notification_no);
+           $('#tctNotificationLGDdate').val(data.lgd_notification_date);
+           $('#txtLGDnotifyauth').val(data.lgd_notification_auth);
+           $('#lgd_vadivibhajan_name').val(data.lgd_vadivibhajan_name);
+           $('#lgd_notification_file_label').text(data.lgd_notification_file);
+
+            // if(data.lgd_is_new=='Y'){
+            //     swal(data.lgd_is_new);
+            //     $("#localbodyradio").prop("checked", true);
+            // }
+            // else{
+            //     $("#localbodyradio1").prop("checked", true);
+            // }
+            // if(data.lgd_is_vadivibhajan=='Y'){
+            //     //swal(data.lgd_is_new);
+            //     $("#vadivibhajan_radio").prop("checked", true);
+            //     }
+            //     else{
+            //     $("#vadivibhajan_radio1").prop("checked", true);
+            //     }
+
+            if(data.lgd_is_new=='Y'){
+                //swal(data.lgd_is_new);
+                $("#localbodyradio").prop("checked", true);
+                $('#lbl_Vadivibhajan').prop('disabled',false);
+                $('input:radio[name="vadivibhajan_radio"]').prop('disabled',false);
+                $('#lbl_vadivibhajan_radio_yes').prop('disabled',false);
+                $('#lbl_vadivibhajan_radio_no').prop('disabled',false);
+                $('#lgd_vadivibhajan_name').prop('disabled',false);
+
+            }
+            else{
+                $("#localbodyradio1").prop("checked", true);
+
+
+                $('#lbl_Vadivibhajan').prop('disabled',true);
+                $('input:radio[name="vadivibhajan_radio"]').prop('disabled',true);
+                $('#lbl_vadivibhajan_radio_yes').prop('disabled',true);
+                $('#lbl_vadivibhajan_radio_no').prop('disabled',true);
+                $('#lbl_Plocalbody').prop('disabled',true);
+                $('#parenttext').prop('disabled',true);
+                $('#txtDistrictCodep').prop('disabled',true);
+                $('#txtTalukaCodep').prop('disabled',true);
+                $('#txtVillageCodep').prop('disabled',true);
+                $('#pADDbtn').prop('disabled',true);
+                $('#lgd_vadivibhajan_name').prop('disabled',true);
+                $("#vadivibhajan_radio1").prop('disabled',true);
+            }
+            if(data.lgd_is_vadivibhajan=='Y'){
+                //swal(data.lgd_is_new);
+                $("#vadivibhajan_radio").prop("checked", true);
+
+
+                $('#lbl_Plocalbody').prop('disabled',false);
+                $('#lbl_Vadivibhajan').prop('disabled',false);
+                $('#parenttext').prop('disabled',false);
+                $('#pADDbtn').prop('disabled',false);
+                $('#lgd_vadivibhajan_name').prop('disabled',false);
+            }
+            else{
+                $("#vadivibhajan_radio1").prop("checked", true);
+
+                $('#lbl_Plocalbody').prop('disabled',true);
+                $('#parenttext').prop('disabled',true);
+                $('#txtDistrictCodep').prop('disabled',true);
+                $('#txtTalukaCodep').prop('disabled',true);
+                $('#txtVillageCodep').prop('disabled',true);
+                $('#pADDbtn').prop('disabled',true);
+                $('#lgd_vadivibhajan_name').prop('disabled',true);
+
+            }
+            
+            $('#formbtnAdd').text("Update Data").attr('id', "updatebtn").attr('type', '');
+            $('#formresetAdd').text("Cancel").attr('id', "formresetAdd").attr('type', '');
+
+            $('#txtLGDnotificationnum').prop("disabled",false);
+            $('#tctNotificationLGDdate').prop("disabled",false);
+            $('#txtLGDnotifyauth').prop("disabled",false);
+            $('#lgd_notification_file').prop("disabled",false);
+
+            $("#txtStateCode").prop("disabled", true);
+            /*$("#txtDistrictCode").prop("disabled", false);
+            $("#txtTalukaCode").prop("disabled",false); */
+            $("#txtVillagecode").prop("disabled", true);     // prev false
+            $("#txtLGDEngName").prop("disabled", false);
+            $("#txtLGDMarName").prop("disabled", false);
+            $("#txtLGDLBCode").prop("disabled", true);
+            $("#updatebtn").prop("disabled", false);
+            $("#formresetAdd").prop("disabled", false);
+        }
+    })
+});
+
+    var lgd_notification_file;
+    $(document).on('change', "#lgd_notification_file",function(e) {
+        lgd_notification_file = e.target.files[0].name;
+                    //$("h4").text(geekss + ' is the selected file.');
+                    swal(lgd_notification_file);
+                });
+
+
+    //update Data
+    $(document).on('click', "#updatebtn", function (e) {
+      //  swal('update');
+
+      
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      let id_value = $(this).attr('id');
+
+      var txtStateCodeV = '';
+      var txtDistrictCodeV = '';
+      var txtTalukaCodeV = '';
+
+      if($('#txtLGDLBCode').val() == 'S')
+      {
+        txtStateCodeV = $('#txtStateCode1').val();  
+        txtDistrictCodeV = $('#txtDistrictCode1').val();
+        txtTalukaCodeV = $('#txtTalukaCode1').val();
+    }
+    else if ($('#txtLGDLBCode').val() == 'D') 
+    {
+        txtStateCodeV = $('#txtStateCode').val();   
+        txtDistrictCodeV = $('#txtDistrictCode1').val();    
+        txtTalukaCodeV = $('#txtTalukaCode1').val();    
+    }
+    else if ($('#txtLGDLBCode').val() == 'T')
+    {
+        txtStateCodeV = $('#txtStateCode').val();   
+        txtDistrictCodeV = $('#txtDistrictCode').val(); 
+        txtTalukaCodeV = $('#txtTalukaCode1').val();    
+    }
+    else
+    {
+        if ($('#txtLGDLBCode').val() == 'V' || $('#txtLGDLBCode').val() == 'B' || $('#txtLGDLBCode').val() == 'M' || $('#txtLGDLBCode').val() == 'C' || $('#txtLGDLBCode').val() == 'N')
+        {
+            txtStateCodeV = $('#txtStateCode').val();   
+            txtDistrictCodeV = $('#txtDistrictCode').val(); 
+            txtTalukaCodeV = $('#txtTalukaCode').val();
+        }
+    }
+
+    $('#frmLGD').validate();
+          if ($('#frmLGD').valid()) {// check if form is valid
+
+             e.preventDefault();
+
+
+            // do some stuff
+            let data = {
+              uplgdcodeid: $('#dataid').val(),
+              txtStateCode: txtStateCodeV,
+              txtDistrictCode: txtDistrictCodeV,
+              txtTalukaCode: txtTalukaCodeV,
+              txtVillagecode: $('#txtVillagecode').val(),
+              txtLGDEngName: $('#txtLGDEngName').val(),
+              txtLGDMarName: $('#txtLGDMarName').val(),
+              txtLGDCode: $('#txtLGDCode').val(),
+              txtLGDLBCode: $('#txtLGDLBCode').val(),
+
+              txtLGDnotificationnum : $('#txtLGDnotificationnum').val(),
+              lgd_vadivibhajan_name : $('#lgd_vadivibhajan_name').val(),
+              lgd_notification_file : lgd_notification_file,//$('#lgd_notification_file').val(),
+              tctNotificationLGDdate : $('#tctNotificationLGDdate').val(),
+              localbodyradio : $('input:radio[name="localbodyradio"]:checked').val(),
+              vadivibhajan_radio : $('input:radio[name="vadivibhajan_radio"]:checked').val(),
+              txtLGDnotifyauth : $('#txtLGDnotifyauth').val(),
+
+             //formData.append('localbodyradio',selectedValue );  
+
+             //   formData.append('vadivibhajan_radio',selectedValue2);
+            //txtLGDnotifyauth
+            // formData.append('txtLGDnotifyauth', $('#txtLGDnotifyauth').val()); 
+
+
+            postAction: 'updateData'
+        }
+
+        $.ajax({
+          url: 'lgdrecord_search.php',
+          method: "POST",
+          data: data,
+          success: function (res) {
+            //swal(res);
+            var dataResult = JSON.parse(res);
+            if(dataResult.statusCode==200){
+              // $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#9fe797; color:#fff;">Data Updated successfully !</div>');
+              //swal("Data Updated successfully !","","warning");
+              swal("Record Saved !","Forworded to Admin For Approval","success");
+              $("select#txtLGDLBCode")[0].selectedIndex = 0;
+              $('#updatebtn').text("Submit").attr('id', "formbtnAdd").attr('type', 'submit');
+              $('#cancelbtn').text("Cancel").attr('id', "formresetAdd").attr('type', 'reset');
+              calldisable();
+              autoRefreshNewRecord();
+              autoRefreshRecordStat();
+          }
+          else if(dataResult.statusCode==201){
+              $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">State code already exist. Duplicate Key Error !</div>');
+          }
+          else if(dataResult.statusCode==202){
+              $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">District code already exist. Duplicate Key Error !</div>');
+          }
+          else if(dataResult.statusCode==203){
+              $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Taluka code already exist. Duplicate Key Error !</div>');
+          }
+          else if(dataResult.statusCode==204){
+              $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Village code already exist. Duplicate Key Error !</div>');
+          }
+          else if(dataResult.statusCode==205){
+              $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Error While Insert !!</div>');
+          }
+          else if(dataResult.statusCode==206){
+              $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">Error While Update !!</div>');
+          }
+          else if (dataResult.error)
+          {
+              $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">'+ dataResult.error +'</div>');             
+          }
+      },
+      error: function (jqXHR, exception) {
+          var msg = '';
+          if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+        $('#swal_message').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#fa535d; color:#fff;">'+msg+'</div>');
+    }
+})
+        setInterval(function(){
+            $('#swal_message').html('');
+        }, 5000);
+    }
+    else 
+    {
+            //swal('INVForm');
+            // just show validation errors, dont post
+        }
+    });
+
+
+        //delete data
+        $(document).on('click', '.delete', function (e) {
+          swal("You Don't have Permission To Delete Exicting Record","","warning");
+          // e.stopImmediatePropagation();
+          // let id_value = $(this).attr('id');
+          // //swal(id_value);
+          // if (!confirm("Do you really want to delete this record? If Pressed 'OK', it will delete all the LGD Code references from eferfar, ePCIS, eRecords, IGR-SRO, Census 2001 & Census 2011 Table.")){
+          //    return false;
+          // }
+          // else
+          // {
+          //   $.ajax({
+          //     url: 'lgdrecord_search.php',
+          //     method: "POST",
+          //     data: { DId: id_value,postAction: 'deleteData' },
+          //     success: function (res, status) {
+          //       if (status == 'success') {
+          //         //swal(res);
+          //         $('#swal_messageDel').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#9fe797; color:#fff;"> Data Deleted Sucessfully.</div>');
+          //         autoRefresh();
+          //         autoRefreshRecordStat();
+          //       }
+          //     }
+          //   })
+          //   setInterval(function(){
+          //   $('#swal_messageDel').html('');
+          //    }, 5000);
+          // }
+      });
+
+        //delete1 data
+        $(document).on('click', '.delete1', function (e) {
+          e.stopImmediatePropagation();
+          let id_value = $(this).attr('id');
+          //swal(id_value);
+          if (!confirm("Do you really want to delete this record? If Pressed 'OK', it will delete all the LGD Code references from eferfar, ePCIS, eRecords, IGR-SRO, Census 2001 & Census 2011 Table.")){
+             return false;
+         }
+         else
+         {
+            $.ajax({
+              url: 'lgdrecord_search.php',
+              method: "POST",
+              data: { DId: id_value,postAction: 'deleteData1' },
+              success: function (res, status) {
+                if (status == 'success') {
+                  //swal(res);
+                  // $('#swal_messageDel').html('<div class="swal" style="TOP:10PX; padding: 0.5rem 1.25rem; background-color:#9fe797; color:#fff;"> Data Deleted Sucessfully.</div>');
+                  swal("Data Deleted Sucessfully.","","warning");
+                  //autoRefresh();
+                  autoRefreshNewRecord();
+                  autoRefreshRecordStat();
+              }
+          }
+      })
+            setInterval(function(){
+                $('#swal_messageDel').html('');
+            }, 5000);
+        }
+    });
+
+
+    //cancel Data
+    $(document).on('click', "#formresetAdd", function (e) {
+      $('#updatebtn').text("Submit").attr('id', "formbtnAdd").attr('type', 'submit');
+          //calldisable();
+      });
+
+     // New Insert Data Read 
+     function autoRefreshNewRecord()
+     {
+        $("#myTable tbody").empty();
+        var table = $('#myTable').DataTable();
+        table.clear();
+        $(document).ready(function(e){
+
+            let lgdState = $('#lgdState').val()
+            let lgdDistrict = $('#lgdDistrict').val()
+            let lgdTaluka = $('#lgdTaluka').val()
+            let lgdVillage = $('#lgdVillage').val()
+            let Roption = 'New';
+            let postAction = 'AjaxSearchNewRecord';
+
+            $.ajax({
+                url: 'lgdrecord_search.php',
+                data: { lgdState: lgdState , lgdDistrict: lgdDistrict, lgdTaluka: lgdTaluka, lgdVillage: lgdVillage, Roption: Roption, postAction: postAction },
+                method: "POST",
+                dataType: 'JSON',
+                success: function(response){
+
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    var len = response.length
+                    document.getElementById("tCount").style.fontSize = '13px';
+                    document.getElementById("tCount").style.color = '#54A7DF';
+                    //document.getElementById("tCount").style.backgroundColor = "green";
+
+                    //document.getElementById("tCount").innerHTML = "<p> <i class='fa fa-tag'></i> (Total Records: <font color='white' style='background-color:#985DFE;'>"+  response.length +" </font> )  ||  "+"  No. of Districts : <font color='white' style='background-color:#985DFE;'>"+ response[0].Dcnt + "</font>  ||  No. of Talukas : <font color='white' style='background-color:#985DFE;'>"+ response[0].Tcnt + "</font>  ||  No. of Villages : <font color='white' style='background-color:#985DFE;'>"+ response[0].Vcnt + " </font>  ||  "+"  <i class='fa fa-print'></i> <a style='color: #54A7DF;text-decoration: underline;'  HREF='javascript:printTableFormatA()'>Show Report</a><br/></P>"; 
+
+                    //var len = response.length;
+                    for(var i=0; i<len; i++)
+                    {
+                        var tlgdstate = response[i].tlgdstate;
+                        var tlgddistrict = response[i].tlgddistrict;        
+                        var tlgdTaluka = response[i].tlgdTaluka;        
+                        var tlgdVillage = response[i].tlgdVillage;
+                        var tlgdnameenglish = response[i].tlgdnameenglish;
+                        var tlgdnamelocal = response[i].tlgdnamelocal;
+                        var lgdlbtype = response[i].lgdlbtype;
+                        var lgdcode = response[i].lgdcode;    
+                        var distname = response[i].distname;
+                        var talukaname= response[i].talukaname;
+                        var lgdstatus = response[i].lgdstatus; 
+                         var lgdstatusvalue='';  
+                        // if (lgdstatus=='N') {
+                        //     lgdstatusvalue="Pending"
+                        // }
+                        // if (lgdstatus=='R') {
+                        //     lgdstatusvalue="Rejected"
+                        // }
+
+
+                        var tr_str = "<tr>" +
+                        "<td align='center'>" + (i+1) + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"'  align='center'>" + tlgdstate + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"' align='center'>" +distname +"("+ tlgddistrict + ")</td>" +
+                        ")<td align='center' data-editor-field='protocol'>"+talukaname +"(" + tlgdTaluka + "</td>" +
+                        "<td align='center'>" + tlgdVillage + "</td>" +
+                        "<td align='center'>" + lgdcode + "</td>" +
+                        "<td align='center'>" + tlgdnameenglish + "</td>" +
+                        "<td align='center'>" + tlgdnamelocal + "</td>" +
+                        "<td align='center'>" + lgdlbtype + "</td>" +
+                                        // "<td align='center'>" + lgdstatusvalue + "</td>" +
+                                        "<td class='text-center'> <a href='javascript:void(0);' onclick='topFunction()' class='edit1' title='edit1' id='"+lgdcode+"' )> <i class=' far fa-edit' style='font-size:18px; color: #47b9fe;'></i> | </a>  <a href='javascript:void(0);' class='delete1' title='delete1' id='"+lgdcode+"' )> <i class=' fas fa-trash-alt' style='font-size:18px;color:red' ></i></a></td></tr>";
+                                        table.row.add($(tr_str));
+                                    }
+                                    table.draw(false);
+                                },error:function(errormsg){
+                                    document.getElementById("tCount").innerHTML = '';
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+                }
+            });
+}); 
+}
+
+    // Record stat refresh
+    function autoRefreshRecordStat()
+    {
+        let lgdState = $('#lgdState').val()
+        let lgdDistrict = $('#lgdDistrict').val()
+        let lgdTaluka = $('#lgdTaluka').val()
+        let lgdVillage = $('#lgdVillage').val()
+        let Roption = 'New';
+        let postAction = 'AjaxSearchNewRecord';
+
+        //$("#exampleStat tbody").empty(); // this will remove all <tr>.
+        $.ajax({
+            url: 'lgdstatRefresh.php',
+            data: { lgdState: lgdState , lgdDistrict: lgdDistrict, lgdTaluka: lgdTaluka, lgdVillage: lgdVillage },
+            method: "POST",
+                //dataType: 'JSON',
+                success: function(data){
+                  $('#exampleStat').html(data); 
+              },
+              error:function(errormsg){
+                document.getElementById("tCount").innerHTML = '';               
+            }
+        });
+    }
+
+    function dist_list()
+{
+    
+    let postAction = 'postdistlist';
+
+    //$("#exampleStat tbody").empty(); // this will remove all <tr>.
+        $.ajax({
+            url: 'lgdlist_Ajax.php',
+            data: { postAction:postAction },
+            method: "POST",
+            //dataType: 'JSON',
+            success: function(data){
+                //alert(data);
+                     // $('#exampleStat').html(data); 
+                     $('select[name="lgdDistrict"]').empty();
+                      $('#lgdDistrict').html(data);
+
+                      $('select[name="txtDistrictCode"]').empty();
+                     $('#txtDistrictCode').html(data);
+            },
+            error:function(errormsg){
+            /// document.getElementById("tCount").innerHTML = '';               
+            }
+        });
+}
+
+
+      //Read Data
+      function autoRefresh() {
+        $("#myTable tbody").empty();
+        var table = $('#myTable').DataTable();
+        table.clear();
+        $(document).ready(function(e){
+
+            let lgdState = $('#lgdState').val()
+            let lgdDistrict = $('#lgdDistrict').val()
+            let lgdTaluka = $('#lgdTaluka').val()
+            let lgdVillage = $('#lgdVillage').val()
+            let Roption = 'V1';
+            let postAction = 'AjaxSearchRecord';
+
+            $.ajax({
+                url: 'lgdrecord_search.php',
+                data: { lgdState: lgdState , lgdDistrict: lgdDistrict, lgdTaluka: lgdTaluka, lgdVillage: lgdVillage, Roption: Roption, postAction: postAction },
+                method: "POST",
+                dataType: 'JSON',
+                success: function(response){
+
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    var len = response.length
+                    document.getElementById("tCount").style.fontSize = '13px';
+                    document.getElementById("tCount").style.color = '#54A7DF';
+                    //document.getElementById("tCount").style.backgroundColor = "green";
+
+                    document.getElementById("tCount").innerHTML = "<p> <i class='fa fa-tag'></i> (Total Records: <font color='white' style='background-color:#985DFE;'>"+  response.length +" </font> )  ||  "+"  No. of Districts : <font color='white' style='background-color:#985DFE;'>"+ response[0].Dcnt + "</font>  ||  No. of Talukas : <font color='white' style='background-color:#985DFE;'>"+ response[0].Tcnt + "</font>  ||  No. of " +response[0].Nav +": <font color='white' style='background-color:#985DFE;'>"+ response[0].Vcnt + " </font>  ||  "+"  <i class='fa fa-print'></i> <a style='color: #54A7DF;text-decoration: underline;'  HREF='javascript:printTableFormatA()'>Show Report</a><br/></P>"; 
+
+                    //var len = response.length;
+                    for(var i=0; i<len; i++)
+                    {
+                        var tlgdstate = response[i].tlgdstate;
+                        var tlgddistrict = response[i].tlgddistrict;        
+                        var tlgdTaluka = response[i].tlgdTaluka;        
+                        var tlgdVillage = response[i].tlgdVillage;
+                        var tlgdnameenglish = response[i].tlgdnameenglish;
+                        var tlgdnamelocal = response[i].tlgdnamelocal;
+                        var lgdlbtype = response[i].lgdlbtype;
+                        var lgdcode = response[i].lgdcode;       
+                        
+
+                        var tr_str = "<tr>" +
+                        "<td align='center'>" + (i+1) + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"'  align='center'>" + tlgdstate + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"' align='center'>" + tlgddistrict + "</td>" +
+                        "<td align='center' data-editor-field='protocol'>" + tlgdTaluka + "</td>" +
+                        "<td align='center'>" + tlgdVillage + "</td>" +
+                        "<td align='center'>" + lgdcode + "</td>" +
+                        "<td align='center'>" + tlgdnameenglish + "</td>" +
+                        "<td align='center'>" + tlgdnamelocal + "</td>" +
+                        "<td align='center'>" + lgdlbtype + "</td>" +
+                        "<td class='text-center'> <a href='javascript:void(0);' onclick='topFunction()' class='edit' title='edit' id='"+lgdcode+"' )> <i class=' far fa-edit' style='font-size:18px; color: #47b9fe;'></i> | </a>  <a href='javascript:void(0);' class='delete' title='delete' id='"+lgdcode+"' )> <i class=' fas fa-trash-alt' style='font-size:18px;color:red'></i></a></td></tr>";
+                        table.row.add($(tr_str));
+                    }
+                    table.draw(false);
+                },error:function(errormsg){
+                    document.getElementById("tCount").innerHTML = '';
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+                }
+            });
+        }); 
+}
+
+
+
+$(document).ready(function(e){
+
+    $('#formbtnSearch').on('click',function(e){
+         e.preventDefault();  e.stopImmediatePropagation();
+          let lgdlocalbody = $('#lgdlocalbody').val()
+          let lgdDistrict = $('#lgdDistrict').val()
+          let lgdTaluka = $('#lgdTaluka').val()
+          // alert(lgdTaluka);
+          // if(lgdlocalbody=='D'){
+          //   alert("Yes");
+          // }
+          // else if(lgdlocalbody=='T'){
+          //       if(lgdDistrict!='0'){
+          //           alert("Yes");
+          //       }else{
+          //           alert("No");
+          //       }
+          // }
+          // else if(lgdlocalbody!='T' || lgdlocalbody!='D'){
+                    
+          //           if(lgdTaluka=='0' || lgdTaluka == null){
+          //                alert("No");
+          //           }
+                   
+                
+          // }
+       alllist();
+});
+
+});
+
+    $(document).on('click', "#formresetSearch", function (e) {
+            $("#myTable tbody").empty(); // this will remove all <tr>.
+            var table = $('#myTable').DataTable();
+            table.clear();
+            table.draw();
+            document.getElementById("tCount").innerHTML = '';
+            //document.getElementById("tmsg").innerHTML = '';
+            //$("#tCount").hide();
+
+             $('#lgdDistrict').prop('disabled',true);
+             $('#lgdTaluka').prop('disabled',true);
+             $('#lgdState').val('');
+             $('#lgdDistrict').val('');
+             alllist1();
+              $('#captiontable').text('Districts of Maharashtra State');
+
+        });
+
+
+    function alllist(){
+
+        
+        let lgdState = $('#lgdState').val()
+        let lgdDistrict = $('#lgdDistrict').val()
+        let lgdTaluka = $('#lgdTaluka').val()
+        let lgdVillage = $('#lgdVillage').val()
+        let lgdlocalbody = $('#lgdlocalbody').val()
+        //let Roption = document.querySelector('input[name = "choice"]:checked').value;
+        if(lgdTaluka=='0')
+            lgdTaluka='';
+        //alert(lgdState+lgdDistrict+lgdTaluka+lgdVillage+lgdlocalbody);
+       // alert(lgdTaluka);
+       // if(lgdlocalbody=="D"){
+
+         var table = $('#myTable').DataTable();
+
+        if(lgdlocalbody=='D'){
+            $('#distthname').text('District');
+            $('#distthname1').text('District');
+            $('#distthname2').text('District');
+            table.column('6').visible(true);
+            table.column('7').visible(true);  
+            $('#captiontable').text('Districts of Maharashtra State');
+        }
+        if(lgdlocalbody=='T'){
+            $('#distthname').text('Taluka');
+            $('#distthname1').text('Taluka');
+            $('#distthname2').text('Taluka');  
+            table.column('6').visible(false);    
+            table.column('7').visible(true);     
+
+        }
+        if(lgdlocalbody=='V'){
+            $('#distthname').text('Village');
+            $('#distthname1').text('Village');
+            $('#distthname2').text('Village');  
+            table.column('6').visible(false);  
+            table.column('7').visible(false);       
+        }
+        let Roption = 'V1';
+        let postAction = 'AjaxSearchRecord1dist';
+        $('#load-popup').show();
+        $.ajax({
+            url: 'all_list_back.php',
+            data: { lgdState: lgdState , lgdDistrict: lgdDistrict, lgdTaluka: lgdTaluka, lgdVillage: lgdVillage, lgdlocalbody: lgdlocalbody, Roption: Roption, postAction: postAction },
+            method: "POST",
+            dataType: 'JSON',
+            success: function(response){
+
+                    
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+
+                    table.clear();
+                    var len = response.length
+                    document.getElementById("tCount").style.fontSize = '13px';
+                    document.getElementById("tCount").style.color = '#54A7DF';
+
+                   // document.getElementById("tmsg").innerHTML = "<p class='card-text'><span style='color:red;'>Search Requests</span></p>";
+                    // document.getElementById("tCount").innerHTML = "<p> <i class='fa fa-tag'></i> (Total Records: <font color='white' style='background-color:#985DFE;'>"+  response.length +" </font> )  ||  "+"  No. of Districts : <font color='white' style='background-color:#985DFE;'>"+ response[0].Dcnt + "</font>  ||  No. of Talukas : <font color='white' style='background-color:#985DFE;'>"+ response[0].Tcnt + "</font>  ||  No. of " +response[0].Nav +": <font color='white' style='background-color:#985DFE;'>"+ response[0].Vcnt + " </font>  ||  "+"  <i class='fa fa-print'></i> <a style='color: #54A7DF;text-decoration: underline;'  HREF='javascript:printTableFormatA()'>Show Report</a><br/></P>"; 
+
+                    for(var i=0; i<len; i++)
+                    {
+                        var tlgdstate = response[i].tlgdstate;
+                        var tlgddistrict = response[i].tlgddistrict;        
+                        var tlgdTaluka = response[i].tlgdTaluka;        
+                        var tlgdVillage = response[i].tlgdVillage;
+                        var tlgdnameenglish = response[i].tlgdnameenglish;
+                        var tlgdnamelocal = response[i].tlgdnamelocal;
+                        var lgdlbtype = response[i].lgdlbtype;
+                        var lgdcode = response[i].lgdcode;
+                        var distname = response[i].distname;
+                        var talukaname = response[i].talukaname;   
+                        var c2001_code= response[i].c2001_code;
+                        var c2011_code= response[i].c2011_code;
+                        var count_taluka_code = response[i].count_taluka_code;
+                        var count_village_code = response[i].count_village_code;
+                        var tc2001_code = response[i].tc2001_code;
+                        var tc2011_code = response[i].tc2011_code;
+                        var vc2001_code = response[i].vc2001_code;
+                        var vc2011_code = response[i].vc2011_code;
+                        var code = '';
+                        var c1code='';
+                        var c11code='';
+                        var vary = response[i].vary;
+                        
+
+                        if(lgdlocalbody=='D'){
+                            code = tlgddistrict;
+                            c1code = c2001_code;
+                            c11code = c2011_code;
+                        }
+                        if(lgdlocalbody=='T'){
+                            code = tlgdTaluka;
+                            c1code = tc2001_code;
+                            c11code = tc2011_code;
+                            
+                        }
+                        if(lgdlocalbody!='T' && lgdlocalbody!='D'){
+                            code = tlgdVillage;
+                            c1code = vc2001_code;
+                            c11code = vc2011_code;
+                        }
+
+
+                        var tr_str = "<tr>" +
+                        "<td align='left'>" + (i+1) + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"'  align='left'>" + code + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"' align='left'>"+ tlgdnameenglish + "</td>" +
+                        "<td align='left' data-editor-field='protocol'>" +tlgdnamelocal+"</td>" +
+                        "<td align='center'>" + c1code + "</td>" +
+                        "<td align='center'>" + c11code + "</td>" +
+                        "<td align='center'><a href='javascript:void(0);' class='talukalist' id='"+code+"'>" + count_taluka_code + "</a></td>";
+                        if(vary=='0'){
+                            var tr_str1 = "<td align='center'>" + count_village_code + "</td>" ;
+                        }else{
+                            var tr_str1 = "<td align='center'><a href='javascript:void(0);' class='villlist' id='"+code+"'>" + count_village_code + "</a></td>" ;
+                        }
+                        
+                        var tr_str2 = "</tr>";
+                        table.row.add($(tr_str+tr_str1+tr_str2));
+                        if(lgdlbtype=='T'){
+                             $('#captiontable').text('Talukas of '+distname+'('+tlgddistrict+') (District), Maharashtra State');
+                        }
+                        if(lgdlbtype=='V'){
+                            $('#captiontable').text('Villages of '+ talukaname +'('+tlgdTaluka+') (Taluka), '+ distname +'('+tlgddistrict+') (District), Maharashtra State');
+                        }
+                    }
+                    table.draw(false);
+                },error:function(errormsg){
+                    document.getElementById("tCount").innerHTML = '';
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+                },
+                complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                 //swal(state+'2');
+                 $('#load-popup').hide();
+             }
+         });
+//}
+
+    }
+    function alllist1(){
+
+        
+        let lgdState = $('#lgdState').val()
+        let lgdDistrict = '0'
+        let lgdTaluka = '0'
+        let lgdVillage = $('#lgdVillage').val()
+        let lgdlocalbody = 'D';
+        //let Roption = document.querySelector('input[name = "choice"]:checked').value;
+
+        //alert(lgdState+lgdDistrict+lgdTaluka+lgdVillage+lgdlocalbody);
+       // if(lgdlocalbody=="D"){
+
+         var table = $('#myTable').DataTable();
+
+        if(lgdlocalbody=='D'){
+            $('#distthname').text('District');
+            $('#distthname1').text('District');
+            $('#distthname2').text('District');
+            table.column('6').visible(true);
+            table.column('7').visible(true);  
+            $('#captiontable').text('Districts of Maharashtra State');
+        }
+        if(lgdlocalbody=='T'){
+            $('#distthname').text('Taluka');
+            $('#distthname1').text('Taluka');
+            $('#distthname2').text('Taluka');  
+            table.column('6').visible(false);    
+            table.column('7').visible(true);     
+
+        }
+        if(lgdlocalbody=='V'){
+            $('#distthname').text('Village');
+            $('#distthname1').text('Village');
+            $('#distthname2').text('Village');  
+            table.column('6').visible(false);  
+            table.column('7').visible(false);       
+        }
+        let Roption = 'V1';
+        let postAction = 'AjaxSearchRecord1dist';
+        $('#load-popup').show();
+        $.ajax({
+            url: 'all_list_back.php',
+            data: { lgdState: lgdState , lgdDistrict: lgdDistrict, lgdTaluka: lgdTaluka, lgdVillage: lgdVillage, lgdlocalbody: lgdlocalbody, Roption: Roption, postAction: postAction },
+            method: "POST",
+            dataType: 'JSON',
+            success: function(response){
+
+                    
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+
+                    table.clear();
+                    var len = response.length
+                    document.getElementById("tCount").style.fontSize = '13px';
+                    document.getElementById("tCount").style.color = '#54A7DF';
+
+                   // document.getElementById("tmsg").innerHTML = "<p class='card-text'><span style='color:red;'>Search Requests</span></p>";
+                    // document.getElementById("tCount").innerHTML = "<p> <i class='fa fa-tag'></i> (Total Records: <font color='white' style='background-color:#985DFE;'>"+  response.length +" </font> )  ||  "+"  No. of Districts : <font color='white' style='background-color:#985DFE;'>"+ response[0].Dcnt + "</font>  ||  No. of Talukas : <font color='white' style='background-color:#985DFE;'>"+ response[0].Tcnt + "</font>  ||  No. of " +response[0].Nav +": <font color='white' style='background-color:#985DFE;'>"+ response[0].Vcnt + " </font>  ||  "+"  <i class='fa fa-print'></i> <a style='color: #54A7DF;text-decoration: underline;'  HREF='javascript:printTableFormatA()'>Show Report</a><br/></P>"; 
+
+                    for(var i=0; i<len; i++)
+                    {
+                        var tlgdstate = response[i].tlgdstate;
+                        var tlgddistrict = response[i].tlgddistrict;        
+                        var tlgdTaluka = response[i].tlgdTaluka;        
+                        var tlgdVillage = response[i].tlgdVillage;
+                        var tlgdnameenglish = response[i].tlgdnameenglish;
+                        var tlgdnamelocal = response[i].tlgdnamelocal;
+                        var lgdlbtype = response[i].lgdlbtype;
+                        var lgdcode = response[i].lgdcode;
+                        var distname = response[i].distname;
+                        var talukaname = response[i].talukaname;   
+                        var c2001_code= response[i].c2001_code;
+                        var c2011_code= response[i].c2011_code;
+                        var count_taluka_code = response[i].count_taluka_code;
+                        var count_village_code = response[i].count_village_code;
+                        var tc2001_code = response[i].tc2001_code;
+                        var tc2011_code = response[i].tc2011_code;
+                        var vc2001_code = response[i].vc2001_code;
+                        var vc2011_code = response[i].vc2011_code;
+                        var code = '';
+                        var c1code='';
+                        var c11code='';
+                        var vary = response[i].vary;
+                        
+
+                        if(lgdlocalbody=='D'){
+                            code = tlgddistrict;
+                            c1code = c2001_code;
+                            c11code = c2011_code;
+                        }
+                        if(lgdlocalbody=='T'){
+                            code = tlgdTaluka;
+                            c1code = tc2001_code;
+                            c11code = tc2011_code;
+                            
+                        }
+                        if(lgdlocalbody!='T' && lgdlocalbody!='D'){
+                            code = tlgdVillage;
+                            c1code = vc2001_code;
+                            c11code = vc2011_code;
+                        }
+
+
+                        var tr_str = "<tr>" +
+                        "<td align='left'>" + (i+1) + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"'  align='left'>" + code + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"' align='left'>"+ tlgdnameenglish + "</td>" +
+                        "<td align='left' data-editor-field='protocol'>" +tlgdnamelocal+"</td>" +
+                        "<td align='center'>" + c1code + "</td>" +
+                        "<td align='center'>" + c11code + "</td>" +
+                        "<td align='center'><a href='javascript:void(0);' class='talukalist' id='"+code+"'>" + count_taluka_code + "</a></td>";
+                        if(vary=='0'){
+                            var tr_str1 = "<td align='center'>" + count_village_code + "</td>" ;
+                        }else{
+                            var tr_str1 = "<td align='center'><a href='javascript:void(0);' class='villlist' id='"+code+"'>" + count_village_code + "</a></td>" ;
+                        }
+                        
+                        var tr_str2 = "</tr>";
+                        table.row.add($(tr_str+tr_str1+tr_str2));
+                        if(lgdlbtype=='T'){
+                             $('#captiontable').text('Talukas of '+distname+'('+tlgddistrict+') (District), Maharashtra State');
+                        }
+                        if(lgdlbtype=='V'){
+                            $('#captiontable').text('Villages of '+ talukaname +'('+tlgdTaluka+') (Taluka), '+ distname +'('+tlgddistrict+') (District), Maharashtra State');
+                        }
+                    }
+                    table.draw(false);
+                },error:function(errormsg){
+                    document.getElementById("tCount").innerHTML = '';
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+                },
+                complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                 //swal(state+'2');
+                 $('#load-popup').hide();
+             }
+         });
+//}
+
+    }
+
+    </script>
+
+
+
+
+
+    <!-- END: Head-->
+
+    <!-- BEGIN: Body-->
+</head><body class="vertical-layout vertical-menu 2-columns fixed-navbar menu-expanded pace-done" data-open="click" data-menu="vertical-menu" data-color="bg-gradient-x-purple-blue" data-col="2-columns" cz-shortcut-listen="true"><div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
+
+
+
+<!--  <script type="text/javascript" language="JavaScript" src="commonFile/ValiDate.js.download"></script>-->
+
+<link href="commonFile/bootstrap-datetimepicker.css" rel="stylesheet">
+
+<link href="commonFile/font-linearimages.css" rel="stylesheet">
+
+<!-- BEGIN: Main Menu-->
+<div class="main-menu-content ps ps--active-y">
+
+  <div class="ps__rail-x" style="left: 0px; bottom: -35px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 35px; height: 810px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 22px; height: 510px;"></div></div></div>
+</div>
+
+<!--<div id='mainBodyContent'>-->
+    <script>
+     $(document).ready(function() { 
+        $('.nav-items li').click(function(e) {
+            $('.nav-items li.active').removeClass('active');
+            var $this = $(this);
+            if (!$this.hasClass('active')) {
+                $this.addClass('active');
+                swal('active class applied');
+            }
+        });
+    });   
+
+     $(function(){
+        $("a[rel='tab']").click(function(e){
+            pageurl = $(this).attr('href');             
+            if(pageurl.includes(".php"))
+            {
+                $.get(this.href, function(data){
+                    $('#mainContent').html(data);
+                    console.log(this);
+                    history.pushState({foo:'bar'}, 'second page', pageurl);
+                });
+            }   
+            else
+            {
+                e.preventDefault();
+            }           
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+      $('.openPopup').click(function () {
+        var custId = $(this).data('id');
+        var lgd = 'lgd';
+            //swal(custId);
+            $.ajax({
+              url: 'get_data.php',
+              type: 'post',
+              data: { custId: custId, lgd: lgd },
+              success: function (response) {
+                $('.modal-body').html(response);
+                $('#myModal').modal('show');
+            }
+        });
+        });
+
+  });
+
+    $(document).on('click', '#formresetAdd', function (e) {
+        calldisable();
+    }); 
+
+
+    $(document).ready(function(){
+
+        $("#vdir123").on("change",function(){
+            var vdir = $(this).val();
+            if(vdir=='1'){
+                 window.location = "all_list.php";
+            }
+            else if(vdir=='2'){
+                window.location = "c2011_all_list.php";
+            }
+            else if(vdir=='3'){
+                window.location = "c2001_all_list.php";
+            }
+            else if(vdir=='4'){
+                window.location = "eferfar_all_list.php";
+            }
+            else if(vdir=='5'){
+                window.location = "epcis_all_list.php";
+            }
+            
+
+        });
+
+
+
+       // Country dependent ajax
+       $("#txtStateCode").on("change",function(){
+           var txtStateCode = $(this).val();
+           var ListD = '';
+
+           if (txtStateCode && ($('#txtLGDLBCode').val() == 'T' || $('#txtLGDLBCode').val() == 'V' || $('#txtLGDLBCode').val() == 'M' || $('#txtLGDLBCode').val() == 'C' || $('#txtLGDLBCode').val() == 'B' || $('#txtLGDLBCode').val() == 'N')) {
+            $.ajax({
+                url :"lgddropdownpro.php",
+                type:"POST",
+                cache:false,
+                data:{txtStateCode:txtStateCode,ListD:'ListD'},
+                success:function(data){
+                   $('select[name="txtDistrictCode"]').empty();
+                   $('#txtDistrictCode').html(data);
+               }
+           });
+        }else{
+            $('#txtDistrictCode').html('<option value="">- - -All District- - -</option>');
+        }
+    });
+   });
+
+    $(document).ready(function(){
+       // Country dependent ajax
+       $("#txtDistrictCode").on("change",function(){
+           var txtStateCode = $('#txtStateCode').val();
+           var txtDistrictCode = $(this).val();
+           var ListT = '';
+
+           if (txtStateCode && txtDistrictCode && ($('#txtLGDLBCode').val() == 'V' || $('#txtLGDLBCode').val() == 'M' || $('#txtLGDLBCode').val() == 'C' || $('#txtLGDLBCode').val() == 'B' || $('#txtLGDLBCode').val() == 'N')) {
+            $.ajax({
+                url :"lgddropdownpro.php",
+                type:"POST",
+                cache:false,
+                data:{txtStateCode:txtStateCode,txtDistrictCode:txtDistrictCode,ListT:'ListT'},
+                success:function(data){
+                   $('select[name="txtTalukaCode"]').empty();
+                   $('#txtTalukaCode').html(data);
+               }
+           });
+        }else{
+            $('#txtTalukaCode').html('<option value="">- - -All Taluka- - -</option>');
+        }
+    });
+   });
+
+
+
+    $(document).ready(function () {
+        var ListSAuto = '';
+        $("select[name='lgdlocalbody']").change(function(e){
+
+
+            $("#txtLGDnotificationnum").prop("disabled", false);
+            $("#lgd_notification_file").prop("disabled",false);
+            $("#lgd_notification_file_btn").prop("disabled",false);
+            $("#tctNotificationLGDdate").prop("disabled",false);
+            $("#txtLGDnotifyauth").prop("disabled",false);
+            $("#formbtnAdd").prop("disabled", false);
+            $("#formresetAdd").prop("disabled", false);
+       //swal(data.lgd_lbtype);
+       $.ajax({
+        type: "POST",
+        url: "lgdlist_Ajax.php",
+        data:'ListSAuto=ListSAuto',
+        success: function(data){
+          $('select[name="txtStateCode"]').empty();
+          $('#txtStateCode').html(data);
+      }
+  });
+       
+       $('#txtLGDCode').val('');
+       $('#txtLGDMarName').val('');
+       $('#txtLGDEngName').val('');
+
+       if($('#txtLGDLBCode').val() == 'S')
+       {
+        $("#hst1").hide();
+        $('#hst2').show();
+
+        $("#hdi1").hide();
+        $('#hdi2').show();
+        $('#txtDistrictCode1').val('000');
+        $("#txtDistrictCode1").prop("disabled", true);
+
+        $("#hta1").hide();
+        $('#hta2').show();      
+        $('#txtTalukaCode1').val('0000');
+        $("#txtTalukaCode1").prop("disabled", true);
+        $('#txtVillagecode').val('000000');
+        $("#txtVillagecode").prop("disabled", true);
+        $("#txtLGDMarName").prop("disabled", false);
+        $("#txtLGDEngName").prop("disabled", false);
+    }
+    else if ($('#lgdlocalbody').val() == 'D')
+    {
+
+        $('#lgdDistrict').prop('disabled',true);
+        $('#lgdTaluka').prop('disabled',true);
+        $('#lgdDistrict').val('0');
+        $('#lgdTaluka').val('0');
+        $('#lgdTaluka').html('<option value="0">- - -All Taluka- - -</option>');
+
+       
+    }
+    else if ($('#lgdlocalbody').val() == 'T')
+    {
+       $('#lgdDistrict').prop('disabled',false);
+       $('#lgdTaluka').prop('disabled',true);
+       $('#lgdTaluka').val('0');
+       $('#lgdTaluka').html('<option value="0">- - -All Taluka- - -</option>');
+    }
+    else if ($('#lgdlocalbody').val() == 'V' || $('#lgdlocalbody').val() == 'M' || $('#lgdlocalbody').val() == 'C' || $('#lgdlocalbody').val() == 'B' || $('#lgdlocalbody').val() == 'N')
+    {
+       $('#lgdDistrict').prop('disabled',false);
+       $('#lgdTaluka').prop('disabled',false);
+    }
+    else 
+    {
+    }
+});
+
+
+
+             $(document).on('click', '.talukalist', function (e) {
+
+                 $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+
+
+
+                let id_value = $(this).attr('id');
+                //alert(id_value);
+                $('#lgdlocalbody').val('T');
+                $('#lgdDistrict').val(id_value);    
+                $('#lgdDistrict').prop('disabled',false);   
+
+                 alllist();
+
+
+             });
+
+              $(document).on('click', '.villlist', function (e) {
+
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+
+
+                let id_value = $(this).attr('id');
+                //alert(id_value);
+                var lgdDistrict = $('#lgdDistrict').val();
+
+                 $.ajax({
+                url :"lgdajaxpro.php",
+                type:"POST",
+                cache:false,
+                data:{lgddistrict:lgdDistrict},
+                success:function(data){
+                   $('select[name="lgdTaluka"]').empty();
+                   $('#lgdTaluka').html(data);
+                    $('#lgdTaluka').val(id_value);
+               }
+           });
+       
+           // $('#lgdTaluka').html('<option value="">All Taluka</option>');
+        
+                $('#lgdlocalbody').val('V');
+                
+                $('#lgdDistrict').prop('disabled',false);   
+                $('#lgdTaluka').prop('disabled',false);   
+
+                    
+
+        let lgdState = $('#lgdState').val()
+        //let lgdDistrict = $('#lgdDistrict').val()
+        let lgdTaluka = id_value;
+        
+        let lgdVillage = $('#lgdVillage').val()
+        let lgdlocalbody = $('#lgdlocalbody').val()
+        //let Roption = document.querySelector('input[name = "choice"]:checked').value;
+
+
+        //alert(lgdState+lgdDistrict+lgdTaluka+lgdVillage+lgdlocalbody);
+       // if(lgdlocalbody=="D"){
+
+         var table = $('#myTable').DataTable();
+
+        
+
+
+        if(lgdlocalbody=='D'){
+            $('#distthname').text('District');
+            $('#distthname1').text('District');
+            $('#distthname2').text('District');
+            table.column('6').visible(true);
+            table.column('7').visible(true);  
+        }
+        if(lgdlocalbody=='T'){
+            $('#distthname').text('Taluka');
+            $('#distthname1').text('Taluka');
+            $('#distthname2').text('Taluka');  
+            table.column('6').visible(false);    
+            table.column('7').visible(true);     
+        }
+        if(lgdlocalbody=='V'){
+            $('#distthname').text('Village');
+            $('#distthname1').text('Village');
+            $('#distthname2').text('Village');  
+            table.column('6').visible(false);  
+            table.column('7').visible(false);       
+        }
+        let Roption = 'V1';
+        let postAction = 'AjaxSearchRecord1dist';
+        $('#load-popup').show();
+        $.ajax({
+            url: 'all_list_back.php',
+            data: { lgdState: lgdState , lgdDistrict: lgdDistrict, lgdTaluka: lgdTaluka, lgdVillage: lgdVillage, lgdlocalbody: lgdlocalbody, Roption: Roption, postAction: postAction },
+            method: "POST",
+            dataType: 'JSON',
+            success: function(response){
+
+                    
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+
+                    table.clear();
+                    var len = response.length
+                    document.getElementById("tCount").style.fontSize = '13px';
+                    document.getElementById("tCount").style.color = '#54A7DF';
+
+                   // document.getElementById("tmsg").innerHTML = "<p class='card-text'><span style='color:red;'>Search Requests</span></p>";
+                    // document.getElementById("tCount").innerHTML = "<p> <i class='fa fa-tag'></i> (Total Records: <font color='white' style='background-color:#985DFE;'>"+  response.length +" </font> )  ||  "+"  No. of Districts : <font color='white' style='background-color:#985DFE;'>"+ response[0].Dcnt + "</font>  ||  No. of Talukas : <font color='white' style='background-color:#985DFE;'>"+ response[0].Tcnt + "</font>  ||  No. of " +response[0].Nav +": <font color='white' style='background-color:#985DFE;'>"+ response[0].Vcnt + " </font>  ||  "+"  <i class='fa fa-print'></i> <a style='color: #54A7DF;text-decoration: underline;'  HREF='javascript:printTableFormatA()'>Show Report</a><br/></P>"; 
+
+                    for(var i=0; i<len; i++)
+                    {
+                        var tlgdstate = response[i].tlgdstate;
+                        var tlgddistrict = response[i].tlgddistrict;        
+                        var tlgdTaluka = response[i].tlgdTaluka;        
+                        var tlgdVillage = response[i].tlgdVillage;
+                        var tlgdnameenglish = response[i].tlgdnameenglish;
+                        var tlgdnamelocal = response[i].tlgdnamelocal;
+                        var lgdlbtype = response[i].lgdlbtype;
+                        var lgdcode = response[i].lgdcode;
+                        var distname = response[i].distname;
+                        var talukaname = response[i].talukaname;   
+                        var c2001_code= response[i].c2001_code;
+                        var c2011_code= response[i].c2011_code;
+                        var count_taluka_code = response[i].count_taluka_code;
+                        var count_village_code = response[i].count_village_code;
+                        var tc2001_code = response[i].tc2001_code;
+                        var tc2011_code = response[i].tc2011_code;
+                        var vc2001_code = response[i].vc2001_code;
+                        var vc2011_code = response[i].vc2011_code;
+                        var code = '';
+                        var c1code='';
+                        var c11code='';
+                        var vary = response[i].vary;
+                        
+
+                        if(lgdlocalbody=='D'){
+                            code = tlgddistrict;
+                            c1code = c2001_code;
+                            c11code = c2011_code;
+                        }
+                        if(lgdlocalbody=='T'){
+                            code = tlgdTaluka;
+                            c1code = tc2001_code;
+                            c11code = tc2011_code;
+                            
+                        }
+                        if(lgdlocalbody=='V'){
+                            code = tlgdVillage;
+                            c1code = vc2001_code;
+                            c11code = vc2011_code;
+                        }
+
+
+                        var tr_str = "<tr>" +
+                        "<td align='left'>" + (i+1) + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"'  align='left'>" + code + "</td>" +
+                        "<td class='imo' style='cursor: pointer;' id='"+(i+1)+"' align='left'>"+ tlgdnameenglish + "</td>" +
+                        "<td align='left' data-editor-field='protocol'>" +tlgdnamelocal+"</td>" +
+                        "<td align='center'>" + c1code + "</td>" +
+                        "<td align='center'>" + c11code + "</td>" +
+                        "<td align='center'><a href='javascript:void(0);' class='talukalist' id='"+code+"'>" + count_taluka_code + "</a></td>";
+                        if(vary=='0'){
+                            var tr_str1 = "<td align='center'>" + count_village_code + "</td>" ;
+                        }else{
+                            var tr_str1 = "<td align='center'><a href='javascript:void(0);' class='villlist' id='"+code+"'>" + count_village_code + "</a></td>" ;
+                        }
+                        
+                        var tr_str2 = "</tr>";
+                        table.row.add($(tr_str+tr_str1+tr_str2));
+                        $('#captiontable').text('Villages of '+ talukaname +'('+tlgdTaluka+') (Taluka), '+ distname +'('+tlgddistrict+') (District), Maharashtra State');
+                    }
+                    table.draw(false);
+                },error:function(errormsg){
+                    document.getElementById("tCount").innerHTML = '';
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+                },
+                complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                 //swal(state+'2');
+                 $('#load-popup').hide();
+             }
+         });
+
+
+             });
+             
+
+             $(document).on('click', '.backlist', function (e) {
+
+                
+
+                var lb =  $('#lgdlocalbody').val();
+
+                if(lb!='D'){
+                    $("#myTable tbody").empty(); // this will remove all <tr>.
+                    var table = $('#myTable').DataTable();
+                    table.clear();
+                    table.draw(false);
+                }
+                
+                if (lb=='T') {
+
+                    $('#lgdlocalbody').val('D');
+                    $('#lgdDistrict').val('0'); 
+                    $('#lgdDistrict').prop('disabled',true);
+                    alllist();
+                }
+                if (lb=='V') {
+
+                    $('#lgdlocalbody').val('T');
+                    $('#lgdTaluka').val('0'); 
+                    $('#lgdTaluka').prop('disabled',true);
+                    alllist();
+                }
+                // $('#lgdDistrict').val(id_value);    
+                // $('#lgdDistrict').prop('disabled',false);   
+
+                //  alllist();
+
+
+             });
+             
+
+
+
+    });
+
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+</script>
+<!-- Modal -->
+
+
+<div id="load-popup">          
+    <div class="loading" align="center">
+     <img src="commonFile/loader-01.svg" alt="" />
+ </div>
+</div>
+
+
+<!-- END: Main Menu-->
+<!-- BEGIN: Content-->
+
+<div class="app-content content " >
+  <div class="content-wrapper">
+    <!-- <div class="content-wrapper-before"></div> -->
+    <div class="content-header row">
+      <div class="content-header-left col-md-12 col-12 mb-2">
+
+        <h4 class="content-header-title">LGD Village Directory of Maharashtra State</h4>
+    </div>
+</div>
+
+<div>
+   <div style="width:100%;Text-align:center;float:left;">
+
+     <div id="swal_messageDel"></div> 
+
+     <section id='LGDCode' class="desc">
+      <div class="row">
+
+        <div class="col-xl-12 col-lg-12">
+          <div class="card">
+              <div class="card-header card-header-btm">
+               <div class="content-header row">
+                 <div class="card-text col-md-12 col-12 mb-2">
+                    <h6 class="inner-header">LGD Entities</h6>
+                </div>
+            </div>
+            <center>             
+
+               <div class="card-content collpase show ">
+                    <div class="card-body div_style_down" >
+                     <div class="card-text ">
+
+                        <form name="frmFlag1" id="frmFlag1" method="post" class="form form-horizontal" enctype="multipart/form-data" novalidate="novalidate">
+                            <div class="form-body"> 
+
+                                <div class="form-group row " >
+                                    
+                                   
+
+                                   
+                                    <div class="col-md-12">
+                                        <table border="1" width="95%" style=" text-align: center; font-size: 15px;">
+                                             <tr class="bg-dark" style="color:white;">
+                                                <th style="width: 10%;">District</th>
+                                                <th style="width: 10%;">Taluka</th>
+                                                <th style="width: 10%;">Village</th>
+                                                <th style="width: 10%;">Gram Panchayat</th>
+                                                <th style="width: 10%;">Municipal Corporation</th>
+                                                <th style="width: 10%;">Municipal Council</th>
+                                                <th style="width: 10%;">Nagar Panchayat </th>
+                                                <th style="width: 10%;">Cantonment Board </th>
+                                                
+                                                <th style="width: 10%;">Total</th>
+                                                <!-- <th>Total</th> -->
+                                            </tr>
+                                            <tr class="text-bold">
+                                                <td>36</td>
+                                                <td>358</td>
+                                                <td>44929</td>
+                                                <td>27894</td>
+                                                <td>27</td>
+                                                <td>241</td>
+                                                <td>131</td>
+                                                <td>7</td>
+                                                
+                                                 <td>73625</td>
+                                            </tr>
+                                        </table>
+                                        </div>
+
+
+                                
+                                 
+
+                                                      
+                   <!--p class="card-text"><span style="color:red;">Area for Message Space</span></p-->
+                   <div id="swal_message"></div>
+                   <div id="tCount" style="margin-top:3px;"> </div>
+               </div>
+           </form>
+           </div>          
+       </section> 
+
+
+     <section id='LGDCode' class="desc">
+      <div class="row">
+
+        <div class="col-xl-12 col-lg-12">
+          <div class="card">
+              <div class="card-header card-header-btm">
+               <div class="content-header row">
+                 <div class="card-text col-md-12 col-12 mb-2">
+                    <h6 class="inner-header" >LGD Search</h6>
+                </div>
+            </div>
+            <center>             
+
+               <div class="card-content collpase show">
+                    <div class="card-body div_style_down">
+                     <div class="card-text">
+
+                        <form name="frmFlag1" id="frmFlag1" method="post" class="form form-horizontal" enctype="multipart/form-data" novalidate="novalidate">
+                            <div class="form-body"> 
+
+                                <div class="form-group row " >
+                                       <div class="col-md-3">
+                                        <label class="label-control" for="fc">Village Directory<span style="color:red;">*</span> :
+                                        </label>
+                                        <select class="form-control " id="vdir123" name="vdir123" required>                                  
+                                    <option selected value=1>Local Government Directory (LGD)</option><option value=2>Census 2011 Village Directory</option><option value=3>Census 2001 Village Directory</option><option value=4>Rural Land ROR (7/12) Village Directory (eFerfar)</option><option value=5>Urban ROR (Property Card) Village Directory (ePCIS)</option>                                      </select>
+
+
+                                        </div>
+
+                                    <div class="col-md-1">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label class="col-md-0 label-control" for="fc" style="margin-right:10px;">State<span style="color:red;">*</span> :
+                                    </label>
+                                        
+                                        <select class="custom-select form-control" name="lgdState" id="lgdState" style="border:none; font-size: 13px; border-radius:9px;">
+
+                                                                                                <option value="27" selected >महाराष्ट्र (27)</option>
+                                                    </select>
+                                        </div>
+
+
+                                        <div class="col-md-2">
+                                    <label class="col-md-0 label-control" for="fc">Local Body<span style="color:red;">*</span> :
+                                 </label>
+                                   
+                                   <select class="custom-select form-control" name="lgdlocalbody" id="lgdlocalbody" style="border:none; font-size: 13px; border-radius:9px;">
+                                   
+                                                                                <option value="D">District</option>
+                                                                                        <option value="T">Taluka</option>
+                                                                                        <option value="V">Village</option>
+                                            </select> 
+                                </select>
+                            </div>
+                                       
+
+                                        <div class="col-md-2">
+                                             <label class="col-md-0 label-control" for="fc">District<span style="color:red;">*</span> :
+                                        </label>
+                                            
+                                            <select class="custom-select form-control" name="lgdDistrict" id="lgdDistrict" style="border:none; font-size: 13px; border-radius:9px;">
+                                              <option value="0">- - - All Districts - - -</option>
+                                                                                                  <option value="466" value=""> अहिल्यानगर (466)</option>
+                                                                                                        <option value="467" value=""> अकोला (467)</option>
+                                                                                                        <option value="468" value=""> अमरावती (468)</option>
+                                                                                                        <option value="469" value=""> छत्रपती संभाजीनगर (469)</option>
+                                                                                                        <option value="470" value=""> बीड (470)</option>
+                                                                                                        <option value="471" value=""> भंडारा (471)</option>
+                                                                                                        <option value="472" value=""> बुलढाणा (472)</option>
+                                                                                                        <option value="473" value=""> चंद्रपूर (473)</option>
+                                                                                                        <option value="474" value=""> धुळे (474)</option>
+                                                                                                        <option value="475" value=""> गडचिरोली (475)</option>
+                                                                                                        <option value="476" value=""> गोंदीया (476)</option>
+                                                                                                        <option value="477" value=""> हिंगोली (477)</option>
+                                                                                                        <option value="478" value=""> जळगाव (478)</option>
+                                                                                                        <option value="479" value=""> जालना (479)</option>
+                                                                                                        <option value="480" value=""> कोल्हापूर (480)</option>
+                                                                                                        <option value="481" value=""> लातूर (481)</option>
+                                                                                                        <option value="482" value=""> मुंबई (482)</option>
+                                                                                                        <option value="483" value=""> मुंबई उपनगर (483)</option>
+                                                                                                        <option value="484" value=""> नागपूर (484)</option>
+                                                                                                        <option value="485" value=""> नांदेड (485)</option>
+                                                                                                        <option value="486" value=""> नंदूरबार (486)</option>
+                                                                                                        <option value="487" value=""> नाशिक (487)</option>
+                                                                                                        <option value="488" value=""> धाराशिव (488)</option>
+                                                                                                        <option value="489" value=""> परभणी (489)</option>
+                                                                                                        <option value="490" value=""> पुणे (490)</option>
+                                                                                                        <option value="491" value=""> रायगड (491)</option>
+                                                                                                        <option value="492" value=""> रत्नागिरी (492)</option>
+                                                                                                        <option value="493" value=""> सांगली (493)</option>
+                                                                                                        <option value="494" value=""> सातारा (494)</option>
+                                                                                                        <option value="495" value=""> सिंधुदुर्ग (495)</option>
+                                                                                                        <option value="496" value=""> सोलापूर (496)</option>
+                                                                                                        <option value="497" value=""> ठाणे (497)</option>
+                                                                                                        <option value="498" value=""> वर्धा (498)</option>
+                                                                                                        <option value="499" value=""> वाशिम (499)</option>
+                                                                                                        <option value="500" value=""> यवतमाळ (500)</option>
+                                                                                                        <option value="665" value=""> पालघर  (665)</option>
+                                                    </select>
+                                        </div>
+
+                                       
+
+                                        <div class="col-md-2">
+                                             <label class="col-md-0 label-control" for="fc">Taluka<span style="color:red;">*</span> :
+                                        </label>
+                                           <select name="lgdTaluka" id="lgdTaluka" class="form-control" style="border:none; font-size: 13px; border-radius:9px;">
+                                            <option value="0">- - - All Talukas - - -</option>
+                                        </select>
+                                    </div>                              
+
+
+                                
+                                 
+
+                                 
+
+                            
+
+                            <div class="col-md-2">
+                                <!-- <label class="col-md-0 label-control" for="fc">Village/M Corp./MCL/NP/CB<span style="color:red;">*</span> : -->
+                            <!-- /label>
+                               <select name="lgdVillage" id="lgdVillage" class="form-control"style="border:none; font-size: 13px; border-radius:9px;">
+                                   <option value="">- - - All Villages - - -</option>
+                               </select> -->
+                           </div>
+                       </div>
+                        <br>
+                       <div class="form-actions center">
+
+                           <button type="submit" id="formbtnSearch" class="btn btn-primary btn_color">
+                              Submit
+                          </button>
+                          <button type="reset" id="formresetSearch" class="btn btn-primary btn_color">
+                            Reset
+                        </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        <!-- <button type="button" id="btnbunny" class="btn btn-primary">
+                            My Request
+                        </button>   -->
+                        <!--<br>
+                        <div id="tmsg" style="margin-top:8px;"> 
+                           <p class="card-text">
+                            <span style="color:red;">My Requests</span>
+                        </p>
+                       </div>   -->                                                     
+                   </div>                       
+                   <!--p class="card-text"><span style="color:red;">Area for Message Space</span></p-->
+                   <div id="swal_message"></div>
+                   <div id="tCount" style="margin-top:3px;"> </div>
+               </div>
+           </form>
+           </div>          
+       </section> 
+
+   </div>
+</div>
+
+
+<!-- <h4 class="content-header-title"><label id="captiontable">Districts of MAHARASHTRA State</label></h4> -->
+
+<section id="configuration" >
+    <div class="row" >
+        <div class="col-12" >
+            <div class="card" >
+
+                <div class="card-content collapse show">
+                    <div class="card-body card-dashboard ">
+                        <center><h6 class="inner-header mb-0"></h6></center>
+                        <div class="table-responsive frmBody pt-1 div_style_down">
+                            <table width="100%"><tr><td style="width:10%"></td><td><center><label id="captiontable" class="content-header-title">Districts of Maharashtra State</label></center></td><td style="width:10%"> </td></tr></table>
+                        <!-- <center><label id="captiontable" class="content-header-title">Districts of Maharashtra State</label></center> -->
+
+                            <table id="myTable" class="table table-striped " style="font-size:15px;">
+                            <!-- <caption  style="caption-side:top; text-align: center; font-size: 20px; font-weight: bold; color: #f13c1f;"> <label id="captiontable">Districts of MAHARASHTRA State</label></caption> -->
+                            <caption style="caption-side: bootom-right"><a href="javascript:void(0);" class="backlist"> BACK </a></caption>
+                                <thead class="text-left heading bglinearcolour" >
+                                    <tr>
+                                        <th  >Sr.<br> No.</th>
+                                        <th><label id="distthname">District</label><br>Code</th>
+                                        <th><label id="distthname1">District</label><br>English Name </th>
+                                        <th><label id="distthname2">District</label><br>Marathi Name</th>
+                                        <th style="text-align: center; col">Census <br> 2001 Code</th>
+                                        <th style="text-align: center;">Census <br>  2011 Code</th>
+                                        <th style="text-align: center;">No. of <br> Taluka</th>
+                                        <th style="text-align: center;">No. of <br> Villages</th>
+                                       
+                                    </tr>
+                                </thead>                              
+                                <tbody >
+                                 <tr>
+                                        <td align="left">1</td><td align="left">466</td><td align="left">Ahilyanagar</td><td align="left">अहिल्यानगर</td><td align="center">26</td><td align="center">522</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="466">14</a></td><td align="center">1613</td></tr><tr>
+                                        <td align="left">2</td><td align="left">467</td><td align="left">Akola</td><td align="left">अकोला</td><td align="center">05</td><td align="center">501</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="467">7</a></td><td align="center">1046</td></tr><tr>
+                                        <td align="left">3</td><td align="left">468</td><td align="left">Amravati</td><td align="left">अमरावती</td><td align="center">07</td><td align="center">503</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="468">14</a></td><td align="center">2027</td></tr><tr>
+                                        <td align="left">4</td><td align="left">469</td><td align="left">Chhatrapati Sambhajinagar</td><td align="left">छत्रपती संभाजीनगर</td><td align="center">19</td><td align="center">515</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="469">9</a></td><td align="center">1380</td></tr><tr>
+                                        <td align="left">5</td><td align="left">470</td><td align="left">Beed</td><td align="left">बीड</td><td align="center">27</td><td align="center">523</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="470">11</a></td><td align="center">1299</td></tr><tr>
+                                        <td align="left">6</td><td align="left">471</td><td align="left">Bhandara</td><td align="left">भंडारा</td><td align="center">10</td><td align="center">506</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="471">7</a></td><td align="center">898</td></tr><tr>
+                                        <td align="left">7</td><td align="left">472</td><td align="left">Buldhana</td><td align="left">बुलढाणा</td><td align="center">04</td><td align="center">500</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="472">13</a></td><td align="center">1489</td></tr><tr>
+                                        <td align="left">8</td><td align="left">473</td><td align="left">Chandrapur</td><td align="left">चंद्रपूर</td><td align="center">13</td><td align="center">509</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="473">15</a></td><td align="center">1838</td></tr><tr>
+                                        <td align="left">9</td><td align="left">474</td><td align="left">Dhule</td><td align="left">धुळे</td><td align="center">02</td><td align="center">498</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="474">4</a></td><td align="center">692</td></tr><tr>
+                                        <td align="left">10</td><td align="left">475</td><td align="left">Gadchiroli</td><td align="left">गडचिरोली</td><td align="center">12</td><td align="center">508</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="475">12</a></td><td align="center">1683</td></tr><tr>
+                                        <td align="left">11</td><td align="left">476</td><td align="left">Gondia</td><td align="left">गोंदीया</td><td align="center">11</td><td align="center">507</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="476">8</a></td><td align="center">942</td></tr><tr>
+                                        <td align="left">12</td><td align="left">477</td><td align="left">Hingoli</td><td align="left">हिंगोली</td><td align="center">16</td><td align="center">512</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="477">5</a></td><td align="center">701</td></tr><tr>
+                                        <td align="left">13</td><td align="left">478</td><td align="left">Jalgaon</td><td align="left">जळगाव</td><td align="center">03</td><td align="center">499</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="478">15</a></td><td align="center">1568</td></tr><tr>
+                                        <td align="left">14</td><td align="left">479</td><td align="left">Jalna</td><td align="left">जालना</td><td align="center">18</td><td align="center">514</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="479">8</a></td><td align="center">955</td></tr><tr>
+                                        <td align="left">15</td><td align="left">480</td><td align="left">Kolhapur</td><td align="left">कोल्हापूर</td><td align="center">34</td><td align="center">530</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="480">12</a></td><td align="center">1250</td></tr><tr>
+                                        <td align="left">16</td><td align="left">481</td><td align="left">Latur</td><td align="left">लातूर</td><td align="center">28</td><td align="center">524</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="481">10</a></td><td align="center">928</td></tr><tr>
+                                        <td align="left">17</td><td align="left">482</td><td align="left">Mumbai</td><td align="left">मुंबई</td><td align="center">23</td><td align="center">519</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="482"></a></td><td align="center"></td></tr><tr>
+                                        <td align="left">18</td><td align="left">483</td><td align="left">Mumbai Suburban</td><td align="left">मुंबई उपनगर</td><td align="center">22</td><td align="center">518</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="483">3</a></td><td align="center">86</td></tr><tr>
+                                        <td align="left">19</td><td align="left">484</td><td align="left">Nagpur</td><td align="left">नागपूर</td><td align="center">09</td><td align="center">505</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="484">14</a></td><td align="center">1991</td></tr><tr>
+                                        <td align="left">20</td><td align="left">485</td><td align="left">Nanded</td><td align="left">नांदेड</td><td align="center">15</td><td align="center">511</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="485">16</a></td><td align="center">1628</td></tr><tr>
+                                        <td align="left">21</td><td align="left">486</td><td align="left">Nandurbar</td><td align="left">नंदूरबार</td><td align="center">01</td><td align="center">497</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="486">6</a></td><td align="center">955</td></tr><tr>
+                                        <td align="left">22</td><td align="left">487</td><td align="left">Nashik</td><td align="left">नाशिक</td><td align="center">20</td><td align="center">516</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="487">15</a></td><td align="center">1981</td></tr><tr>
+                                        <td align="left">23</td><td align="left">488</td><td align="left">Dharashiv</td><td align="left">धाराशिव</td><td align="center">29</td><td align="center">525</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="488">8</a></td><td align="center">728</td></tr><tr>
+                                        <td align="left">24</td><td align="left">489</td><td align="left">Parbhani</td><td align="left">परभणी</td><td align="center">17</td><td align="center">513</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="489">9</a></td><td align="center">847</td></tr><tr>
+                                        <td align="left">25</td><td align="left">490</td><td align="left">Pune</td><td align="left">पुणे</td><td align="center">25</td><td align="center">521</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="490">14</a></td><td align="center">1952</td></tr><tr>
+                                        <td align="left">26</td><td align="left">491</td><td align="left">Raigad</td><td align="left">रायगड</td><td align="center">24</td><td align="center">520</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="491">15</a></td><td align="center">2119</td></tr><tr>
+                                        <td align="left">27</td><td align="left">492</td><td align="left">Ratnagiri</td><td align="left">रत्नागिरी</td><td align="center">32</td><td align="center">528</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="492">9</a></td><td align="center">1540</td></tr><tr>
+                                        <td align="left">28</td><td align="left">493</td><td align="left">Sangli</td><td align="left">सांगली</td><td align="center">35</td><td align="center">531</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="493">10</a></td><td align="center">765</td></tr><tr>
+                                        <td align="left">29</td><td align="left">494</td><td align="left">Satara</td><td align="left">सातारा</td><td align="center">31</td><td align="center">527</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="494">11</a></td><td align="center">1763</td></tr><tr>
+                                        <td align="left">30</td><td align="left">495</td><td align="left">Sindhudurg</td><td align="left">सिंधुदुर्ग</td><td align="center">33</td><td align="center">529</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="495">8</a></td><td align="center">761</td></tr><tr>
+                                        <td align="left">31</td><td align="left">496</td><td align="left">Solapur</td><td align="left">सोलापूर</td><td align="center">30</td><td align="center">526</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="496">11</a></td><td align="center">1155</td></tr><tr>
+                                        <td align="left">32</td><td align="left">497</td><td align="left">Thane</td><td align="left">ठाणे</td><td align="center">21</td><td align="center">517</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="497">7</a></td><td align="center">1002</td></tr><tr>
+                                        <td align="left">33</td><td align="left">498</td><td align="left">Wardha</td><td align="left">वर्धा</td><td align="center">08</td><td align="center">504</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="498">8</a></td><td align="center">1407</td></tr><tr>
+                                        <td align="left">34</td><td align="left">499</td><td align="left">Washim</td><td align="left">वाशिम</td><td align="center">06</td><td align="center">502</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="499">6</a></td><td align="center">809</td></tr><tr>
+                                        <td align="left">35</td><td align="left">500</td><td align="left">Yavatmal</td><td align="left">यवतमाळ</td><td align="center">14</td><td align="center">510</td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="500">16</a></td><td align="center">2122</td></tr><tr>
+                                        <td align="left">36</td><td align="left">665</td><td align="left">Palghar</td><td align="left">पालघर </td><td align="center"></td><td align="center"></td>
+                                        <td align="center"><a href="javascript:void(0);" class="talukalist" id="665">8</a></td><td align="center">1009</td></tr>                                           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+</div>
+</div>
+
+
+</div>
+
+
+
+<!-- END: Content-->
+<!-- BEGIN: Footer-->
+ ﻿ <footer class="ifooter3">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                © Copyright 2026, National Informatics Centre(NIC) All Rights Reserved.
+         </div>
+            <div class="col-sm-2">
+                <img class="" alt="100%x280" src="images/niclogo.png" height="30px">
+            </div>
+            <div class="col-sm-5">
+                Website designed, developed and hosted by NIC. <br>Site is maintaied by office of Settlement Commissioner and Director of Land Records, Pune
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- BEGIN: Vendor JS-->
+<script src="commonFile/vendors.min.js" type="text/javascript"></script>   
+<script src="commonFile/datatable/datatables.min.js" type="text/javascript"></script>
+<script src="commonFile/datatables/datatable-basic.min.js" type="text/javascript"></script>
+<!-- <script src="commonFile/datatables/custom_table.js" type="text/javascript"></script>-->
+<script src="commonFile/tabledit.min.js"></script>
+<script src="commonFile/forms/validation/form-validation.js" type="text/javascript"></script>
+
+<!-- <script src="commonFile/forms/validation/custom_validation.js" type="text/javascript"></script> -->
+<script src="commonFile/forms/validation/all_form_validation.js" type="text/javascript"></script>
+<script src="commonFile/forms/custom-file-input.min.js"></script>
+<script src="commonFile/forms/additional-methods.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
+ <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />-->
+
+<script>
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>
+</body>
+<div id="instok-extension-root" style="all: initial;"></div></html>

@@ -1,0 +1,111 @@
+{
+  "verified_at": "2026-10-30T15:37:02.934358+00:00",
+  "neon_database": "missing_configuration",
+  "neon_auth": "missing_configuration",
+  "gemini": "missing_configuration",
+  "private_neon_storage": "missing_configuration",
+  "whatsapp": "missing_configuration",
+  "missing_configuration": {
+    "neon_database": [
+      "DATABASE_URL"
+    ],
+    "neon_auth": [
+      "NEON_AUTH_URL",
+      "NEON_AUTH_JWKS_URL",
+      "NEON_AUTH_ISSUER",
+      "NEON_AUTH_AUDIENCE",
+      "NEON_AUTH_ORIGIN",
+      "SESSION_ENCRYPTION_KEY"
+    ],
+    "gemini": [
+      "GEMINI_API_KEY",
+      "GEMINI_MODEL"
+    ],
+    "private_neon_storage": [
+      "STORAGE_ENDPOINT",
+      "STORAGE_BUCKET",
+      "STORAGE_ACCESS_KEY",
+      "STORAGE_SECRET_KEY"
+    ],
+    "whatsapp": [
+      "WHATSAPP_APP_SECRET",
+      "WHATSAPP_VERIFY_TOKEN",
+      "WHATSAPP_ACCESS_TOKEN",
+      "WHATSAPP_PHONE_NUMBER_ID",
+      "WHATSAPP_API_VERSION"
+    ]
+  },
+  "external_messages_sent": 0,
+  "weather": {
+    "status": "live_fetch_verified",
+    "grid": [
+      20.421791,
+      76.780685
+    ],
+    "days": 16,
+    "village_assignment": null
+  },
+  "schemes": {
+    "status": "completed",
+    "documents": 2,
+    "eligibility_verified": false,
+    "sources": [
+      {
+        "source": "https://mahadbt.maharashtra.gov.in/Farmer/AgriLogin/AgriLogin",
+        "status": "retrieved"
+      },
+      {
+        "source": "https://gsda.maharashtra.gov.in/en-important-government-resolutions/",
+        "status": "retrieved"
+      }
+    ]
+  },
+  "msamb": {
+    "status": "completed",
+    "quotes": 0,
+    "availability": "unavailable",
+    "reason": "No dated quote with verified units could be parsed"
+  },
+  "groundwater_models": [
+    {
+      "status": "trained_and_evaluated_withheld",
+      "gates": {
+        "chronological": false,
+        "geographic": false
+      },
+      "report": "REAL_MODEL_EVALUATION.json"
+    },
+    {
+      "status": "trained_and_evaluated_withheld",
+      "gates": {
+        "chronological": false,
+        "geographic": false
+      },
+      "report": "RESIDUAL_MODEL_EVALUATION.json"
+    },
+    {
+      "status": "trained_and_evaluated_withheld",
+      "gates": {
+        "chronological": false,
+        "geographic": false
+      },
+      "report": "MULTIYEAR_MODEL_EVALUATION.json"
+    },
+    {
+      "status": "trained_and_evaluated_withheld",
+      "gates": {
+        "chronological": true,
+        "geographic": true
+      },
+      "report": "SEASONAL_MODEL_EVALUATION.json"
+    }
+  ],
+  "groundwater_model": {
+    "status": "trained_and_evaluated_withheld",
+    "gates": {
+      "chronological": true,
+      "geographic": true
+    },
+    "report": "SEASONAL_MODEL_EVALUATION.json"
+  }
+}

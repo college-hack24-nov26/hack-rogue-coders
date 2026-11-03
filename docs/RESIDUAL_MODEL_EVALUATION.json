@@ -1,0 +1,620 @@
+{
+  "feature_names": [
+    "level_t",
+    "level_t_minus_1",
+    "level_t_minus_3",
+    "level_t_minus_7",
+    "level_t_minus_14",
+    "level_t_minus_28",
+    "trend_7",
+    "season_sin",
+    "season_cos",
+    "latitude",
+    "longitude"
+  ],
+  "input_transform": "relative_lags_v1",
+  "prediction_transform": "delta_from_latest_v1",
+  "residual_weights": [
+    0.25,
+    0.75,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0.75
+  ],
+  "rows_read": 1088842,
+  "rejected_rows": 0,
+  "stations": 1450,
+  "approved": false,
+  "purpose": "research_evaluation_only",
+  "source": "https://nwdp.nwic.gov.in/dataset/ground-water-level-telemetry-daily-maharashtra-gw",
+  "source_file_sha256": "ce6e4f31f351ffd9c149659eaea6f84781add0a0d013ea950a03deae630884ec",
+  "sha256": "a83c8c12550753a82028315591d5a46effa90c516d1c45eb21cb7c33a7db623f",
+  "artifact": "artifacts\\nwic-residual\\model.json",
+  "horizons": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "issue_time_features": true,
+  "availability_verified": false,
+  "source_sign_verified": false,
+  "geographic_holdout": [
+    "466",
+    "470",
+    "474",
+    "478",
+    "484",
+    "488",
+    "492",
+    "496",
+    "500"
+  ],
+  "purge_days": 15,
+  "units": "original_source_signed_meter",
+  "daily_aggregation": "Last recorded six-hourly value at end of Asia/Kolkata day; no labels filled",
+  "samples": 128716,
+  "training_samples": 29841,
+  "calibration_samples": 6186,
+  "training_period": [
+    "2026-01-29",
+    "2026-05-07"
+  ],
+  "evaluation_start": "2026-07-31",
+  "partitions": {
+    "train": {
+      "samples": 29841,
+      "start": "2026-01-29",
+      "end": "2026-05-07"
+    },
+    "tuning": {
+      "samples": 5172,
+      "start": "2026-05-23",
+      "end": "2026-06-10"
+    },
+    "calibration": {
+      "samples": 6186,
+      "start": "2026-06-26",
+      "end": "2026-07-15"
+    },
+    "chronological": {
+      "samples": 23584,
+      "start": "2026-07-31",
+      "end": "2026-09-14"
+    },
+    "geographic": {
+      "samples": 14182,
+      "start": "2026-07-31",
+      "end": "2026-09-14"
+    }
+  },
+  "selection": {
+    "method": "Minimum MAE on separate tuning dates only; no refit on calibration or test",
+    "candidates": [
+      {
+        "objective": "reg:absoluteerror",
+        "n_estimators": 100,
+        "max_depth": 3,
+        "residual_weights": [
+          0,
+          0.5,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "tuning_mae": 0.7323374789147507
+      },
+      {
+        "objective": "reg:absoluteerror",
+        "n_estimators": 180,
+        "max_depth": 4,
+        "residual_weights": [
+          0.25,
+          0.75,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0.75
+        ],
+        "tuning_mae": 0.7221678052621073
+      },
+      {
+        "objective": "reg:pseudohubererror",
+        "n_estimators": 100,
+        "max_depth": 3,
+        "residual_weights": [
+          0,
+          0.25,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0.75,
+          0.75
+        ],
+        "tuning_mae": 0.726358862231593
+      }
+    ],
+    "selected": {
+      "objective": "reg:absoluteerror",
+      "n_estimators": 180,
+      "max_depth": 4,
+      "residual_weights": [
+        0.25,
+        0.75,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0.75
+      ],
+      "tuning_mae": 0.7221678052621073
+    },
+    "prior_holdout_exposure": "The earlier absolute-level experiment used the same final dates/districts; a new prospective evaluation is required before operational release"
+  },
+  "evaluations": {
+    "chronological": {
+      "samples": 23584,
+      "metrics": {
+        "1": {
+          "mae": 0.3426704713197909,
+          "rmse": 3.857492805064073,
+          "persistence_mae": 0.3422623493220105,
+          "coverage": 0.8995505427408412,
+          "interval_width": 0.888013944029808,
+          "persistence_skill": -0.0011924244620795665
+        },
+        "2": {
+          "mae": 0.47732155187406633,
+          "rmse": 4.0692883409869305,
+          "persistence_mae": 0.4715361007485473,
+          "coverage": 0.8912822252374492,
+          "interval_width": 1.2876444747671485,
+          "persistence_skill": -0.012269370502777655
+        },
+        "3": {
+          "mae": 0.5827418415630724,
+          "rmse": 4.259824858092661,
+          "persistence_mae": 0.5826102473541337,
+          "coverage": 0.9009921981004071,
+          "interval_width": 1.7629552446305752,
+          "persistence_skill": -0.0002258700555584081
+        },
+        "4": {
+          "mae": 0.6829747998757816,
+          "rmse": 4.218176012161384,
+          "persistence_mae": 0.6687895594971265,
+          "coverage": 0.8962432157394844,
+          "interval_width": 2.0724935829639435,
+          "persistence_skill": -0.021210319714502157
+        },
+        "5": {
+          "mae": 0.7530747131682799,
+          "rmse": 3.8808500389141325,
+          "persistence_mae": 0.7312429938975562,
+          "coverage": 0.8941231343283582,
+          "interval_width": 2.3709301352500916,
+          "persistence_skill": -0.029855628639065213
+        },
+        "6": {
+          "mae": 0.8402557213633309,
+          "rmse": 4.6531910593033805,
+          "persistence_mae": 0.8322559350100377,
+          "coverage": 0.8889925373134329,
+          "interval_width": 2.525811046361923,
+          "persistence_skill": -0.009612170988239077
+        },
+        "7": {
+          "mae": 0.892888986478087,
+          "rmse": 4.293777745698522,
+          "persistence_mae": 0.8856346600085909,
+          "coverage": 0.8890349389416553,
+          "interval_width": 2.807110160589218,
+          "persistence_skill": -0.008191104974850205
+        },
+        "8": {
+          "mae": 0.9790811548009934,
+          "rmse": 4.426192045637873,
+          "persistence_mae": 0.9589346895738994,
+          "coverage": 0.8853459972862958,
+          "interval_width": 3.1145787574350834,
+          "persistence_skill": -0.02100921516985288
+        },
+        "9": {
+          "mae": 1.0563228801429851,
+          "rmse": 4.737986453812958,
+          "persistence_mae": 1.0439563543272807,
+          "coverage": 0.8820810719131614,
+          "interval_width": 3.2999035716056824,
+          "persistence_skill": -0.011845826470085807
+        },
+        "10": {
+          "mae": 1.1169486966387216,
+          "rmse": 4.452053292887727,
+          "persistence_mae": 1.1004134000999812,
+          "coverage": 0.885685210312076,
+          "interval_width": 3.6574115455150604,
+          "persistence_skill": -0.015026440551558329
+        },
+        "11": {
+          "mae": 1.209706190995464,
+          "rmse": 4.951477271043911,
+          "persistence_mae": 1.1866688326063284,
+          "coverage": 0.8842011533242876,
+          "interval_width": 3.8928462266921997,
+          "persistence_skill": -0.01941346882646089
+        },
+        "12": {
+          "mae": 1.271857281370157,
+          "rmse": 5.079293310691082,
+          "persistence_mae": 1.2637118220574632,
+          "coverage": 0.8824626865671642,
+          "interval_width": 4.052595257759094,
+          "persistence_skill": -0.006445662033478516
+        },
+        "13": {
+          "mae": 1.336749062183809,
+          "rmse": 5.1656081794659094,
+          "persistence_mae": 1.3175907652111976,
+          "coverage": 0.8829715061058344,
+          "interval_width": 4.367701351642609,
+          "persistence_skill": -0.01454040015948399
+        },
+        "14": {
+          "mae": 1.4113470317776997,
+          "rmse": 5.452839779648399,
+          "persistence_mae": 1.3936296941259672,
+          "coverage": 0.8860244233378561,
+          "interval_width": 4.705865859985352,
+          "persistence_skill": -0.012713088510103887
+        },
+        "15": {
+          "mae": 1.458324799985064,
+          "rmse": 5.2380334559472805,
+          "persistence_mae": 1.4416455034945665,
+          "coverage": 0.8855580054274084,
+          "interval_width": 4.947300553321838,
+          "persistence_skill": -0.011569624051173788
+        }
+      }
+    },
+    "geographic": {
+      "samples": 14182,
+      "metrics": {
+        "1": {
+          "mae": 0.39896787076928053,
+          "rmse": 2.335643344529838,
+          "persistence_mae": 0.3966678222217125,
+          "coverage": 0.8893668029897053,
+          "interval_width": 0.888013944029808,
+          "persistence_skill": -0.005798424824795756
+        },
+        "2": {
+          "mae": 0.5745143237304428,
+          "rmse": 2.8835975978861383,
+          "persistence_mae": 0.5704693281291516,
+          "coverage": 0.8790720631786771,
+          "interval_width": 1.2876444747671485,
+          "persistence_skill": -0.007090645196572876
+        },
+        "3": {
+          "mae": 0.7167978279145549,
+          "rmse": 3.3230847659969265,
+          "persistence_mae": 0.7094843485506238,
+          "coverage": 0.8826681709208857,
+          "interval_width": 1.7629552446305752,
+          "persistence_skill": -0.010308161665400384
+        },
+        "4": {
+          "mae": 0.8604152953819858,
+          "rmse": 3.692571988853048,
+          "persistence_mae": 0.8425936398288532,
+          "coverage": 0.8703990974474686,
+          "interval_width": 2.0724935829639435,
+          "persistence_skill": -0.02115094953333907
+        },
+        "5": {
+          "mae": 0.9559539254341346,
+          "rmse": 3.8448802303400114,
+          "persistence_mae": 0.9294818118720262,
+          "coverage": 0.868213228035538,
+          "interval_width": 2.3709301352500916,
+          "persistence_skill": -0.028480507336439587
+        },
+        "6": {
+          "mae": 1.0285720337953326,
+          "rmse": 3.9865360324367503,
+          "persistence_mae": 1.0195530255918395,
+          "coverage": 0.8613735721336906,
+          "interval_width": 2.525811046361923,
+          "persistence_skill": -0.00884604133096234
+        },
+        "7": {
+          "mae": 1.1232452677526654,
+          "rmse": 4.168097356477176,
+          "persistence_mae": 1.1094888586467158,
+          "coverage": 0.8618671555492878,
+          "interval_width": 2.807110160589218,
+          "persistence_skill": -0.012398870884317681
+        },
+        "8": {
+          "mae": 1.2298205700377935,
+          "rmse": 4.363461396024068,
+          "persistence_mae": 1.208070789250524,
+          "coverage": 0.8577069524749683,
+          "interval_width": 3.1145787574350834,
+          "persistence_skill": -0.018003730394609452
+        },
+        "9": {
+          "mae": 1.3184267047749554,
+          "rmse": 4.599676942395902,
+          "persistence_mae": 1.3041486371369768,
+          "coverage": 0.8548864758144127,
+          "interval_width": 3.2999035716056824,
+          "persistence_skill": -0.010948190437344296
+        },
+        "10": {
+          "mae": 1.4089747132686852,
+          "rmse": 4.775694599893032,
+          "persistence_mae": 1.3922332497216428,
+          "coverage": 0.8561556903116627,
+          "interval_width": 3.6574115455150604,
+          "persistence_skill": -0.012024898522133176
+        },
+        "11": {
+          "mae": 1.4948903706543728,
+          "rmse": 4.943073313975578,
+          "persistence_mae": 1.473126919309557,
+          "coverage": 0.8558031307290932,
+          "interval_width": 3.8928462266921997,
+          "persistence_skill": -0.014773643098597411
+        },
+        "12": {
+          "mae": 1.5658759285004096,
+          "rmse": 5.127467024849041,
+          "persistence_mae": 1.5508603837684916,
+          "coverage": 0.8555915949795515,
+          "interval_width": 4.052595257759094,
+          "persistence_skill": -0.009682073827581572
+        },
+        "13": {
+          "mae": 1.62064458556689,
+          "rmse": 5.201983943818352,
+          "persistence_mae": 1.6154960553497895,
+          "coverage": 0.8568608094768015,
+          "interval_width": 4.367701351642609,
+          "persistence_skill": -0.003186965514431872
+        },
+        "14": {
+          "mae": 1.6796152163293203,
+          "rmse": 5.2665056087301325,
+          "persistence_mae": 1.6647620293145107,
+          "coverage": 0.8592582146382739,
+          "interval_width": 4.705865859985352,
+          "persistence_skill": -0.008922108237251036
+        },
+        "15": {
+          "mae": 1.761191090062889,
+          "rmse": 5.406045055334846,
+          "persistence_mae": 1.7343981201064245,
+          "coverage": 0.8584120716401071,
+          "interval_width": 4.947300553321838,
+          "persistence_skill": -0.015447992964164659
+        }
+      }
+    }
+  },
+  "metrics": {
+    "1": {
+      "mae": 0.39896787076928053,
+      "rmse": 2.335643344529838,
+      "persistence_mae": 0.3966678222217125,
+      "coverage": 0.8893668029897053,
+      "interval_width": 0.888013944029808,
+      "persistence_skill": -0.005798424824795756
+    },
+    "2": {
+      "mae": 0.5745143237304428,
+      "rmse": 2.8835975978861383,
+      "persistence_mae": 0.5704693281291516,
+      "coverage": 0.8790720631786771,
+      "interval_width": 1.2876444747671485,
+      "persistence_skill": -0.007090645196572876
+    },
+    "3": {
+      "mae": 0.7167978279145549,
+      "rmse": 3.3230847659969265,
+      "persistence_mae": 0.7094843485506238,
+      "coverage": 0.8826681709208857,
+      "interval_width": 1.7629552446305752,
+      "persistence_skill": -0.010308161665400384
+    },
+    "4": {
+      "mae": 0.8604152953819858,
+      "rmse": 3.692571988853048,
+      "persistence_mae": 0.8425936398288532,
+      "coverage": 0.8703990974474686,
+      "interval_width": 2.0724935829639435,
+      "persistence_skill": -0.02115094953333907
+    },
+    "5": {
+      "mae": 0.9559539254341346,
+      "rmse": 3.8448802303400114,
+      "persistence_mae": 0.9294818118720262,
+      "coverage": 0.868213228035538,
+      "interval_width": 2.3709301352500916,
+      "persistence_skill": -0.028480507336439587
+    },
+    "6": {
+      "mae": 1.0285720337953326,
+      "rmse": 3.9865360324367503,
+      "persistence_mae": 1.0195530255918395,
+      "coverage": 0.8613735721336906,
+      "interval_width": 2.525811046361923,
+      "persistence_skill": -0.00884604133096234
+    },
+    "7": {
+      "mae": 1.1232452677526654,
+      "rmse": 4.168097356477176,
+      "persistence_mae": 1.1094888586467158,
+      "coverage": 0.8618671555492878,
+      "interval_width": 2.807110160589218,
+      "persistence_skill": -0.012398870884317681
+    },
+    "8": {
+      "mae": 1.2298205700377935,
+      "rmse": 4.363461396024068,
+      "persistence_mae": 1.208070789250524,
+      "coverage": 0.8577069524749683,
+      "interval_width": 3.1145787574350834,
+      "persistence_skill": -0.018003730394609452
+    },
+    "9": {
+      "mae": 1.3184267047749554,
+      "rmse": 4.599676942395902,
+      "persistence_mae": 1.3041486371369768,
+      "coverage": 0.8548864758144127,
+      "interval_width": 3.2999035716056824,
+      "persistence_skill": -0.010948190437344296
+    },
+    "10": {
+      "mae": 1.4089747132686852,
+      "rmse": 4.775694599893032,
+      "persistence_mae": 1.3922332497216428,
+      "coverage": 0.8561556903116627,
+      "interval_width": 3.6574115455150604,
+      "persistence_skill": -0.012024898522133176
+    },
+    "11": {
+      "mae": 1.4948903706543728,
+      "rmse": 4.943073313975578,
+      "persistence_mae": 1.473126919309557,
+      "coverage": 0.8558031307290932,
+      "interval_width": 3.8928462266921997,
+      "persistence_skill": -0.014773643098597411
+    },
+    "12": {
+      "mae": 1.5658759285004096,
+      "rmse": 5.127467024849041,
+      "persistence_mae": 1.5508603837684916,
+      "coverage": 0.8555915949795515,
+      "interval_width": 4.052595257759094,
+      "persistence_skill": -0.009682073827581572
+    },
+    "13": {
+      "mae": 1.62064458556689,
+      "rmse": 5.201983943818352,
+      "persistence_mae": 1.6154960553497895,
+      "coverage": 0.8568608094768015,
+      "interval_width": 4.367701351642609,
+      "persistence_skill": -0.003186965514431872
+    },
+    "14": {
+      "mae": 1.6796152163293203,
+      "rmse": 5.2665056087301325,
+      "persistence_mae": 1.6647620293145107,
+      "coverage": 0.8592582146382739,
+      "interval_width": 4.705865859985352,
+      "persistence_skill": -0.008922108237251036
+    },
+    "15": {
+      "mae": 1.761191090062889,
+      "rmse": 5.406045055334846,
+      "persistence_mae": 1.7343981201064245,
+      "coverage": 0.8584120716401071,
+      "interval_width": 4.947300553321838,
+      "persistence_skill": -0.015447992964164659
+    }
+  },
+  "gates": {
+    "chronological": false,
+    "geographic": false
+  },
+  "calibration_abs_error_quantile": [
+    0.444006972014904,
+    0.6438222373835742,
+    0.8814776223152876,
+    1.0362467914819717,
+    1.1854650676250458,
+    1.2629055231809616,
+    1.403555080294609,
+    1.5572893787175417,
+    1.6499517858028412,
+    1.8287057727575302,
+    1.9464231133460999,
+    2.026297628879547,
+    2.1838506758213043,
+    2.352932929992676,
+    2.473650276660919
+  ],
+  "uncertainty_target": 0.9,
+  "release_blockers": [
+    "Source sign convention requires authoritative review",
+    "Historical source publication availability is not supplied",
+    "Derived station identity requires reviewed source crosswalk",
+    "No reviewed village/aquifer mappings",
+    "Fresh prospective evaluation and human release review required",
+    "chronological failed persistence/coverage gates",
+    "geographic failed persistence/coverage gates"
+  ],
+  "feature_seconds": 0.43271609998191707,
+  "total_seconds": 19.73040420000325,
+  "shortage_event_metrics": null,
+  "selection_and_evaluation_seconds": 19.29768730001524,
+  "timing_note": "Selection/evaluation includes all candidate fits, tuning, calibration and final scoring. Feature time may load the existing cache."
+}

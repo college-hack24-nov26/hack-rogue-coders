@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2022","lib":["DOM","DOM.Iterable","ES2022"],"module":"ESNext","moduleResolution":"bundler","jsx":"react-jsx","strict":true,"skipLibCheck":true,"noEmit":true,"allowSyntheticDefaultImports":true},"include":["apps/**/*.tsx","packages/**/*.ts","packages/**/*.tsx"],"exclude":["node_modules"]}

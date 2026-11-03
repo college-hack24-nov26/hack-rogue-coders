@@ -1,0 +1,90 @@
+{
+  "providers": {
+    "neon_database": {
+      "status": "missing_configuration",
+      "missing_env": [
+        "DATABASE_URL"
+      ],
+      "required_env": [
+        "DATABASE_URL"
+      ]
+    },
+    "neon_auth": {
+      "status": "missing_configuration",
+      "missing_env": [
+        "NEON_AUTH_JWKS_URL",
+        "NEON_AUTH_ISSUER",
+        "NEON_AUTH_AUDIENCE",
+        "NEON_AUTH_ORIGIN",
+        "SESSION_ENCRYPTION_KEY"
+      ],
+      "required_env": [
+        "NEON_AUTH_URL",
+        "NEON_AUTH_JWKS_URL",
+        "NEON_AUTH_ISSUER",
+        "NEON_AUTH_AUDIENCE",
+        "NEON_AUTH_ORIGIN",
+        "SESSION_ENCRYPTION_KEY"
+      ]
+    },
+    "gemini": {
+      "status": "missing_configuration",
+      "missing_env": [
+        "GEMINI_API_KEY",
+        "GEMINI_MODEL"
+      ],
+      "required_env": [
+        "GEMINI_API_KEY",
+        "GEMINI_MODEL"
+      ]
+    },
+    "private_neon_storage": {
+      "status": "missing_configuration",
+      "missing_env": [
+        "STORAGE_ENDPOINT",
+        "STORAGE_BUCKET",
+        "STORAGE_ACCESS_KEY",
+        "STORAGE_SECRET_KEY"
+      ],
+      "required_env": [
+        "STORAGE_ENDPOINT",
+        "STORAGE_BUCKET",
+        "STORAGE_ACCESS_KEY",
+        "STORAGE_SECRET_KEY"
+      ]
+    },
+    "whatsapp": {
+      "status": "missing_configuration",
+      "missing_env": [
+        "WHATSAPP_APP_SECRET",
+        "WHATSAPP_VERIFY_TOKEN",
+        "WHATSAPP_ACCESS_TOKEN",
+        "WHATSAPP_PHONE_NUMBER_ID",
+        "WHATSAPP_API_VERSION"
+      ],
+      "required_env": [
+        "WHATSAPP_APP_SECRET",
+        "WHATSAPP_VERIFY_TOKEN",
+        "WHATSAPP_ACCESS_TOKEN",
+        "WHATSAPP_PHONE_NUMBER_ID",
+        "WHATSAPP_API_VERSION"
+      ]
+    }
+  },
+  "modes": {
+    "environment": "development",
+    "auth": "local",
+    "storage": "local",
+    "external_sending_enabled": false
+  },
+  "local_services": {
+    "database": "postgresql",
+    "photos": "local"
+  },
+  "configuration_complete": false,
+  "live_verified": false,
+  "next_step": "Set the listed variables in the local .env, then run python -m scripts.check_readiness --live. Never paste credentials into chat.",
+  "checked_at": "2026-10-30T17:39:03.293056+00:00",
+  "read_only_probes_requested": true,
+  "external_messages_sent": 0
+}

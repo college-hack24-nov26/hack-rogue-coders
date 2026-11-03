@@ -1,0 +1,36 @@
+[
+  {
+    "records": 1000,
+    "workload": "synthetic unavailable-snapshot publication",
+    "download_seconds": null,
+    "feature_seconds": null,
+    "model_inference_seconds": null,
+    "process_and_flush_seconds": 9.200744400004623,
+    "commit_seconds": 0.017296699996222742,
+    "total_seconds": 9.218041100000846,
+    "result": {
+      "status": "completed_with_unavailable_outputs",
+      "villages": 1000,
+      "supported": 0,
+      "total_seconds": 3.1622735999990255,
+      "training_performed": false
+    }
+  },
+  {
+    "records": 50000,
+    "workload": "synthetic unavailable-snapshot publication",
+    "download_seconds": null,
+    "feature_seconds": null,
+    "model_inference_seconds": null,
+    "process_and_flush_seconds": 56.81169360000058,
+    "commit_seconds": 0.05460560000210535,
+    "total_seconds": 56.866299200002686,
+    "result": {
+      "status": "completed_with_unavailable_outputs",
+      "villages": 50000,
+      "supported": 0,
+      "total_seconds": 56.811649700001,
+      "training_performed": false
+    }
+  }
+]
