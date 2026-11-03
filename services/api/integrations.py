@@ -12,8 +12,8 @@ def storage():
     return boto3.client('s3',endpoint_url=settings.storage_endpoint,aws_access_key_id=settings.storage_access_key,aws_secret_access_key=settings.storage_secret_key)
 
 def evidence_fallback(body,evidence):
-    if body.language=='mr': text='पुराव्यावर आधारित उत्तर: मान्यताप्राप्त अंदाज उपलब्ध नसल्यास पाण्याची टंचाई किंवा भूजलपातळी सांगता येत नाही. खालील नोंदींमध्ये स्रोत आणि गृहितके तपासा. हा सरकारी आदेश नाही.'
-    else: text='Evidence-only response: missing approved forecasts or supply evidence cannot establish shortage or groundwater depth. Review the dated records and assumptions below. This is not a government instruction.'
+    if body.language=='mr': text='पुराव्यावर आधारित उत्तर: उपलब्ध पाणीसाठा, पाणीपुरवठा आणि मागणी यांची अद्ययावत माहिती नसल्यास पाणी पुरेल का हे सांगता येत नाही. खालील नोंदींमधील स्रोत आणि गृहितके तपासा. हा सरकारी आदेश नाही.'
+    else: text='Evidence-only response: village water sufficiency requires current usable storage, source deliveries and demand records. Review the dated supply scenarios and their assumptions below. This is not a government instruction.'
     return {'mode':'evidence_only','text':text,'evidence':evidence,'citations':[{'source':d['source'],'source_date':d['source_date'],'record_id':d['record_id']} for d in evidence.get('official_documents',[])],'model':None,'latency_ms':0,'status':'provider_unavailable_or_no_consent'}
 
 async def explain(body,evidence):

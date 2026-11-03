@@ -63,6 +63,8 @@ class SupplyAllocation(Strict):
     valid_until:date
     source_evidence:str=Field(min_length=5)
     assumptions:str=Field(min_length=10)
+    storage_partition_verified:bool=False
+    net_supply_after_losses:bool=False
 class Ingest(Strict):
     source:Literal['weather','msamb','agmarknet','schemes','villages']
     village_id:str|None=None
