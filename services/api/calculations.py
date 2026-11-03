@@ -21,11 +21,14 @@ def budget(demand, inflows=None, opening=0, capacity=None, delivery_limit=None):
     if inflows is None:
         return dict(daily_demand_litres=demand, demand_litres=sum(demand), unmet_litres=None, supply_status='unavailable', reason='Verified sector-matched supply inputs missing')
     if len(inflows) != len(demand) or any(x < 0 or not math.isfinite(x) for x in inflows): raise ValueError('Invalid inflows')
+    if not math.isfinite(opening) or opening < 0 or any(v is not None and (not math.isfinite(v) or v < 0) for v in [capacity, delivery_limit]):raise ValueError('Invalid storage or delivery limit')
+    if capacity is not None and opening > capacity:raise ValueError('Opening storage exceeds capacity')
     stored, days = opening, []
     for need, incoming in zip(demand, inflows):
         available = stored + incoming
-        if capacity is not None: available = min(capacity, available)
         delivered = min(need, available, delivery_limit if delivery_limit is not None else available)
         stored = available - delivered
-        days.append(dict(demand_litres=need, inflow_litres=incoming, delivered_litres=delivered, unmet_litres=need-delivered, closing_litres=stored))
+        overflow = max(0, stored - capacity) if capacity is not None else 0
+        if capacity is not None:stored = min(capacity, stored)
+        days.append(dict(demand_litres=need, inflow_litres=incoming, delivered_litres=delivered, unmet_litres=need-delivered, closing_litres=stored, overflow_litres=overflow))
     return dict(days=days, demand_litres=sum(demand), unmet_litres=sum(d['unmet_litres'] for d in days), supply_status='scenario')
