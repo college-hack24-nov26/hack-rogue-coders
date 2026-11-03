@@ -18,5 +18,7 @@ web-processes.json
 work/
 lan-dist/
 .txt
+data/water/.sync.lock
+data/water/*.tmp
 .env.*
 !.env.example

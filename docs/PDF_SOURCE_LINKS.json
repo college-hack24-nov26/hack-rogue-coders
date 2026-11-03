@@ -1,0 +1,110 @@
+{
+  "checked_on": "2026-11-03",
+  "checks": "HTTP response and PDF signature only; not a full content audit",
+  "pdfs": [
+    {
+      "name": "Maharashtra weekly tanker report - 2 November 2026",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3347665597cbfaef834886adbb848011f/uploads/2026/11/20261103938485333.pdf",
+      "note": "District counts; no village delivered litres.",
+      "status": 206,
+      "final_url": "https://cdnbbsr.s3waas.gov.in/s3347665597cbfaef834886adbb848011f/uploads/2026/11/20261103938485333.pdf",
+      "pdf_signature": true
+    },
+    {
+      "name": "Maharashtra weekly tanker report - 26 October 2026",
+      "url": "https://cdnbbsr.s3waas.gov.in/s3347665597cbfaef834886adbb848011f/uploads/2026/10/202610291291184904.pdf",
+      "note": "Earlier report, retained as historical reference.",
+      "status": 206,
+      "final_url": "https://cdnbbsr.s3waas.gov.in/s3347665597cbfaef834886adbb848011f/uploads/2026/10/202610291291184904.pdf",
+      "pdf_signature": true
+    },
+    {
+      "name": "Report on 20th Livestock Census 2019 - Maharashtra State",
+      "url": "https://cdnbbsr.s3waas.gov.in/s369dafe8b58066478aea48f3d0f384820/uploads/2024/02/202402131737819886.pdf",
+      "note": "2019 assessment; not a current village-demand input.",
+      "status": 206,
+      "final_url": "https://cdnbbsr.s3waas.gov.in/s369dafe8b58066478aea48f3d0f384820/uploads/2024/02/202402131737819886.pdf",
+      "pdf_signature": true
+    },
+    {
+      "name": "Jal Jeevan Mission - Operational Guidelines",
+      "url": "https://jaljeevanmission.gov.in/sites/default/files/guideline/JJM_Operational_Guidelines.pdf",
+      "note": "Planning guidance, not observed supply.",
+      "status": 206,
+      "final_url": "https://jaljeevanmission.gov.in/sites/default/files/guideline/JJM_Operational_Guidelines.pdf",
+      "pdf_signature": true
+    },
+    {
+      "name": "Margdarshika for Gram Panchayat and Paani Samiti",
+      "url": "https://jalshakti-ddws.gov.in/sites/default/files/Margdarshika_for_Gram_Panchayat_and_Paani_Samiti.pdf",
+      "note": "Village water-system and management guidance.",
+      "status": 404,
+      "final_url": "https://www.jalshakti-ddws.gov.in/sites/default/files/Margdarshika_for_Gram_Panchayat_and_Paani_Samiti.pdf",
+      "pdf_signature": false
+    },
+    {
+      "name": "Remote Sensing and GIS Based Mapping for Water Supply and Sanitation (WSS) using High Resolution Satellite Data",
+      "url": "https://nceg.gov.in/assets/pdf/WSS.pdf",
+      "note": "Case study; no public pipeline GIS dataset verified.",
+      "retrieval_error": "ConnectError"
+    },
+    {
+      "name": "Manual on Water Supply and Treatment Systems (Drink from Tap) - Part B: Operation and Maintenance, March 2024",
+      "url": "https://mohua.gov.in/upload/uploadfiles/files/Part-B-Manual-Operation-and-Maintenance%285%29.pdf",
+      "note": "Distribution systems and operational methodology; not a DMA readings feed.",
+      "status": 404,
+      "final_url": "https://www.mohua.gov.in/upload/uploadfiles/files/Part-B-Manual-Operation-and-Maintenance%285%29.pdf",
+      "pdf_signature": false
+    },
+    {
+      "name": "IMD API Documentation (legacy document)",
+      "url": "https://mausam.imd.gov.in/imd_latest/contents/api.pdf",
+      "note": "Older endpoint reference; current gateway requires authentication.",
+      "status": 404,
+      "final_url": "https://mausam.imd.gov.in/imd_latest/contents/api.pdf",
+      "pdf_signature": false
+    },
+    {
+      "name": "Maharashtra LGD Web Services documentation",
+      "url": "https://mahavillages.mahabhumi.gov.in/pdf/LGD%20WebServices.pdf",
+      "note": "Official village-directory interface documentation.",
+      "status": 206,
+      "final_url": "https://mahavillages.mahabhumi.gov.in/pdf/LGD%20WebServices.pdf",
+      "pdf_signature": true
+    },
+    {
+      "name": "Dynamic Ground Water Resources of Maharashtra 2024",
+      "url": "https://www.cgwb.gov.in/cgwbpnm/public/uploads/documents/17482445781522785056file.pdf",
+      "note": "2024 assessment; a newer 2025 publication is listed separately.",
+      "retrieval_error": "ConnectError"
+    },
+    {
+      "name": "National Compilation on Dynamic Ground Water Resources of India 2024",
+      "url": "https://gsda.maharashtra.gov.in/wp-content/uploads/2025/04/National-GWRE-2024.pdf",
+      "note": "National annual assessment; not live observations.",
+      "status": 206,
+      "final_url": "https://gsda.maharashtra.gov.in/wp-content/uploads/2025/04/National-GWRE-2024.pdf",
+      "pdf_signature": true
+    },
+    {
+      "name": "Dynamic Groundwater Resources of Maharashtra 2023 (historical reference)",
+      "url": "https://www.gsda.maharashtra.gov.in/wp-content/uploads/2025/02/GWRE-State-Report-2022-23_compressed.pdf",
+      "note": "Superseded assessment; not selected as the latest prediction input.",
+      "retrieval_error": "ConnectError"
+    },
+    {
+      "name": "Margdarshika for Gram Panchayat and Paani Samiti - English, 2020",
+      "url": "https://jaljeevanmission.gov.in/sites/default/files/guideline/Margdarshika_for_Gram_Panchayat_and_Paani_Samiti.pdf",
+      "note": "Working replacement for the older DDWS URL; guidance only.",
+      "status": 206,
+      "pdf_signature": true
+    },
+    {
+      "name": "Technical and Expert Committee Report on Measuring and Monitoring Water Service Delivery, 2021",
+      "url": "https://jaljeevanmission.gov.in/sites/default/files/guideline/technical-expert-committee-report-on-measuring-and-monitoring.pdf",
+      "note": "Water-service measurement guidance; not an operational readings dataset.",
+      "status": 206,
+      "pdf_signature": true
+    }
+  ]
+}

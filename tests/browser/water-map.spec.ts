@@ -1,0 +1,98 @@
+import {test,expect} from '@playwright/test';
+import {existsSync} from 'node:fs';
+
+test('water atlas selects a village, distinguishes connections and exposes dated downloads',async({page})=>{
+ const point={type:'Feature',id:'TEST-STATION',geometry:{type:'Point',coordinates:[74.4,18.2]},properties:{id:'TEST-STATION',name:'TEST monitoring well',kind:'groundwater',district:'TEST district',agency:'TEST ONLY',relationship:'district_context',freshness:'recent',observed_at:'2026-11-02T18:00:00+05:30',source_url:'https://nwdp.nwic.gov.in',measurements:[{label:'Groundwater level (meter)',value:-5.2,units:'meter',observed_at:'2026-11-02T18:00:00+05:30'}]}};
+ const pipe={type:'Feature',id:'TEST-PIPE',geometry:{type:'LineString',coordinates:[[74.39,18.19],[74.4,18.2],[74.42,18.21]]},properties:{id:'TEST-PIPE',name:'TEST reviewed pipeline',kind:'pipeline',relationship:'reviewed_connection',freshness:'undated',agency:'TEST ONLY',measurements:[],source_url:'https://nwdp.nwic.gov.in'}};
+ await page.route('**/api/v1/water-data/catalogue',r=>r.fulfill({json:{station_count:1,districts:['TEST district'],updated_at:'2026-11-03T06:00:00Z',resources:[{id:'TEST-DATA',name:'TEST training resource',title:'TEST data',kind:'groundwater',agency:'TEST ONLY',role:'history',period_start:2021,period_end:2025,access_status:'api_verified',record_count:10,url:'https://nwdp.nwic.gov.in/test.csv',api_url:'https://nwdp.nwic.gov.in/api/3/action/datastore_search?resource_id=TEST',catalogue_url:'https://nwdp.nwic.gov.in'}]}}));
+ await page.route('**/api/v1/water-data/map?*',r=>r.fulfill({json:{type:'FeatureCollection',features:[point],total:1}}));
+ await page.route('**/api/v1/villages/TEST-E2E/water-map',r=>r.fulfill({json:{type:'FeatureCollection',features:[point,pipe],village:{id:'TEST-E2E',name:'TEST FIXTURE VILLAGE',district:'TEST district',taluka:'TEST taluka',centre:[74.4,18.2],location_status:'reviewed'},linked_count:1,context_count:1,pipelines_available:true,message:'TEST recorded connection and district context'}}));
+ await page.goto('http://localhost:5183');
+ await page.getByLabel('API address').fill('http://127.0.0.1:8011');
+ await page.getByLabel('Email',{exact:true}).fill('admin@fixture.test');
+ await page.getByLabel('Password',{exact:true}).fill('fixture-password-123');
+ await page.getByRole('button',{name:'Sign in →',exact:true}).click();
+ await page.getByRole('button',{name:'Maps',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Follow the water.'})).toBeVisible();
+ await expect(page.getByRole('region',{name:'Interactive Maharashtra water sources map'})).toBeVisible();
+ await page.getByLabel('Find your village').fill('TEST FIXTURE');
+ await page.getByRole('button',{name:'Search villages',exact:true}).click();
+ await page.getByLabel('Map village').selectOption('TEST-E2E');
+ await expect(page.getByText('TEST recorded connection and district context')).toBeVisible();
+ await expect(page.getByRole('button',{name:/TEST reviewed pipeline/})).toBeVisible();
+ await page.getByLabel('Verified village connections only').check();
+ await expect(page.getByRole('button',{name:/TEST monitoring well/})).toHaveCount(0);
+ await page.getByRole('button',{name:/TEST reviewed pipeline/}).click();
+ await expect(page.locator('.atlas-source-details').getByText('Verified village connection')).toBeVisible();
+ await page.screenshot({path:'work/water-map-browser.png',fullPage:true});
+ await page.getByRole('tab',{name:/Live & training data/}).click();
+ await expect(page.getByText('TEST training resource',{exact:true})).toBeVisible();
+ await expect(page.getByRole('link',{name:'CSV ↗',exact:true})).toHaveAttribute('href','https://nwdp.nwic.gov.in/test.csv');
+ await expect(page.getByText('2021–2025',{exact:true})).toBeVisible();
+});
+
+test('published Maharashtra snapshot renders real water layers and district context',async({page})=>{
+ test.skip(!existsSync('data/water/stations.geojson'),'Official local snapshot is required for this visual check');
+ await page.goto('http://localhost:5183');
+ await page.getByLabel('API address').fill('http://127.0.0.1:8011');
+ await page.getByLabel('Email',{exact:true}).fill('admin@fixture.test');
+ await page.getByLabel('Password',{exact:true}).fill('fixture-password-123');
+ await page.getByRole('button',{name:'Sign in →',exact:true}).click();
+ await page.getByRole('button',{name:'Maps',exact:true}).click();
+ await page.getByLabel('Map district').selectOption('Satara');
+ await expect(page.locator('.atlas-source-item').first()).toBeVisible({timeout:25000});
+ await expect(page.locator('.atlas-controls').last()).not.toContainText('Loading published layers');
+ await page.getByLabel('Water pipelines',{exact:true}).uncheck();
+ await page.waitForTimeout(1500);
+ await page.screenshot({path:'work/water-map-satara.png',fullPage:true});
+ await page.getByRole('tab',{name:/Live & training data/}).click();
+ await expect(page.getByText('Current observation APIs',{exact:false})).toBeVisible();
+ await expect(page.getByText('API checked').first()).toBeVisible();
+});
+
+test('village source review records evidence without inventing delivery or coordinates',async({page})=>{
+ await page.goto('http://localhost:5183');
+ await page.getByLabel('API address').fill('http://127.0.0.1:8011');
+ await page.getByLabel('Email',{exact:true}).fill('admin@fixture.test');
+ await page.getByLabel('Password',{exact:true}).fill('fixture-password-123');
+ await page.getByRole('button',{name:'Sign in →',exact:true}).click();
+ await page.getByRole('button',{name:'Maps',exact:true}).click();
+ await page.getByLabel('Find your village').fill('TEST FIXTURE');
+ await page.getByRole('button',{name:'Search villages',exact:true}).click();
+ await page.getByLabel('Map village').selectOption('TEST-E2E');
+ await expect(page.getByRole('heading',{name:'Does this source supply TEST FIXTURE VILLAGE?'})).toBeVisible();
+ await page.getByText('Record or update source evidence',{exact:true}).click();
+ await page.getByLabel('Source reference ID',{exact:true}).fill('TEST-BROWSER-SOURCE');
+ await page.getByLabel('Source name',{exact:true}).fill('TEST unlocated authority well');
+ await page.getByLabel('Scheme / service-area reference',{exact:true}).fill('TEST scheme record 1');
+ await page.getByLabel('Connection finding',{exact:true}).selectOption('documented');
+ await page.getByLabel('Connection evidence link',{exact:true}).fill('https://fixture.test/official-service-area');
+ const today=new Date().toISOString().slice(0,10);const expiry=new Date(Date.now()+7*86400000).toISOString().slice(0,10);
+ await page.getByLabel('Evidence date',{exact:true}).fill(today);
+ await page.getByLabel('Review valid through',{exact:true}).fill(expiry);
+ await page.getByLabel('What proves this connection?',{exact:true}).fill('TEST ONLY: authority plan identifies this source and the TEST village service area.');
+ await page.getByRole('button',{name:'Save source review',exact:true}).click();
+ await expect(page.getByText('Current delivery unknown',{exact:true})).toBeVisible();
+ await expect(page.getByText('Coordinates unavailable; listed without a map pin',{exact:true})).toBeVisible();
+ await expect(page.getByText('1 documented connections · 0 recent delivery readings',{exact:true})).toBeVisible();
+ await page.getByText('Approximations and missing information',{exact:true}).click();
+ await expect(page.getByText(/No straight-line pipe, downhill routing/)).toBeVisible();
+ await page.screenshot({path:'work/water-map-village-review.png',fullPage:true});
+});
+
+test('published industrial pipes appear as reference assets without village supply claims',async({page})=>{
+ test.skip(!existsSync('data/water/utility-network.geojson'),'Public utility snapshot is required');
+ await page.goto('http://localhost:5183');
+ await page.getByLabel('API address').fill('http://127.0.0.1:8011');
+ await page.getByLabel('Email',{exact:true}).fill('admin@fixture.test');
+ await page.getByLabel('Password',{exact:true}).fill('fixture-password-123');
+ await page.getByRole('button',{name:'Sign in →',exact:true}).click();
+ await page.getByRole('button',{name:'Maps',exact:true}).click();
+ await page.getByRole('button',{name:'Pipes & network assets',exact:true}).click();
+ const industrial=page.locator('.atlas-source-item').filter({hasText:'Industrial network'}).first();
+ await expect(industrial).toBeVisible({timeout:25000});
+ await industrial.click();
+ await expect(page.locator('.atlas-source-details').getByText(/Industrial water-network reference/).first()).toBeVisible();
+ await expect(page.locator('.atlas-source-details').getByText('Verified village connection',{exact:true})).toHaveCount(0);
+ await page.screenshot({path:'work/water-map-industrial-network.png',fullPage:true});
+});

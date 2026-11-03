@@ -1,0 +1,734 @@
+{
+  "checked_on": "2026-11-03",
+  "timezone": "Asia/Kolkata",
+  "scope": "Public read-only resource and sample verification; no application database imports",
+  "checks": {
+    "catalogue-checks": [
+      {
+        "name": "river-discharge-manual-dailly-maharashtra-surface-water-department",
+        "url": "https://nwdp.nwic.gov.in/api/3/action/package_show?id=river-discharge-manual-dailly-maharashtra-surface-water-department",
+        "status": 200,
+        "bytes": 18737,
+        "resources": [
+          {
+            "datastore_active": true,
+            "format": "CSV",
+            "id": "d39ff877-27f6-44ca-9e05-911a677b3ba3",
+            "last_modified": "2026-01-24T23:36:54.390706",
+            "name": "River Discharge Maharashtra_SW Maharashtra (2001 - 2025) Manual Daily",
+            "size": 14397583,
+            "url": "https://nwdp.nwic.gov.in/dataset/cd04cd11-faee-469e-a787-680008fd9a72/resource/d39ff877-27f6-44ca-9e05-911a677b3ba3/download/river_discharge_manual_daily_maharashtra_sw_mh_2001_2025.csv"
+          },
+          {
+            "datastore_active": true,
+            "format": "CSV",
+            "id": "ceec5178-3da1-41ec-bbbc-e4e496e08df9",
+            "last_modified": "2026-11-03T00:30:44.046138",
+            "name": "River Discharge Maharashtra_SW Maharashtra (2026 - 2030) Manual Daily",
+            "size": 208265,
+            "url": "https://nwdp.nwic.gov.in/dataset/cd04cd11-faee-469e-a787-680008fd9a72/resource/ceec5178-3da1-41ec-bbbc-e4e496e08df9/download/river_discharge_manual_daily_maharashtra_sw_mh_2026_2030.csv"
+          }
+        ]
+      },
+      {
+        "name": "canal-discharge-dataset-telemetry-hourly-maharashtra-surface-water-department",
+        "url": "https://nwdp.nwic.gov.in/api/3/action/package_show?id=canal-discharge-dataset-telemetry-hourly-maharashtra-surface-water-department",
+        "status": 200,
+        "bytes": 8685,
+        "resources": [
+          {
+            "datastore_active": true,
+            "format": "CSV",
+            "id": "101987dd-7bcc-4f6d-9118-9bfed0c7e414",
+            "last_modified": "2026-01-24T23:24:03.428897",
+            "name": "Canal Discharge Maharashtra_SW Maharashtra (2021 - 2025) Telemetry Hourly",
+            "size": 5488599,
+            "url": "https://nwdp.nwic.gov.in/dataset/d9a9e840-71ed-4ae9-af9d-bcf3d7221ba8/resource/101987dd-7bcc-4f6d-9118-9bfed0c7e414/download/canal_discharge_tel_hr_maharashtra_sw_mh_2021_2025.csv"
+          },
+          {
+            "datastore_active": true,
+            "format": "CSV",
+            "id": "a6722e4b-6a61-49d3-afe7-50656a78f9bc",
+            "last_modified": "2026-11-03T00:18:14.916997",
+            "name": "Canal Discharge Maharashtra_SW Maharashtra (2026 - 2030) Telemetry Hourly",
+            "size": 3511152,
+            "url": "https://nwdp.nwic.gov.in/dataset/d9a9e840-71ed-4ae9-af9d-bcf3d7221ba8/resource/a6722e4b-6a61-49d3-afe7-50656a78f9bc/download/canal_discharge_tel_hr_maharashtra_sw_mh_2026_2030.csv"
+          }
+        ]
+      },
+      {
+        "name": "reservoir_discharge_bhima-sina_link_canal_maharashtra_telemetry_hourly",
+        "url": "https://nwdp.nwic.gov.in/api/3/action/package_show?id=reservoir_discharge_bhima-sina_link_canal_maharashtra_telemetry_hourly",
+        "status": 200,
+        "bytes": 18795,
+        "resources": [
+          {
+            "datastore_active": true,
+            "format": "CSV",
+            "id": "5df797f1-d326-4102-9a3f-da84176fbe6a",
+            "last_modified": "2026-01-24T23:36:14.305242",
+            "name": "Reservoir Discharge Maharashtra_SW Maharashtra (2021 - 2025) Telemetry Hourly",
+            "size": 979523,
+            "url": "https://nwdp.nwic.gov.in/dataset/f4fc96a5-016a-4cb9-a21d-0a73dc3fbc9b/resource/5df797f1-d326-4102-9a3f-da84176fbe6a/download/reservior_discharge_tel_hr_maharashtra_sw_mh_bhima-sina_link_canal_2021_2025.csv"
+          },
+          {
+            "datastore_active": true,
+            "format": "CSV",
+            "id": "e1544459-7971-44bb-a638-d50fb439d078",
+            "last_modified": "2026-11-03T00:29:58.772064",
+            "name": "Reservoir Discharge Maharashtra_SW Maharashtra (2026 - 2030) Telemetry Hourly",
+            "size": 600587,
+            "url": "https://nwdp.nwic.gov.in/dataset/f4fc96a5-016a-4cb9-a21d-0a73dc3fbc9b/resource/e1544459-7971-44bb-a638-d50fb439d078/download/reservior_discharge_tel_hr_maharashtra_sw_mh_bhima-sina_link_canal_2026_2030.csv"
+          }
+        ]
+      },
+      {
+        "name": "reservoir-water-level-totladoh-reservoir-maharashtra-telemetry-hourly-2023-2026",
+        "url": "https://nwdp.nwic.gov.in/api/3/action/package_show?id=reservoir-water-level-totladoh-reservoir-maharashtra-telemetry-hourly-2023-2026",
+        "status": 200,
+        "bytes": 4056,
+        "resources": [
+          {
+            "datastore_active": true,
+            "format": "CSV",
+            "id": "b455ea6a-9fbe-41a0-bbd6-de57f839c4a2",
+            "last_modified": "2026-10-14T12:45:04.189366",
+            "name": "Reservoir Water Level, Totladoh Dam , Maharashtra (Telemetry - Hourly) (2023 - 2026)",
+            "size": 2640807,
+            "url": "https://nwdp.nwic.gov.in/dataset/467378b8-76d6-4e75-b7c4-eca126b64ec1/resource/b455ea6a-9fbe-41a0-bbd6-de57f839c4a2/download/totladoh_reservoir_water_level_telemetry_2023_2026.csv"
+          }
+        ]
+      },
+      {
+        "name": "jjm",
+        "url": "https://ejalshakti.gov.in/JJM/citizen_corner/villageinformation.aspx",
+        "status": 200,
+        "bytes": 379717
+      },
+      {
+        "name": "tankers",
+        "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/",
+        "status": 200,
+        "bytes": 136251
+      },
+      {
+        "name": "pipeline-case-study",
+        "url": "https://nceg.gov.in/assets/pdf/WSS.pdf",
+        "error": "ConnectError"
+      },
+      {
+        "name": "livestock",
+        "url": "https://dahd.maharashtra.gov.in/en/publication/20-th-livestock-census/",
+        "error": "ConnectError"
+      },
+      {
+        "name": "census",
+        "url": "https://censusindia.gov.in/nada/index.php/catalog/6712",
+        "status": 200,
+        "bytes": 2777243
+      }
+    ],
+    "record-checks": {
+      "checked_at": "2026-11-03T09:42:51.687470+00:00",
+      "results": [
+        {
+          "name": "river-discharge-manual-dailly-maharashtra-surface-water-department",
+          "resource": "River Discharge Maharashtra_SW Maharashtra (2026 - 2030) Manual Daily",
+          "url": "https://nwdp.nwic.gov.in/dataset/cd04cd11-faee-469e-a787-680008fd9a72/resource/ceec5178-3da1-41ec-bbbc-e4e496e08df9/download/river_discharge_manual_daily_maharashtra_sw_mh_2026_2030.csv",
+          "status": 200,
+          "bytes": 208265,
+          "sha256": "9dbdd90c7581ca4a0187efbee09511c0b086d8760f5ffee7d8e8c1e26bfb5dc1",
+          "rows": 1366,
+          "columns": [
+            "SlNo",
+            "Station",
+            "Agency",
+            "State LGD Code",
+            "State",
+            "District LGD Code",
+            "District",
+            "Tehsil",
+            "Block",
+            "Village",
+            "River",
+            "Basin",
+            "Tributary",
+            "Subtributary",
+            "SubSubtributary",
+            "Local River",
+            "Latitude",
+            "Longitude",
+            "Data Acquisition Time",
+            "Manual Daily River Water Discharge (m3/sec)"
+          ],
+          "observation_min": "2026-04-01T08:30:00",
+          "observation_max": "2026-09-30T17:30:00",
+          "unparsed_dates": 0,
+          "districts": [
+            "Gadchiroli",
+            "Wardha",
+            "Yavatmal"
+          ],
+          "station_count": 12,
+          "sample": [
+            {
+              "SlNo": "1",
+              "Station": "Anantwadi",
+              "Agency": "Maharashtra SW",
+              "State LGD Code": "27",
+              "State": "Maharashtra",
+              "District LGD Code": "500",
+              "District": "Yavatmal",
+              "Tehsil": "MAHAGAON",
+              "Block": "-",
+              "Village": "-",
+              "River": "Godavari",
+              "Basin": "Godavari",
+              "Tributary": "Adhala",
+              "Subtributary": "-",
+              "SubSubtributary": "-",
+              "Local River": "Adhala",
+              "Latitude": "19.84611111",
+              "Longitude": "77.86722222",
+              "Data Acquisition Time": "01-08-2026 08:30",
+              "Manual Daily River Water Discharge (m3/sec)": "14.15"
+            }
+          ]
+        },
+        {
+          "name": "canal-discharge-dataset-telemetry-hourly-maharashtra-surface-water-department",
+          "resource": "Canal Discharge Maharashtra_SW Maharashtra (2026 - 2030) Telemetry Hourly",
+          "url": "https://nwdp.nwic.gov.in/dataset/d9a9e840-71ed-4ae9-af9d-bcf3d7221ba8/resource/a6722e4b-6a61-49d3-afe7-50656a78f9bc/download/canal_discharge_tel_hr_maharashtra_sw_mh_2026_2030.csv",
+          "status": 200,
+          "bytes": 3511152,
+          "sha256": "d11e9e846db28a84164a45b572d16d1e1375eb71886fecd3b73740f070449a4f",
+          "rows": 17729,
+          "columns": [
+            "SlNo",
+            "Station",
+            "Agency",
+            "State LGD Code",
+            "State",
+            "District LGD Code",
+            "District",
+            "Tehsil",
+            "Block",
+            "Village",
+            "River",
+            "Basin",
+            "Tributary",
+            "Subtributary",
+            "SubSubtributary",
+            "Local River",
+            "Latitude",
+            "Longitude",
+            "Data Acquisition Time",
+            "Gate-1 Discharge (cusec)",
+            "Gate-2 Discharge (cusec)",
+            "Gate-3 Discharge (cusec)",
+            "Gate-4 Discharge (cusec)",
+            "Gate-5 Discharge (cusec)",
+            "Gate-6 Discharge (cusec)",
+            "Gate-7 Discharge (cusec)",
+            "Gate-8 Discharge (cusec)",
+            "Gate-9 Discharge (cusec)",
+            "Gate-10 Discharge (cusec)",
+            "Gate-11 Discharge (cusec)",
+            "Gate-12 Discharge (cusec)",
+            "Gate-13 Discharge (cusec)",
+            "Gate-14 Discharge (cusec)",
+            "Gate-15 Discharge (cusec)",
+            "Gate-16 Discharge (cusec)",
+            "Gate-17 Discharge (cusec)",
+            "Gate-18 Discharge (cusec)",
+            "Gate-19 Discharge (cusec)",
+            "Gate-20 Discharge (cusec)",
+            "Gate-21 Discharge (cusec)",
+            "Gate-22 Discharge (cusec)",
+            "Gate-23 Discharge (cusec)",
+            "Gate-24 Discharge (cusec)",
+            "Gate-25 Discharge (cusec)"
+          ],
+          "observation_min": "2026-03-25T16:00:00",
+          "observation_max": "2026-11-02T23:00:00",
+          "unparsed_dates": 0,
+          "districts": [
+            "Jalgaon",
+            "Solapur"
+          ],
+          "station_count": 7,
+          "sample": [
+            {
+              "SlNo": "1",
+              "Station": "Bhima-Sina Link Canal",
+              "Agency": "Maharashtra SW",
+              "State LGD Code": "27",
+              "State": "Maharashtra",
+              "District LGD Code": "496",
+              "District": "Solapur",
+              "Tehsil": "-",
+              "Block": "-",
+              "Village": "-",
+              "River": "-",
+              "Basin": "-",
+              "Tributary": "-",
+              "Subtributary": "-",
+              "SubSubtributary": "-",
+              "Local River": "-",
+              "Latitude": "18.07402000",
+              "Longitude": "75.12002000",
+              "Data Acquisition Time": "25-03-2026 16:00",
+              "Gate-1 Discharge (cusec)": "206.94",
+              "Gate-2 Discharge (cusec)": "209.06",
+              "Gate-3 Discharge (cusec)": "209.06",
+              "Gate-4 Discharge (cusec)": "206.94",
+              "Gate-5 Discharge (cusec)": "0",
+              "Gate-6 Discharge (cusec)": "0",
+              "Gate-7 Discharge (cusec)": "0",
+              "Gate-8 Discharge (cusec)": "0",
+              "Gate-9 Discharge (cusec)": "0",
+              "Gate-10 Discharge (cusec)": "0",
+              "Gate-11 Discharge (cusec)": "",
+              "Gate-12 Discharge (cusec)": "",
+              "Gate-13 Discharge (cusec)": "",
+              "Gate-14 Discharge (cusec)": "",
+              "Gate-15 Discharge (cusec)": "",
+              "Gate-16 Discharge (cusec)": "",
+              "Gate-17 Discharge (cusec)": "",
+              "Gate-18 Discharge (cusec)": "",
+              "Gate-19 Discharge (cusec)": "",
+              "Gate-20 Discharge (cusec)": "",
+              "Gate-21 Discharge (cusec)": "",
+              "Gate-22 Discharge (cusec)": "",
+              "Gate-23 Discharge (cusec)": "",
+              "Gate-24 Discharge (cusec)": "",
+              "Gate-25 Discharge (cusec)": ""
+            }
+          ]
+        },
+        {
+          "name": "reservoir_discharge_bhima-sina_link_canal_maharashtra_telemetry_hourly",
+          "resource": "Reservoir Discharge Maharashtra_SW Maharashtra (2026 - 2030) Telemetry Hourly",
+          "url": "https://nwdp.nwic.gov.in/dataset/f4fc96a5-016a-4cb9-a21d-0a73dc3fbc9b/resource/e1544459-7971-44bb-a638-d50fb439d078/download/reservior_discharge_tel_hr_maharashtra_sw_mh_bhima-sina_link_canal_2026_2030.csv",
+          "status": 200,
+          "bytes": 600587,
+          "sha256": "1ffe23c955c19890ed2e1320b24831c2442bae168add0096c865e32ea326d636",
+          "rows": 2565,
+          "columns": [
+            "SlNo",
+            "Station",
+            "Agency",
+            "State LGD Code",
+            "State",
+            "District LGD Code",
+            "District",
+            "Tehsil",
+            "Block",
+            "Village",
+            "River",
+            "Basin",
+            "Tributary",
+            "Subtributary",
+            "SubSubtributary",
+            "Local River",
+            "Latitude",
+            "Longitude",
+            "Data Acquisition Time",
+            "Gate-1 Discharge (cusec)",
+            "Gate-2 Discharge (cusec)",
+            "Gate-3 Discharge (cusec)",
+            "Gate-4 Discharge (cusec)",
+            "Gate-5 Discharge (cusec)",
+            "Gate-6 Discharge (cusec)",
+            "Gate-7 Discharge (cusec)",
+            "Gate-8 Discharge (cusec)",
+            "Gate-9 Discharge (cusec)",
+            "Gate-10 Discharge (cusec)",
+            "Gate-11 Discharge (cusec)",
+            "Gate-12 Discharge (cusec)",
+            "Gate-13 Discharge (cusec)",
+            "Gate-14 Discharge (cusec)",
+            "Gate-15 Discharge (cusec)",
+            "Gate-16 Discharge (cusec)",
+            "Gate-17 Discharge (cusec)",
+            "Gate-18 Discharge (cusec)",
+            "Gate-19 Discharge (cusec)",
+            "Gate-20 Discharge (cusec)",
+            "Gate-21 Discharge (cusec)",
+            "Gate-22 Discharge (cusec)",
+            "Gate-23 Discharge (cusec)",
+            "Gate-24 Discharge (cusec)",
+            "Gate-25 Discharge (cusec)",
+            "Gate-26 Discharge (cusec)",
+            "Gate-27 Discharge (cusec)",
+            "Gate-28 Discharge (cusec)",
+            "Gate-29 Discharge (cusec)",
+            "Gate-30 Discharge (cusec)",
+            "Gate-31 Discharge (cusec)",
+            "Gate-32 Discharge (cusec)",
+            "Gate-33 Discharge (cusec)",
+            "Gate-34 Discharge (cusec)",
+            "Gate-35 Discharge (cusec)",
+            "Gate-36 Discharge (cusec)",
+            "Gate-37 Discharge (cusec)",
+            "Gate-38 Discharge (cusec)",
+            "Gate-39 Discharge (cusec)",
+            "Gate-40 Discharge (cusec)",
+            "Gate-41 Discharge (cusec)",
+            "Gate-42 Discharge (cusec)",
+            "Gate-43 Discharge (cusec)",
+            "Gate-44 Discharge (cusec)",
+            "Gate-45 Discharge (cusec)",
+            "Gate-46 Discharge (cusec)",
+            "Gate-47 Discharge (cusec)",
+            "Gate-48 Discharge (cusec)",
+            "Gate-49 Discharge (cusec)",
+            "Gate-50 Discharge (cusec)"
+          ],
+          "observation_min": "2026-03-25T16:00:00",
+          "observation_max": "2026-11-02T22:00:00",
+          "unparsed_dates": 0,
+          "districts": [
+            "Solapur"
+          ],
+          "station_count": 1,
+          "sample": [
+            {
+              "SlNo": "1",
+              "Station": "Bhima-Sina Link Canal",
+              "Agency": "Maharashtra SW",
+              "State LGD Code": "27",
+              "State": "Maharashtra",
+              "District LGD Code": "496",
+              "District": "Solapur",
+              "Tehsil": "-",
+              "Block": "-",
+              "Village": "-",
+              "River": "-",
+              "Basin": "-",
+              "Tributary": "-",
+              "Subtributary": "-",
+              "SubSubtributary": "-",
+              "Local River": "-",
+              "Latitude": "18.07402000",
+              "Longitude": "75.12002000",
+              "Data Acquisition Time": "25-03-2026 16:00",
+              "Gate-1 Discharge (cusec)": "0",
+              "Gate-2 Discharge (cusec)": "0",
+              "Gate-3 Discharge (cusec)": "0",
+              "Gate-4 Discharge (cusec)": "0",
+              "Gate-5 Discharge (cusec)": "0",
+              "Gate-6 Discharge (cusec)": "0",
+              "Gate-7 Discharge (cusec)": "0",
+              "Gate-8 Discharge (cusec)": "0",
+              "Gate-9 Discharge (cusec)": "0",
+              "Gate-10 Discharge (cusec)": "0",
+              "Gate-11 Discharge (cusec)": "0",
+              "Gate-12 Discharge (cusec)": "0",
+              "Gate-13 Discharge (cusec)": "0",
+              "Gate-14 Discharge (cusec)": "0",
+              "Gate-15 Discharge (cusec)": "0",
+              "Gate-16 Discharge (cusec)": "0",
+              "Gate-17 Discharge (cusec)": "0",
+              "Gate-18 Discharge (cusec)": "0",
+              "Gate-19 Discharge (cusec)": "0",
+              "Gate-20 Discharge (cusec)": "0",
+              "Gate-21 Discharge (cusec)": "0",
+              "Gate-22 Discharge (cusec)": "0",
+              "Gate-23 Discharge (cusec)": "0",
+              "Gate-24 Discharge (cusec)": "0",
+              "Gate-25 Discharge (cusec)": "0",
+              "Gate-26 Discharge (cusec)": "0",
+              "Gate-27 Discharge (cusec)": "0",
+              "Gate-28 Discharge (cusec)": "0",
+              "Gate-29 Discharge (cusec)": "0",
+              "Gate-30 Discharge (cusec)": "0",
+              "Gate-31 Discharge (cusec)": "0",
+              "Gate-32 Discharge (cusec)": "0",
+              "Gate-33 Discharge (cusec)": "0",
+              "Gate-34 Discharge (cusec)": "0",
+              "Gate-35 Discharge (cusec)": "0",
+              "Gate-36 Discharge (cusec)": "0",
+              "Gate-37 Discharge (cusec)": "0",
+              "Gate-38 Discharge (cusec)": "0",
+              "Gate-39 Discharge (cusec)": "0",
+              "Gate-40 Discharge (cusec)": "0",
+              "Gate-41 Discharge (cusec)": "0",
+              "Gate-42 Discharge (cusec)": "0",
+              "Gate-43 Discharge (cusec)": "0",
+              "Gate-44 Discharge (cusec)": "0",
+              "Gate-45 Discharge (cusec)": "",
+              "Gate-46 Discharge (cusec)": "",
+              "Gate-47 Discharge (cusec)": "",
+              "Gate-48 Discharge (cusec)": "",
+              "Gate-49 Discharge (cusec)": "",
+              "Gate-50 Discharge (cusec)": ""
+            }
+          ]
+        },
+        {
+          "name": "reservoir-water-level-totladoh-reservoir-maharashtra-telemetry-hourly-2023-2026",
+          "resource": "Reservoir Water Level, Totladoh Dam , Maharashtra (Telemetry - Hourly) (2023 - 2026)",
+          "url": "https://nwdp.nwic.gov.in/dataset/467378b8-76d6-4e75-b7c4-eca126b64ec1/resource/b455ea6a-9fbe-41a0-bbd6-de57f839c4a2/download/totladoh_reservoir_water_level_telemetry_2023_2026.csv",
+          "status": 200,
+          "bytes": 2640807,
+          "sha256": "13ea13f1b8c9381ce552dee03603e4ae70a9a9998e8d930224f69cfe88f05ee6",
+          "rows": 25928,
+          "columns": [
+            "Station",
+            "Agency",
+            "State",
+            "District",
+            "basin",
+            "latitude",
+            "longitude",
+            "Data Acquisition Time",
+            "Water Level (M)"
+          ],
+          "observation_min": "2023-03-03T11:00:00",
+          "observation_max": "2026-10-14T13:00:00",
+          "unparsed_dates": 0,
+          "districts": [
+            "Nagpur"
+          ],
+          "station_count": 1,
+          "sample": [
+            {
+              "Station": "Totladoh",
+              "Agency": "Maharashtra SW",
+              "State": "Maharashtra",
+              "District": "Nagpur",
+              "basin": "Godavari",
+              "latitude": "21.65888889",
+              "longitude": "79.23305556",
+              "Data Acquisition Time": "03-03-2023 11:00",
+              "Water Level (M)": "484.636"
+            }
+          ]
+        }
+      ]
+    },
+    "coverage-checks": [
+      {
+        "file": "canal-discharge-dataset-telemetry-hourly-maharashtra-surface-water-department.csv",
+        "rows": 17729,
+        "village_values": [
+          "-"
+        ],
+        "stations": [
+          "Bhima-Sina Link Canal",
+          "Hatnur Dam ARG",
+          "Hatnur Dam_2",
+          "Hatnur Head Regulator Canal",
+          "Ujjani Dam Head Regulator Canal",
+          "Ujjani Dam Rain Gauge",
+          "Ujjani Dam_1"
+        ]
+      },
+      {
+        "file": "reservoir-water-level-totladoh-reservoir-maharashtra-telemetry-hourly-2023-2026.csv",
+        "rows": 25928,
+        "village_values": [
+          ""
+        ],
+        "stations": [
+          "Totladoh"
+        ]
+      },
+      {
+        "file": "reservoir_discharge_bhima-sina_link_canal_maharashtra_telemetry_hourly.csv",
+        "rows": 2565,
+        "village_values": [
+          "-"
+        ],
+        "stations": [
+          "Bhima-Sina Link Canal"
+        ]
+      },
+      {
+        "file": "river-discharge-manual-dailly-maharashtra-surface-water-department.csv",
+        "rows": 1366,
+        "village_values": [
+          "-"
+        ],
+        "stations": [
+          "Anantwadi",
+          "Arni",
+          "Hamdapur",
+          "Hinganghat",
+          "Khadka",
+          "Kolgaon",
+          "Koli(BK)",
+          "Mahagaon",
+          "Murli",
+          "Sharad",
+          "Sirpur",
+          "Takali"
+        ]
+      }
+    ],
+    "datastore-checks": [
+      {
+        "dataset": "river-discharge-manual-dailly-maharashtra-surface-water-department",
+        "http_status": 200,
+        "success": true,
+        "total": 1366,
+        "sample_count": 2
+      },
+      {
+        "dataset": "canal-discharge-dataset-telemetry-hourly-maharashtra-surface-water-department",
+        "http_status": 200,
+        "success": true,
+        "total": 17729,
+        "sample_count": 2
+      },
+      {
+        "dataset": "reservoir_discharge_bhima-sina_link_canal_maharashtra_telemetry_hourly",
+        "http_status": 200,
+        "success": true,
+        "total": 2565,
+        "sample_count": 2
+      },
+      {
+        "dataset": "reservoir-water-level-totladoh-reservoir-maharashtra-telemetry-hourly-2023-2026",
+        "http_status": 200,
+        "success": true,
+        "total": 25928,
+        "sample_count": 2
+      }
+    ],
+    "supporting-checks": [
+      {
+        "name": "latest-tanker.pdf",
+        "url": "https://cdnbbsr.s3waas.gov.in/s3347665597cbfaef834886adbb848011f/uploads/2026/11/20261103938485333.pdf",
+        "status": 200,
+        "bytes": 612796,
+        "sha256": "a571aab2a80e7a0a8af5fed8f09f273e63f25a2fb9f3698e0b46949d1cbb8cdb"
+      },
+      {
+        "name": "pipeline-case-study-retry.pdf",
+        "url": "https://www.nceg.gov.in/assets/pdf/WSS.pdf",
+        "error": "ConnectError"
+      },
+      {
+        "name": "livestock-retry.html",
+        "url": "https://dahd.maharashtra.gov.in/en/publication/20-th-livestock-census/",
+        "status": 200,
+        "bytes": 119981,
+        "sha256": "07616a568bc557701363030aa46307258ff6941b0faba576fc5580d9424d1f39"
+      },
+      {
+        "name": "census-satara.html",
+        "url": "https://censusindia.gov.in/nada/index.php/catalog/6718",
+        "status": 200,
+        "bytes": 2286170,
+        "sha256": "922c6460a1f47e92ce489b16cda239a97c22988fd8fb9791fc245c402b95b4ae"
+      },
+      {
+        "name": "census-satara.xlsx",
+        "url": "https://censusindia.gov.in/nada/index.php/catalog/6718/download/9795/DDW_PCA2731_2011_MDDS%20with%20UI.xlsx",
+        "status": 200,
+        "bytes": 991001,
+        "sha256": "b6b70972a08f0a29ff18a70fbb0f6c179a001935ee95d80a37a3324d1f900977",
+        "xlsx_structure_verified": true,
+        "worksheet_count": 1
+      }
+    ],
+    "livestock-download": {
+      "url": "https://cdnbbsr.s3waas.gov.in/s369dafe8b58066478aea48f3d0f384820/uploads/2024/02/202402131737819886.pdf",
+      "status": 200,
+      "bytes": 5485107,
+      "sha256": "bbd785a8f701d0cdf43bd52073170f51ac7fc61b1407b6d4ace5a81af7443f1a"
+    },
+    "local-source-searches": [
+      {
+        "query": "Dhom",
+        "count": 0,
+        "results": []
+      },
+      {
+        "query": "Veer",
+        "count": 0,
+        "results": []
+      },
+      {
+        "query": "Nira",
+        "count": 0,
+        "results": []
+      },
+      {
+        "query": "reservoir storage Maharashtra",
+        "count": 29,
+        "results": [
+          {
+            "title": "Reservoir  Water Storage  Level (Manual - Daily) Centre Water Commission",
+            "name": "reservoir-water-level-manual-daily-centre-water-commission_cwc"
+          },
+          {
+            "title": "Reservoir  Storage (Manual - Daily), Andhra Pradesh Surface Water  Department",
+            "name": "reservoir-water-level-manual-daily-andhra-pradesh-surface-water-department"
+          },
+          {
+            "title": "Reservoir Water Level, Pench Reservoir , Maharashtra (Telemetry - Hourly) (2019-2026)",
+            "name": "reservoir-water-level-pench-reservoir-maharashtra-telemetry-hourly-2023-2026"
+          },
+          {
+            "title": "Reservoir Water Level, Totladoh Reservoir , Maharashtra (Telemetry - Hourly) (2023-2026)",
+            "name": "reservoir-water-level-totladoh-reservoir-maharashtra-telemetry-hourly-2023-2026"
+          },
+          {
+            "title": "Reservoir Discharge , Pench Dam , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_pench_dam_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Hatnur Dam ARG , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_hatnur_dam_arg_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Hatnur Dam_2 , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_hatnur_dam_2_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Ujjani Dam_1 , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_ujjani_dam_1_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Hatnur Head Regulator Canal , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_hatnur_head_regulator_canal_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Bhima-Sina Link Canal , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_bhima-sina_link_canal_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Ujjani Dam Rain Gauge , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_ujjani_dam_rain_gauge_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Pench Head Regulator Canal-2 , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_pench_head_regulator_canal-2_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge, Pench Head Regulator Canal-1, Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_pench_head_regulator_canal-1_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Discharge , Ujjani Dam Head Regulator Canal , Maharashtra (Telemetry - Hourly) (2021-2025)",
+            "name": "reservoir_discharge_ujjani_dam_head_regulator_canal_maharashtra_telemetry_hourly"
+          },
+          {
+            "title": "Reservoir Water Level (Manual - Daily) Uttarakhand",
+            "name": "reservoir-water-level-manual-daily-uttarakhand"
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Not statewide coverage certification",
+    "No authenticated JJM bulk API verified",
+    "No village supply network or DMA feed verified",
+    "No hydrological quality or instrument validation",
+    "Census workbook structure checked; not all cell contents"
+  ]
+}

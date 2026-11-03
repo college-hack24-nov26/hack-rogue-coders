@@ -367,3 +367,7 @@ from .administration import router as administration_router
 app.include_router(administration_router)
 from .privacy import router as privacy_router
 app.include_router(privacy_router)
+from .water_map import router as water_map_router
+app.include_router(water_map_router)
+from .water_evidence import router as water_evidence_router
+app.include_router(water_evidence_router)

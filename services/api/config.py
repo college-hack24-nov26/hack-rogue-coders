@@ -31,6 +31,7 @@ class Settings(BaseSettings):
     agmarknet_resource_id: str = '9ef84268-d588-465a-a308-a864a43d0070'
     enable_daily_ingestion: bool = False
     retention_days: int = 365
+    water_data_root: str = './data/water'
     session_encryption_key: str = ''
     whatsapp_status_template: str = ''
     whatsapp_template_language: str = 'en_US'

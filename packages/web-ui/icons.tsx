@@ -30,6 +30,6 @@ export function Logo({size=36}:{size?:number}){
  return <svg role="img" aria-label="JalSathi" width={size} height={size} viewBox="0 0 48 48"><path d="M24 4S9 19 9 29a15 15 0 0 0 30 0C39 19 24 4 24 4z" fill="#2686C9"/><path d="M24 44a15 15 0 0 0 15-15c0-3.500-1.300-7-3.300-10.300C29 21 22 27 22 36c0 3 .6 5.600 2 8z" fill="#16834A"/></svg>;
 }
 export const navIcons:Record<string,string>={
- 'Overview':'overview','Complaint inbox':'inbox','Accepted & routing':'route','Village registry':'pin','Consumption baselines':'scale','Water estimates':'drop','Model lab':'flask','Sources & data flow':'flow','Markets & schemes':'store','Jobs & audit':'clock','Access & invitations':'key','AI quality':'chat',
+ 'Overview':'overview','Maps':'pin','Complaint inbox':'inbox','Accepted & routing':'route','Village registry':'pin','Consumption baselines':'scale','Water estimates':'drop','Model lab':'flask','Sources & data flow':'flow','Markets & schemes':'store','Jobs & audit':'clock','Access & invitations':'key','AI quality':'chat',
  'Accepted complaints':'inbox','Jurisdiction':'landmark',
 };
