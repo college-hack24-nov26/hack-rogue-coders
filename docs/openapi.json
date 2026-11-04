@@ -3082,6 +3082,48 @@
           }
         }
       }
+    },
+    "/api/v1/villages/{key}/supply-outlook": {
+      "get": {
+        "summary": "Supply Outlook",
+        "operationId": "supply_outlook_api_v1_villages__key__supply_outlook_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -4169,6 +4211,16 @@
             "type": "string",
             "minLength": 10,
             "title": "Assumptions"
+          },
+          "storage_partition_verified": {
+            "type": "boolean",
+            "title": "Storage Partition Verified",
+            "default": false
+          },
+          "net_supply_after_losses": {
+            "type": "boolean",
+            "title": "Net Supply After Losses",
+            "default": false
           }
         },
         "additionalProperties": false,

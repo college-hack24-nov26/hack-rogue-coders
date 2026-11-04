@@ -1,6 +1,24 @@
 import {test,expect} from '@playwright/test';
 import {existsSync} from 'node:fs';
 
+test('water estimates targets seven and fifteen day supply sufficiency',async({page})=>{
+ await page.goto('http://localhost:5183');
+ await page.getByLabel('API address').fill('http://127.0.0.1:8011');
+ await page.getByLabel('Email',{exact:true}).fill('admin@fixture.test');
+ await page.getByLabel('Password',{exact:true}).fill('fixture-password-123');
+ await page.getByRole('button',{name:'Sign in →',exact:true}).click();
+ await page.getByRole('button',{name:'Water estimates',exact:true}).click();
+ await page.getByLabel('Search registry').fill('TEST FIXTURE');
+ await page.getByRole('button',{name:'Search directory',exact:true}).click();
+ await page.getByLabel('Village',{exact:true}).selectOption('TEST-E2E');
+ await expect(page.getByRole('heading',{name:'Will the village have enough water?'})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Insufficient data',exact:true})).toHaveCount(2);
+ await expect(page.getByText('NEXT 7 DAYS',{exact:true})).toBeVisible();
+ await expect(page.getByText('NEXT 15 DAYS',{exact:true})).toBeVisible();
+ await expect(page.getByRole('heading',{name:/Station predictions/})).toHaveCount(0);
+ await page.screenshot({path:'work/village-supply-outlook.png',fullPage:true});
+});
+
 test('water atlas selects a village, distinguishes connections and exposes dated downloads',async({page})=>{
  const point={type:'Feature',id:'TEST-STATION',geometry:{type:'Point',coordinates:[74.4,18.2]},properties:{id:'TEST-STATION',name:'TEST monitoring well',kind:'groundwater',district:'TEST district',agency:'TEST ONLY',relationship:'district_context',freshness:'recent',observed_at:'2026-11-02T18:00:00+05:30',source_url:'https://nwdp.nwic.gov.in',measurements:[{label:'Groundwater level (meter)',value:-5.2,units:'meter',observed_at:'2026-11-02T18:00:00+05:30'}]}};
  const pipe={type:'Feature',id:'TEST-PIPE',geometry:{type:'LineString',coordinates:[[74.39,18.19],[74.4,18.2],[74.42,18.21]]},properties:{id:'TEST-PIPE',name:'TEST reviewed pipeline',kind:'pipeline',relationship:'reviewed_connection',freshness:'undated',agency:'TEST ONLY',measurements:[],source_url:'https://nwdp.nwic.gov.in'}};

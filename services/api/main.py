@@ -268,7 +268,7 @@ def baseline_data(db,key,days):
                 current_source=latest(db,'supply_source',supply.payload['source_id'])
                 if source and current_source and current_source.id==source.id and source.payload['valid_until']>=end:inputs=supply.payload
             calculated=budget([r.payload['litres_per_day']]*days,[inputs['litres_per_day']]*days if inputs else None,opening=inputs['opening_storage_litres'] if inputs else 0,capacity=inputs['storage_capacity_litres'] if inputs else None,delivery_limit=inputs['delivery_limit_litres_per_day'] if inputs else None)
-            components.append({'sector':sector,'baseline_id':r.id,'version':r.version,'baseline_recorded_at':r.created_at,'reference_period':r.payload['reference_start']+' – '+r.payload['reference_end'],**calculated,'supply_record_id':supply.id if inputs else None,'supply_assumptions':inputs['assumptions'] if inputs else None,'assumptions':r.payload['assumptions'],'source':r.payload['source']})
+            components.append({'sector':sector,'baseline_id':r.id,'version':r.version,'baseline_recorded_at':r.created_at,'reference_period':r.payload['reference_start']+' – '+r.payload['reference_end'],**calculated,'supply_record_id':supply.id if inputs else None,'supply_assumptions':inputs['assumptions'] if inputs else None,'storage_partition_verified':inputs.get('storage_partition_verified',False) if inputs else False,'net_supply_after_losses':inputs.get('net_supply_after_losses',False) if inputs else False,'opening_storage_litres':inputs['opening_storage_litres'] if inputs else None,'assumptions':r.payload['assumptions'],'source':r.payload['source']})
     comparable=bool(components) and all(c['unmet_litres'] is not None for c in components)
     return {'status':'reviewed_supply_scenario' if comparable else 'demand_only' if components else 'unavailable','days':days,'components':components,'shortage_litres':sum(c['unmet_litres'] for c in components) if comparable else None,'reason':'Scenario for listed sectors only; future inflow uses reviewed allocation assumptions' if comparable else 'Sector-matched verified supply unavailable; missing sectors are not zero','sectors_covered':[c['sector'] for c in components]}
 @app.get(P+'/villages/{key}/water-budget')
@@ -326,7 +326,10 @@ async def assistant(body:AssistantInput,u:User=Depends(current),db:Session=Depen
     from .integrations import explain
     from .retrieval import retrieve_documents
     passages=retrieve_documents(db,body.question)
-    evidence={'budget':baseline_data(db,body.village_id,body.days),'outlook':outlook(body.village_id,body.days,u,db),'official_documents':passages}
+    from .supply_outlook import supply_outlook
+    supply=supply_outlook(body.village_id,u,db)
+    selected=next(r for r in supply['outlooks'] if r['days']==body.days)
+    evidence={'budget':baseline_data(db,body.village_id,body.days),'outlook':{**selected,'target':'water_supply_sufficiency','status':'unavailable' if selected['status']=='insufficient_data' else selected['status'],'assumptions':supply['assumptions']},'official_documents':passages}
     result=await explain(body,evidence)
     db.add(Record(kind='ai_trace',key=uid(),payload={k:v for k,v in result.items() if k not in ['text','evidence']}));db.commit();return result
 
@@ -404,3 +407,6 @@ from .water_map import router as water_map_router
 app.include_router(water_map_router)
 from .water_evidence import router as water_evidence_router
 app.include_router(water_evidence_router)
+
+from .supply_outlook import router as supply_outlook_router
+app.include_router(supply_outlook_router)
