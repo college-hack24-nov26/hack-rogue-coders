@@ -139,6 +139,7 @@ def clean_feature(feature, relationship=None):
 def catalogue(u: User = Depends(current)):
     data = snapshot('catalogue.json')
     return {**data, 'census_used': False, 'history_min_year': 2021,
+            'public_supply_collection': public_supply_collection(),
             'additional_sources': snapshot('additional-sources.json'),
             'history_collection': snapshot('history-collection.json'),
             'historical_quality_sites': len(snapshot('historical-quality.geojson').get('features', [])),
@@ -150,6 +151,27 @@ def catalogue(u: User = Depends(current)):
                            'Monitoring stations and nearby rivers do not establish village supply connections.',
                            'Reference geometry with unknown survey date is excluded from prediction inputs.',
                            'No 2011 population, demand or infrastructure baseline is used.']}
+
+
+def public_supply_collection():
+    """Expose source coverage only; raw tanker files include contact details."""
+    report = snapshot('public-supply-completion.json')
+    sources = report.get('sources', {})
+    audit = snapshot('public-supply-file-audit.json')
+    fields = {
+        'jjm': ('status', 'village_records', 'districts_completed'),
+        'pmc': ('status', 'downloaded_files', 'failed_files', 'index_complete'),
+        'wssd': ('status', 'downloaded_files', 'listed_files'),
+        'pocra': ('status', 'weather_date_range', 'weather', 'village_attributes'),
+    }
+    summary = {key: {field: sources.get(key, {}).get(field) for field in selected}
+               for key, selected in fields.items()}
+    # No local paths, receipts, raw records or application field names are needed.
+    summary['pocra']['weather_rows'] = (summary['pocra'].pop('weather') or {}).get('rows')
+    return {'checked_at': report.get('checked_at'), 'sources': summary,
+            'files_profiled': bool(audit.get('checked_at')),
+            'verified_village_supply_records_added': audit.get('eligible_daily_village_supply_records_added'),
+            'reviewed_urgency_labels_added': audit.get('reviewed_urgency_labels_added')}
 
 
 @router.get('/water-data/map')

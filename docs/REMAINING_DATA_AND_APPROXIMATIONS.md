@@ -1,5 +1,7 @@
 # Village water evidence, data access and approximations
 
+4 November 2026 update: see [Supply data, features and assumptions](SUPPLY_DATA_FEATURES_AND_ASSUMPTIONS.md). Public Janori source/scheme metadata is now verified as downloadable; dated delivery/device requests were empty. A further six-resource flow audit includes CWC Satara context. These findings do not supply village delivery/shortage targets. Offline formula estimates and explicit scenario bounds preserve provenance; operational gaps remain.
+
 Checked 3 November 2026. Publicly accessible data is not a complete source-to-tap operational network. Missing measurements remain unavailable; no village supplies have been fabricated or automatically approved.
 
 ## What Maps now supports
@@ -13,6 +15,8 @@ Delivery is a separate finding. A measured delivery needs litres/day, a timezone
 Reviewed connections are evidence entered by an accountable application user; the app cannot independently authenticate the contents of every linked document. These records do not automatically become model inputs or approved supply allocations.
 
 ## Sources and access still needed
+
+**4 November update:** further public collection is complete for the enumerated JJM/PMC/WSSD/PoCRA sources: 40,297 village household/tap profiles, 648 tanker spreadsheets, 84 tanker PDFs and 504 dated district weather rows. These add context, not eligible daily village supply/outcome rows. Full coverage, file checks, assumptions and the unsent access request are in [Public supply-data status](PUBLIC_SUPPLY_DATA_STATUS.md).
 
 | Required data | Authoritative route | What is available / missing |
 |---|---|---|

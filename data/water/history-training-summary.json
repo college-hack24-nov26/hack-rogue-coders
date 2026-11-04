@@ -1,0 +1,99 @@
+{
+  "source_row_audit": {
+    "scanned_rows": 39240902,
+    "rows_with_retained_observation": 37219643,
+    "rows_excluded_identity_or_timestamp": 309,
+    "rows_without_retained_value": 2020950,
+    "district_day_metric_rows": 1018653,
+    "duplicate_observations_removed": 771746,
+    "conflicting_observations_removed": 705803
+  },
+  "dataset_counts": {
+    "resource_summaries_read": 1018653,
+    "anchor_days_purged_or_warmup": 1912,
+    "fallback_rain_days": 1769222,
+    "fallback_temperature_days": 1381051,
+    "episodes": 59543,
+    "archived_feature_values": 4816749,
+    "examples": 119086,
+    "actual_rain_days": 910213,
+    "actual_temperature_days": 1298384,
+    "district_days_without_scenario_template": 40
+  },
+  "partitions": {
+    "7": {
+      "split_kind": "held_out_reference_dates_simulated_outcomes",
+      "training_rows": 47249,
+      "train_classes": {
+        "4": 9174,
+        "2": 3960,
+        "0": 7999,
+        "5": 8762,
+        "1": 10928,
+        "3": 6426
+      },
+      "train_template_groups": 47249,
+      "validation_rows": 12294,
+      "validation_classes": {
+        "1": 2408,
+        "0": 2035,
+        "5": 2299,
+        "3": 1820,
+        "4": 2596,
+        "2": 1136
+      },
+      "validation_template_groups": 12294
+    },
+    "15": {
+      "split_kind": "held_out_reference_dates_simulated_outcomes",
+      "training_rows": 47249,
+      "train_classes": {
+        "4": 11413,
+        "2": 3791,
+        "0": 7809,
+        "5": 8762,
+        "1": 9124,
+        "3": 6350
+      },
+      "train_template_groups": 47249,
+      "validation_rows": 12294,
+      "validation_classes": {
+        "1": 2034,
+        "0": 2005,
+        "5": 2299,
+        "3": 1788,
+        "4": 3157,
+        "2": 1011
+      },
+      "validation_template_groups": 12294
+    }
+  },
+  "run_seconds_including_checks": 167.705,
+  "actual_supply_targets": 0,
+  "outcome_basis": "simulated",
+  "models": [
+    {
+      "horizon_days": 7,
+      "path": "E:\\Z-PROJECTS\\PHALTAN HACKTHON\\Phalatan-hackathon\\artifacts\\supply-history-models\\20261104-081811-0529ef\\simulated-urgency-7d.json",
+      "seconds": 20.051,
+      "archive_input_features": 557,
+      "archive_features_used_in_splits": 239,
+      "simulated_accuracy": 0.8568407353180413,
+      "simulated_level5_recall": 0.8225315354501957,
+      "beats_baseline": true
+    },
+    {
+      "horizon_days": 15,
+      "path": "E:\\Z-PROJECTS\\PHALTAN HACKTHON\\Phalatan-hackathon\\artifacts\\supply-history-models\\20261104-081811-0529ef\\simulated-urgency-15d.json",
+      "seconds": 20.386,
+      "archive_input_features": 557,
+      "archive_features_used_in_splits": 244,
+      "simulated_accuracy": 0.8212949406214414,
+      "simulated_level5_recall": 0.8220965637233579,
+      "beats_baseline": true
+    }
+  ],
+  "report": "E:\\Z-PROJECTS\\PHALTAN HACKTHON\\Phalatan-hackathon\\artifacts\\supply-history-models\\20261104-081811-0529ef\\training-report.json",
+  "approved": false,
+  "operational_forecasts_published": false
+}

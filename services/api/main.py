@@ -242,16 +242,17 @@ def farm_plan(key:str,days:int=Depends(horizon),u:User=Depends(current),db:Sessi
     except (ValueError,KeyError,TypeError) as e:return {'status':'unavailable','reason':str(e)}
     return {**result,'farm_id':f.id,'weather_record_id':w.id,'weather_retrieved_at':w.created_at,'weather_grid_id':grid,'weather_source':w.payload.get('source'),'agronomy_record_id':a.id,'agronomy_source':a.payload.get('source')}
 
-def baseline_data(db,key,days):
-    start=datetime.now(ZoneInfo('Asia/Kolkata')).date();today=start.isoformat();end=(start+timedelta(days=days)).isoformat();components=[]
+def baseline_data(db,key,days,*,records=None,issue=None):
+    start=issue or datetime.now(ZoneInfo('Asia/Kolkata')).date();today=start.isoformat();end=(start+timedelta(days=days)).isoformat();components=[]
+    def find(kind, record_key):
+        return latest(db, kind, record_key) if records is None else records.get((kind, record_key))
     for sector in ['household','agriculture','livestock','other']:
-        r=latest(db,'baseline',key+':'+sector)
+        r=find('baseline',key+':'+sector)
         if r and r.payload['valid_from']<=today and r.payload['valid_to']>=end:
-            supply=latest(db,'supply',key+':'+sector);inputs=None
+            supply=find('supply',key+':'+sector);inputs=None
             if supply and supply.payload['valid_until']>=end:
-                source=db.get(Record,supply.payload['source_record_id'])
-                current_source=latest(db,'supply_source',supply.payload['source_id'])
-                if source and current_source and current_source.id==source.id and source.payload['valid_until']>=end:inputs=supply.payload
+                source=find('supply_source',supply.payload['source_id'])
+                if source and source.id==supply.payload['source_record_id'] and source.payload['valid_until']>=end:inputs=supply.payload
             calculated=budget([r.payload['litres_per_day']]*days,[inputs['litres_per_day']]*days if inputs else None,opening=inputs['opening_storage_litres'] if inputs else 0,capacity=inputs['storage_capacity_litres'] if inputs else None,delivery_limit=inputs['delivery_limit_litres_per_day'] if inputs else None)
             components.append({'sector':sector,'baseline_id':r.id,'version':r.version,'baseline_recorded_at':r.created_at,'reference_period':r.payload['reference_start']+' – '+r.payload['reference_end'],**calculated,'supply_record_id':supply.id if inputs else None,'supply_assumptions':inputs['assumptions'] if inputs else None,'storage_partition_verified':inputs.get('storage_partition_verified',False) if inputs else False,'net_supply_after_losses':inputs.get('net_supply_after_losses',False) if inputs else False,'opening_storage_litres':inputs['opening_storage_litres'] if inputs else None,'assumptions':r.payload['assumptions'],'source':r.payload['source']})
     comparable=bool(components) and all(c['unmet_litres'] is not None for c in components)

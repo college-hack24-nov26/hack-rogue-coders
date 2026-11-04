@@ -2,6 +2,8 @@
 
 The primary question is whether usable water covers village demand every day over the next 7 and 15 days. Groundwater station forecasts do not answer this question and are no longer foregrounded on Water estimates.
 
+The 4 November 2026 [supply-data and feature-engineering audit](SUPPLY_DATA_FEATURES_AND_ASSUMPTIONS.md) adds checked public evidence, 147,069 daily surface-flow context rows, explicit input formulas and a provenance-aware 7/15-day training-data builder. The public requests supplied no verified daily Maharashtra village shortage targets; training readiness remains false. These offline estimates do not automatically replace the app's reviewed inputs.
+
 GET /api/v1/villages/{id}/supply-outlook returns both horizons, a nullable enough flag, shortfall in litres, first shortage date and daily storage/delivery balances. Missing sectors, expired source allocations, or unreviewed net supply/storage partitioning produce insufficient_data. All four sectors must be recorded; an inapplicable sector requires an explicit reviewed zero.
 
 Current implementation is a conditional scenario using reviewed daily demand and inflow rates, opening usable storage, capacity and delivery limits. Rates stay constant through the horizon. Daily inflow can serve daily demand before remaining water is capped by tank capacity; excess becomes overflow. It does not resolve hourly outages or automatically move sector allocations.

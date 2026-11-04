@@ -1,3 +1,4 @@
+import json
 from datetime import datetime,timedelta
 from zoneinfo import ZoneInfo
 from services.api.db import Record
@@ -53,3 +54,33 @@ def test_daily_pipe_delivery_does_not_require_storage_capacity_and_balance_recon
     assert [d['overflow_litres'] for d in result['days']]==[50,50]
     for d in result['days']:
         assert d['inflow_litres']==d['delivered_litres']+d['closing_litres']+d['overflow_litres']
+
+
+def test_prediction_queue_respects_scope_and_keeps_reviewed_and_simulated_shortages_separate(setup, tmp_path, monkeypatch):
+    from services.api.config import settings
+    from services.worker.village_supply_predictions import SNAPSHOT
+
+    c, h, _ = supply_fixture(setup)
+    monkeypatch.setattr(settings, 'model_artifact_root', str(tmp_path))
+    estimate = {'scenarios': {'tight_supply': {'7': 3, '15': 4}, 'lower_supply': {'7': 5, '15': 5}},
+                'reference_date': '2025-12-31', 'household_basis': 'district_median'}
+    (tmp_path/SNAPSHOT).write_text(json.dumps({'schema': 1, 'generated_at': '2026-01-01T00:00:00Z',
+        'model_run': 'test-run', 'villages': {'TEST-A': estimate, 'TEST-B': estimate}}), encoding='utf-8')
+    path = '/api/v1/supply-predictions'
+    assert c.get(path).status_code == 401
+    assert c.get(path, headers=h['f']).status_code == 403
+    assert c.get(path+'?days=8', headers=h['a']).status_code == 422
+    assert c.get(path+'?days=7&view=reviewed_shortage', headers=h['a']).json()['rows'] == []
+    result = c.get(path+'?days=15&scenario=lower_supply&view=reviewed_shortage', headers=h['a']).json()
+    assert result['counts']['villages'] == 1
+    assert result['counts']['reviewed_shortage'] == 1
+    row, = result['rows']
+    assert row['id'] == 'TEST-A' and row['scenario_level'] == 5
+    assert row['reviewed']['shortage_litres'] == 400
+    result = c.get(path+'?view=scenario_shortage&limit=1&offset=1', headers=h['s']).json()
+    assert result['total'] == 2 and result['counts']['missing_reviewed_inputs'] == 1
+    assert len(result['rows']) == 1
+    detail = c.get('/api/v1/villages/TEST-A/supply-outlook', headers=h['a']).json()
+    assert detail['prototype']['scenarios'] == estimate['scenarios']
+    assert detail['outlooks'][1]['shortage_litres'] == 400
+    assert c.get('/api/v1/villages/TEST-A/supply-outlook', headers=h['o2']).json()['prototype'] is None

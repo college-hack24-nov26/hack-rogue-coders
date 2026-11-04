@@ -21,6 +21,22 @@ def install_snapshot(monkeypatch, tmp_path, features, network=None):
         (tmp_path / name).write_text(json.dumps(data), encoding='utf-8')
 
 
+def test_public_collection_summary_excludes_raw_register_details(setup, monkeypatch, tmp_path):
+    client, _, headers = setup
+    install_snapshot(monkeypatch, tmp_path, [])
+    (tmp_path/'public-supply-completion.json').write_text(json.dumps({'checked_at':'2026-11-04T00:00:00Z',
+        'sources': {'pmc': {'status':'collected', 'downloaded_files':648,
+                           'private_contacts':'MUST NOT BE EXPOSED', 'path':'PRIVATE FILE PATH'}}}))
+    (tmp_path/'public-supply-file-audit.json').write_text(json.dumps({'checked_at':'2026-11-04T00:00:00Z',
+        'eligible_daily_village_supply_records_added':0,'reviewed_urgency_labels_added':0}))
+    response = client.get('/api/v1/water-data/catalogue', headers=headers['a'])
+    assert response.status_code == 200
+    result = response.json()['public_supply_collection']
+    assert result['sources']['pmc']['downloaded_files'] == 648
+    assert result['verified_village_supply_records_added'] == 0
+    assert 'MUST NOT' not in response.text and 'PRIVATE FILE' not in response.text
+
+
 def test_village_map_does_not_invent_location_or_supply_from_station_name(setup, monkeypatch, tmp_path):
     client, factory, headers = setup
     points = [feature('TEST FIXTURE ONLY'), feature('OTHER-DISTRICT', district='Elsewhere', coordinates=(79, 21))]

@@ -7,7 +7,16 @@ test('water estimates targets seven and fifteen day supply sufficiency',async({p
  await page.getByLabel('Email',{exact:true}).fill('admin@fixture.test');
  await page.getByLabel('Password',{exact:true}).fill('fixture-password-123');
  await page.getByRole('button',{name:'Sign in →',exact:true}).click();
- await page.getByRole('button',{name:'Water estimates',exact:true}).click();
+ const predictions=page.getByRole('region',{name:'Village water predictions'});
+ await expect(predictions.getByText('3 · High',{exact:true})).toBeVisible();
+ await predictions.getByRole('button',{name:'TEST FIXTURE VILLAGE',exact:true}).click();
+ await expect(page.getByRole('heading',{name:'Will the village have enough water?'})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'Prototype estimates',exact:true})).toBeVisible();
+ await predictions.getByLabel('Prediction horizon').selectOption('15');
+ await predictions.getByLabel('Supply scenario').selectOption('lower_supply');
+ await expect(predictions.getByText('5 · Critical',{exact:true})).toBeVisible();
+ await predictions.getByLabel('Show villages').selectOption('reviewed_shortage');
+ await expect(predictions.getByText('No villages match these filters.')).toBeVisible();
  await page.getByLabel('Search registry').fill('TEST FIXTURE');
  await page.getByRole('button',{name:'Search directory',exact:true}).click();
  await page.getByLabel('Village',{exact:true}).selectOption('TEST-E2E');
@@ -22,7 +31,7 @@ test('water estimates targets seven and fifteen day supply sufficiency',async({p
 test('water atlas selects a village, distinguishes connections and exposes dated downloads',async({page})=>{
  const point={type:'Feature',id:'TEST-STATION',geometry:{type:'Point',coordinates:[74.4,18.2]},properties:{id:'TEST-STATION',name:'TEST monitoring well',kind:'groundwater',district:'TEST district',agency:'TEST ONLY',relationship:'district_context',freshness:'recent',observed_at:'2026-11-02T18:00:00+05:30',source_url:'https://nwdp.nwic.gov.in',measurements:[{label:'Groundwater level (meter)',value:-5.2,units:'meter',observed_at:'2026-11-02T18:00:00+05:30'}]}};
  const pipe={type:'Feature',id:'TEST-PIPE',geometry:{type:'LineString',coordinates:[[74.39,18.19],[74.4,18.2],[74.42,18.21]]},properties:{id:'TEST-PIPE',name:'TEST reviewed pipeline',kind:'pipeline',relationship:'reviewed_connection',freshness:'undated',agency:'TEST ONLY',measurements:[],source_url:'https://nwdp.nwic.gov.in'}};
- await page.route('**/api/v1/water-data/catalogue',r=>r.fulfill({json:{station_count:1,districts:['TEST district'],updated_at:'2026-11-03T06:00:00Z',resources:[{id:'TEST-DATA',name:'TEST training resource',title:'TEST data',kind:'groundwater',agency:'TEST ONLY',role:'history',period_start:2021,period_end:2025,access_status:'api_verified',record_count:10,url:'https://nwdp.nwic.gov.in/test.csv',api_url:'https://nwdp.nwic.gov.in/api/3/action/datastore_search?resource_id=TEST',catalogue_url:'https://nwdp.nwic.gov.in'}]}}));
+ await page.route('**/api/v1/water-data/catalogue',r=>r.fulfill({json:{public_supply_collection:{checked_at:'2026-11-04T00:00:00Z',verified_village_supply_records_added:0,reviewed_urgency_labels_added:0,sources:{jjm:{village_records:7},pmc:{downloaded_files:3},wssd:{downloaded_files:12},pocra:{weather_rows:14,weather_date_range:['2026-10-20','2026-11-02']}}},station_count:1,districts:['TEST district'],updated_at:'2026-11-03T06:00:00Z',resources:[{id:'TEST-DATA',name:'TEST training resource',title:'TEST data',kind:'groundwater',agency:'TEST ONLY',role:'history',period_start:2021,period_end:2025,access_status:'api_verified',record_count:10,url:'https://nwdp.nwic.gov.in/test.csv',api_url:'https://nwdp.nwic.gov.in/api/3/action/datastore_search?resource_id=TEST',catalogue_url:'https://nwdp.nwic.gov.in'}]}}));
  await page.route('**/api/v1/water-data/map?*',r=>r.fulfill({json:{type:'FeatureCollection',features:[point],total:1}}));
  await page.route('**/api/v1/villages/TEST-E2E/water-map',r=>r.fulfill({json:{type:'FeatureCollection',features:[point,pipe],village:{id:'TEST-E2E',name:'TEST FIXTURE VILLAGE',district:'TEST district',taluka:'TEST taluka',centre:[74.4,18.2],location_status:'reviewed'},linked_count:1,context_count:1,pipelines_available:true,message:'TEST recorded connection and district context'}}));
  await page.goto('http://localhost:5183');
@@ -44,6 +53,9 @@ test('water atlas selects a village, distinguishes connections and exposes dated
  await expect(page.locator('.atlas-source-details').getByText('Verified village connection')).toBeVisible();
  await page.screenshot({path:'work/water-map-browser.png',fullPage:true});
  await page.getByRole('tab',{name:/Live & training data/}).click();
+ await expect(page.getByRole('heading',{name:'Additional supply records collected'})).toBeVisible();
+ await expect(page.getByText(/These collections have added 0 eligible daily village supply records and 0 reviewed urgency labels/)).toBeVisible();
+ await expect(page.getByText(/Scheduled and required trips do not verify completed deliveries or litres/)).toBeVisible();
  await expect(page.getByText('TEST training resource',{exact:true})).toBeVisible();
  await expect(page.getByRole('link',{name:'CSV ↗',exact:true})).toHaveAttribute('href','https://nwdp.nwic.gov.in/test.csv');
  await expect(page.getByText('2021–2025',{exact:true})).toBeVisible();

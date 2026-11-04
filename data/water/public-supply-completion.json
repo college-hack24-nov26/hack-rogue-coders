@@ -1,0 +1,904 @@
+{
+  "sources": {
+    "jjm": {
+      "status": "collected",
+      "source": "JJM public village profile",
+      "districts_requested": 34,
+      "districts_completed": 34,
+      "village_records": 40297,
+      "reported_households": 14677233.0,
+      "reported_tap_connections": 13303682.0,
+      "output": "data\\raw\\supply\\public-completion\\jjm\\village-households.jsonl",
+      "districts": [
+        {
+          "district": "Palghar",
+          "code": "732",
+          "status": "downloaded",
+          "rows": 899,
+          "households": 451345.0,
+          "tap_connections": 321771.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "8431"
+            },
+            "retrieved_at": "2026-11-03T21:13:57.286041+00:00",
+            "bytes": 223750,
+            "sha256": "39f670862397242be4d486e4089c3b1fa9a67c35b47faeb3e519ef228cd55acb",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Thane",
+          "code": "517",
+          "status": "downloaded",
+          "rows": 791,
+          "households": 261275.0,
+          "tap_connections": 198484.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6281"
+            },
+            "retrieved_at": "2026-11-03T21:13:57.007070+00:00",
+            "bytes": 196876,
+            "sha256": "53cfc3a2c8a669403379421205e12f7e440f6f5b48f6b88b3f46f287a0108817",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Raigad",
+          "code": "520",
+          "status": "downloaded",
+          "rows": 1830,
+          "households": 548620.0,
+          "tap_connections": 501976.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6311"
+            },
+            "retrieved_at": "2026-11-03T21:13:57.854150+00:00",
+            "bytes": 456889,
+            "sha256": "60744ba3a4ef6bf64664f72722127fc16b041c8fe20ce681eccb6254acd170f6",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Ratnagiri",
+          "code": "528",
+          "status": "downloaded",
+          "rows": 1534,
+          "households": 448161.0,
+          "tap_connections": 388625.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6391"
+            },
+            "retrieved_at": "2026-11-03T21:13:58.035374+00:00",
+            "bytes": 383586,
+            "sha256": "3c9183be2fc7f4f270bdbd5f66d5fc3f7e7b25302bfb61f32316f8ab0bc92e0f",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Sindhudurg",
+          "code": "529",
+          "status": "downloaded",
+          "rows": 740,
+          "households": 193373.0,
+          "tap_connections": 161773.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "63%3A1"
+            },
+            "retrieved_at": "2026-11-03T21:13:58.336854+00:00",
+            "bytes": 184383,
+            "sha256": "720501bd6ff6565bf68609fb42422675b7d01ecb1e89547bfd6569c8868e6a5a",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Nashik",
+          "code": "516",
+          "status": "downloaded",
+          "rows": 1911,
+          "households": 718369.0,
+          "tap_connections": 684104.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6271"
+            },
+            "retrieved_at": "2026-11-03T21:13:58.666520+00:00",
+            "bytes": 479262,
+            "sha256": "a305d68e83eedecd6a941145163f296a4e8f9a2daed8e303095bd90283ec8025",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Dhule",
+          "code": "498",
+          "status": "downloaded",
+          "rows": 670,
+          "households": 304035.0,
+          "tap_connections": 302881.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "5%3A91"
+            },
+            "retrieved_at": "2026-11-03T21:13:58.827602+00:00",
+            "bytes": 167472,
+            "sha256": "17283a38a6487a6bea7ee79ec58d2046749c7c9ee56dd7635641ba9ad09876b6",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Jalgaon",
+          "code": "499",
+          "status": "downloaded",
+          "rows": 1487,
+          "households": 690913.0,
+          "tap_connections": 690791.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "5%3A%3A1"
+            },
+            "retrieved_at": "2026-11-03T21:14:00.210595+00:00",
+            "bytes": 373716,
+            "sha256": "622e90e0f4c16758ccc7a91263da340314eedb3c2fa1da468523eafd1853317d",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Ahmednagar",
+          "code": "522",
+          "status": "downloaded",
+          "rows": 1575,
+          "households": 799754.0,
+          "tap_connections": 725482.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6331"
+            },
+            "retrieved_at": "2026-11-03T21:13:59.553422+00:00",
+            "bytes": 395448,
+            "sha256": "75984466cec1fe72a06b62dba874fddd4084f9fad5fa70281bd2c34caafdce0f",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Pune",
+          "code": "521",
+          "status": "downloaded",
+          "rows": 1833,
+          "households": 894641.0,
+          "tap_connections": 779883.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6321"
+            },
+            "retrieved_at": "2026-11-03T21:14:00.336361+00:00",
+            "bytes": 458737,
+            "sha256": "97e859e74031cde00089ccc08efecb9db8a458e3a0503d1fccb74f454b032cab",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Satara",
+          "code": "527",
+          "status": "downloaded",
+          "rows": 1742,
+          "households": 618518.0,
+          "tap_connections": 574860.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6381"
+            },
+            "retrieved_at": "2026-11-03T21:14:00.827778+00:00",
+            "bytes": 436477,
+            "sha256": "7779bbe3120e6482710c2909f648e8563060c7152658b1ea9697ce55825596de",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Sangli",
+          "code": "531",
+          "status": "downloaded",
+          "rows": 726,
+          "households": 459048.0,
+          "tap_connections": 406973.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6421"
+            },
+            "retrieved_at": "2026-11-03T21:14:00.895846+00:00",
+            "bytes": 181972,
+            "sha256": "0e94263f20981db14e5ef7dc827e86afb0fd9a5bc2e6b4aea52b7a09935b93c1",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Solapur",
+          "code": "526",
+          "status": "downloaded",
+          "rows": 1128,
+          "households": 577245.0,
+          "tap_connections": 576668.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6371"
+            },
+            "retrieved_at": "2026-11-03T21:14:02.059200+00:00",
+            "bytes": 283007,
+            "sha256": "483167e5e6e20bfe5f04c89fdb29752eabbf70331145e845aeea3c6076ecaed3",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Kolhapur",
+          "code": "530",
+          "status": "downloaded",
+          "rows": 1191,
+          "households": 684162.0,
+          "tap_connections": 683047.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6411"
+            },
+            "retrieved_at": "2026-11-03T21:14:02.477728+00:00",
+            "bytes": 298524,
+            "sha256": "f86b8627d0af4d255fc2392aa0c7e24e4b17b6d5accc60774bb1e4ab5d46b518",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Aurangabad",
+          "code": "515",
+          "status": "downloaded",
+          "rows": 1297,
+          "households": 488084.0,
+          "tap_connections": 426539.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6261"
+            },
+            "retrieved_at": "2026-11-03T21:14:02.657021+00:00",
+            "bytes": 324943,
+            "sha256": "6b4aff5159765baf8162a1cdab3d371ad1ac3c19b8f9c286a3aa862462fa66fb",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Jalna",
+          "code": "514",
+          "status": "downloaded",
+          "rows": 951,
+          "households": 300063.0,
+          "tap_connections": 299947.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6251"
+            },
+            "retrieved_at": "2026-11-03T21:14:03.054339+00:00",
+            "bytes": 239323,
+            "sha256": "3b1bb873289c323ff12dc1a3284bb4def0a9f768d0129d9cb9d6e5a2333c677f",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Parbhani",
+          "code": "513",
+          "status": "downloaded",
+          "rows": 825,
+          "households": 299744.0,
+          "tap_connections": 274889.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6241"
+            },
+            "retrieved_at": "2026-11-03T21:14:03.120585+00:00",
+            "bytes": 207435,
+            "sha256": "3aba3cd2f77ee3d56ded6c0a88d112db29c20287bd0b317c1212805b09ee2ef5",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Beed",
+          "code": "523",
+          "status": "downloaded",
+          "rows": 1356,
+          "households": 472732.0,
+          "tap_connections": 374736.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6341"
+            },
+            "retrieved_at": "2026-11-03T21:14:03.753849+00:00",
+            "bytes": 340395,
+            "sha256": "dba7490e5ed9569091d98bb1891691c7b1cbd9ef6e72e50099763da0250238a2",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Nanded",
+          "code": "511",
+          "status": "downloaded",
+          "rows": 1533,
+          "households": 536765.0,
+          "tap_connections": 485984.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6221"
+            },
+            "retrieved_at": "2026-11-03T21:14:03.774675+00:00",
+            "bytes": 384127,
+            "sha256": "abaa5d04cbe2c4c92676178351a6b5c48551c809de5be5c1fa3d32b28bfe736d",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Osmanabad",
+          "code": "525",
+          "status": "downloaded",
+          "rows": 718,
+          "households": 288559.0,
+          "tap_connections": 265160.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6361"
+            },
+            "retrieved_at": "2026-11-03T21:14:04.624341+00:00",
+            "bytes": 179808,
+            "sha256": "11c206bb7921e5c2ac4c0f315070eaf343ae4faf39be7886629988d6756188f6",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Latur",
+          "code": "524",
+          "status": "downloaded",
+          "rows": 921,
+          "households": 374582.0,
+          "tap_connections": 368742.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6351"
+            },
+            "retrieved_at": "2026-11-03T21:14:05.027249+00:00",
+            "bytes": 231139,
+            "sha256": "ecb18c95678dfaf8c19d247b18878c8ce2eaa9d2f34f204822f3bc290149f5ee",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Buldana",
+          "code": "500",
+          "status": "downloaded",
+          "rows": 1251,
+          "households": 448293.0,
+          "tap_connections": 427592.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6111"
+            },
+            "retrieved_at": "2026-11-03T21:14:05.224602+00:00",
+            "bytes": 313937,
+            "sha256": "7963d573ff0bc36cf0cdca40efeea78ad878f79808793f4eb12fa011952833d7",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Akola",
+          "code": "501",
+          "status": "downloaded",
+          "rows": 830,
+          "households": 248458.0,
+          "tap_connections": 223202.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6121"
+            },
+            "retrieved_at": "2026-11-03T21:14:05.604154+00:00",
+            "bytes": 207299,
+            "sha256": "54ae11350dd1a55cccb2db3f05172b2a90d7356aee6fd66d2deee7f21fd175ea",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Amravati",
+          "code": "503",
+          "status": "downloaded",
+          "rows": 1588,
+          "households": 432311.0,
+          "tap_connections": 428239.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6141"
+            },
+            "retrieved_at": "2026-11-03T21:14:05.894318+00:00",
+            "bytes": 397059,
+            "sha256": "3fd81147ad09b78cead06490dac4cf5d2119a78500855d7a6d891f08d0692b50",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Yavatmal",
+          "code": "510",
+          "status": "downloaded",
+          "rows": 1789,
+          "households": 522884.0,
+          "tap_connections": 430843.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6211"
+            },
+            "retrieved_at": "2026-11-03T21:14:06.336512+00:00",
+            "bytes": 446149,
+            "sha256": "efb8bf5d967337cc1156787390e44ea5bf7fe27f8726ab829db84890ad39e482",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Wardha",
+          "code": "504",
+          "status": "downloaded",
+          "rows": 880,
+          "households": 238877.0,
+          "tap_connections": 235800.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6151"
+            },
+            "retrieved_at": "2026-11-03T21:14:06.424249+00:00",
+            "bytes": 219781,
+            "sha256": "1d774253800f25d9e8a19b4dd997211d6019c204f3a1048f0195c44579729ba1",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Nagpur",
+          "code": "505",
+          "status": "downloaded",
+          "rows": 1518,
+          "households": 376864.0,
+          "tap_connections": 367971.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6161"
+            },
+            "retrieved_at": "2026-11-03T21:14:09.477627+00:00",
+            "bytes": 379228,
+            "sha256": "98e08ddec52335c3a90a312de2e3bb754ec58d38b69a15521a0ccce6964e8eed",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Bhandara",
+          "code": "506",
+          "status": "downloaded",
+          "rows": 766,
+          "households": 256684.0,
+          "tap_connections": 226085.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6171"
+            },
+            "retrieved_at": "2026-11-03T21:14:07.313031+00:00",
+            "bytes": 191802,
+            "sha256": "f0f505320f2d1ba12cf4abc21fad6645aecd3ea8291551a9821f84d130193d3b",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Chandrapur",
+          "code": "509",
+          "status": "downloaded",
+          "rows": 1401,
+          "households": 395251.0,
+          "tap_connections": 359072.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "61%3A1"
+            },
+            "retrieved_at": "2026-11-03T21:14:08.020136+00:00",
+            "bytes": 350422,
+            "sha256": "5570aad636150507d7dac6007dabbbb086e1ed6c620a87dd8c194f9a1ee99bdd",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Gadchiroli",
+          "code": "508",
+          "status": "downloaded",
+          "rows": 1475,
+          "households": 242119.0,
+          "tap_connections": 224534.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6191"
+            },
+            "retrieved_at": "2026-11-03T21:14:08.672659+00:00",
+            "bytes": 368745,
+            "sha256": "2e680b000fe6ca30a5a5a663f22abdcb8c178a91374316b3c1458341c9b52cdf",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Nandurbar",
+          "code": "497",
+          "status": "downloaded",
+          "rows": 936,
+          "households": 362721.0,
+          "tap_connections": 248313.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "5%3A81"
+            },
+            "retrieved_at": "2026-11-03T21:14:09.299154+00:00",
+            "bytes": 233268,
+            "sha256": "78edf8dd4ca47908475227c3f87609263c3840252fa51ac44da27d071600ba78",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Washim",
+          "code": "502",
+          "status": "downloaded",
+          "rows": 680,
+          "households": 220115.0,
+          "tap_connections": 201870.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6131"
+            },
+            "retrieved_at": "2026-11-03T21:14:09.770974+00:00",
+            "bytes": 170052,
+            "sha256": "5b6deab87a661715625a8e24218802292194d43c0df64150b8f3e6dd0f2d4aaf",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Gondia",
+          "code": "507",
+          "status": "downloaded",
+          "rows": 869,
+          "households": 307730.0,
+          "tap_connections": 253705.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6181"
+            },
+            "retrieved_at": "2026-11-03T21:14:10.079114+00:00",
+            "bytes": 216717,
+            "sha256": "585c55d43f115854df3daea1c6f8044f96e143b989775fd39a7482d39b1d62df",
+            "http_status": 200
+          }
+        },
+        {
+          "district": "Hingoli",
+          "code": "512",
+          "status": "downloaded",
+          "rows": 656,
+          "households": 214938.0,
+          "tap_connections": 183141.0,
+          "receipt": {
+            "url": "https://ejalshakti.gov.in/jjmreport/JJMVillage_Profile.aspx/BindVillageData",
+            "request": {
+              "cat": "11",
+              "subcat": "11",
+              "param": "11",
+              "stcode": "381",
+              "dtcode": "6231"
+            },
+            "retrieved_at": "2026-11-03T21:14:10.733396+00:00",
+            "bytes": 164270,
+            "sha256": "7221d96e14edcf4d9d1528b652b2f222a481ddf9333e77efad3d19d707679ba9",
+            "http_status": 200
+          }
+        }
+      ],
+      "limitations": "Counts are administrative snapshots, with unknown observation vintage. Rural dashboard coverage is not all 44,929 directory villages. Census IDs are identity metadata, not 2011 demographic inputs. No deliveries, tank levels, current measured demand or emergency labels are inferred."
+    },
+    "pmc": {
+      "status": "collected",
+      "source": "https://webadmin.pmc.gov.in/en/jsonapi/node/water_tanker",
+      "index_complete": true,
+      "pagination_error": null,
+      "index_pages": 13,
+      "register_entries": 650,
+      "distinct_files": 648,
+      "downloaded_files": 648,
+      "failed_files": 0,
+      "index": "data\\raw\\supply\\public-completion\\pmc\\register-index.json",
+      "manifest": "data\\raw\\supply\\public-completion\\pmc\\downloads.json",
+      "limitations": "Official urban PMC dispatch registers; not statewide rural coverage or assessed need. Upload dates are not dispatch dates. Litres require explicit source capacity/volume, not a default tanker size. No village urgency labels inferred."
+    },
+    "wssd": {
+      "status": "collected",
+      "source": "https://water.maharashtra.gov.in/en/document-category/tanker-report/",
+      "pages": [
+        {
+          "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/",
+          "pdf_links": 12,
+          "receipt": {
+            "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/",
+            "request": null,
+            "retrieved_at": "2026-11-04T00:52:05.246308+00:00",
+            "bytes": 136251,
+            "sha256": "0f738c2be2e69adf114b2c9fcd438820808db5cb277d70138974d2d4a462368c",
+            "http_status": 200
+          }
+        },
+        {
+          "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/2",
+          "pdf_links": 12,
+          "receipt": {
+            "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/2/",
+            "requested_url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/2",
+            "request": null,
+            "retrieved_at": "2026-11-04T00:55:54.812949+00:00",
+            "bytes": 137406,
+            "sha256": "08adb53cb473a1e02766f13ff2498e89cd2b72eab789b3c3af713ea42fd260d5",
+            "http_status": 200
+          }
+        },
+        {
+          "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/3",
+          "pdf_links": 12,
+          "receipt": {
+            "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/3/",
+            "requested_url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/3",
+            "request": null,
+            "retrieved_at": "2026-11-04T00:55:55.452052+00:00",
+            "bytes": 137411,
+            "sha256": "853f98aa18db5fe48c15f7666c5101fb51c647cee51f0608a385dd96cf9c6782",
+            "http_status": 200
+          }
+        },
+        {
+          "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/4",
+          "pdf_links": 12,
+          "receipt": {
+            "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/4/",
+            "requested_url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/4",
+            "request": null,
+            "retrieved_at": "2026-11-04T00:55:56.121555+00:00",
+            "bytes": 137397,
+            "sha256": "b865bcbb7b6d0be4728bd316b16ae57218d36128dafc7bc0d7a05ac0fc567bde",
+            "http_status": 200
+          }
+        },
+        {
+          "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/5",
+          "pdf_links": 12,
+          "receipt": {
+            "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/5/",
+            "requested_url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/5",
+            "request": null,
+            "retrieved_at": "2026-11-04T00:55:56.854834+00:00",
+            "bytes": 137413,
+            "sha256": "60c25e0370186e0f8236b1641252216b726406be085f02f1153fada1d73fbc5c",
+            "http_status": 200
+          }
+        },
+        {
+          "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/6",
+          "pdf_links": 12,
+          "receipt": {
+            "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/6/",
+            "requested_url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/6",
+            "request": null,
+            "retrieved_at": "2026-11-04T00:55:57.554268+00:00",
+            "bytes": 137397,
+            "sha256": "19c7e5226ff8e0bfdb3fe47c3530e71e6514a8ad30c9aaefa3f218ccb5417ad6",
+            "http_status": 200
+          }
+        },
+        {
+          "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/7",
+          "pdf_links": 12,
+          "receipt": {
+            "url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/7/",
+            "requested_url": "https://water.maharashtra.gov.in/en/document-category/tanker-report/page/7",
+            "request": null,
+            "retrieved_at": "2026-11-04T00:55:58.285132+00:00",
+            "bytes": 136268,
+            "sha256": "14d882d993503a7133248f1e4edc3f582b35b2816dd9a9bf5df51d7757316b45",
+            "http_status": 200
+          }
+        }
+      ],
+      "listed_files": 84,
+      "downloaded_files": 84,
+      "manifest": "data\\raw\\supply\\public-completion\\wssd\\downloads.json",
+      "limitations": "Published state district-level reports. Observation/report dates and geographic resolution require content checks; downloads do not establish village deliveries or tanker need."
+    },
+    "pocra": {
+      "status": "collected",
+      "source": "https://gis.mahapocra.gov.in/",
+      "requested_for_date": "2026-11-03",
+      "districts": 36,
+      "village_attributes": 44839,
+      "village_attribute_total_matched": 44839,
+      "weather": {
+        "rows": 504,
+        "output": "data\\raw\\supply\\public-completion\\pocra\\weather-district-context.jsonl"
+      },
+      "dryspell": {
+        "rows": 95,
+        "output": "data\\raw\\supply\\public-completion\\pocra\\dryspell-district-context.jsonl"
+      },
+      "weather_date_range": [
+        "2026-10-20",
+        "2026-11-02"
+      ],
+      "errors": [],
+      "limitations": "Weather is district context, not village supply. Dry-spell response lacks a valid-period field; request date alone does not establish freshness. Wind units and aggregation method unverified. Attribute codes/geometry vintage unverified; geometry excluded. No demographic, delivery or urgency labels inferred."
+    }
+  },
+  "checked_at": "2026-11-04T00:55:58.622887+00:00",
+  "scope": "Public source completion; operational training gaps remain explicit",
+  "finished_at": "2026-11-04T00:55:58.622887+00:00"
+}

@@ -1,0 +1,102 @@
+{
+  "basis": "simulated",
+  "dataset_manifest": "E:\\Z-PROJECTS\\PHALTAN HACKTHON\\Phalatan-hackathon\\data\\raw\\supply\\simulation\\20261104-073923-b05ab0\\simulation-manifest.json",
+  "counts": {
+    "episodes": 40297,
+    "zero_household_templates_replaced": 1,
+    "district_weather_name_fallback": 899,
+    "examples": 80594
+  },
+  "class_counts": {
+    "7d_train": {
+      "5": 6088,
+      "4": 7103,
+      "0": 5225,
+      "1": 5387,
+      "2": 3015,
+      "3": 5353
+    },
+    "15d_train": {
+      "5": 6088,
+      "4": 8525,
+      "0": 5156,
+      "1": 4645,
+      "2": 2744,
+      "3": 5013
+    },
+    "7d_validation": {
+      "4": 1852,
+      "0": 1305,
+      "1": 1358,
+      "5": 1553,
+      "3": 1309,
+      "2": 749
+    },
+    "15d_validation": {
+      "4": 2223,
+      "0": 1288,
+      "2": 684,
+      "5": 1553,
+      "3": 1212,
+      "1": 1166
+    }
+  },
+  "seed": 1729,
+  "policy_version": "simulated-supply-urgency-v1",
+  "daily_simulated_balances": 1813365,
+  "model_trained": false,
+  "measured_operations_added": 0,
+  "assumptions_document": "docs/SIMULATED_SUPPLY_TRAINING.md",
+  "simulation_prototype_ready": true,
+  "check_report": "E:\\Z-PROJECTS\\PHALTAN HACKTHON\\Phalatan-hackathon\\artifacts\\supply-simulation-models\\20261104-074123-66c0fa\\training-report.json",
+  "verified_partitions": {
+    "7": {
+      "split_kind": "held_out_size_templates_not_real_world_backtest",
+      "training_rows": 32171,
+      "train_classes": {
+        "5": 6088,
+        "4": 7103,
+        "0": 5225,
+        "1": 5387,
+        "2": 3015,
+        "3": 5353
+      },
+      "train_template_groups": 32171,
+      "validation_rows": 8126,
+      "validation_classes": {
+        "4": 1852,
+        "0": 1305,
+        "1": 1358,
+        "5": 1553,
+        "3": 1309,
+        "2": 749
+      },
+      "validation_template_groups": 8126
+    },
+    "15": {
+      "split_kind": "held_out_size_templates_not_real_world_backtest",
+      "training_rows": 32171,
+      "train_classes": {
+        "5": 6088,
+        "4": 8525,
+        "0": 5156,
+        "1": 4645,
+        "2": 2744,
+        "3": 5013
+      },
+      "train_template_groups": 32171,
+      "validation_rows": 8126,
+      "validation_classes": {
+        "4": 2223,
+        "0": 1288,
+        "2": 684,
+        "5": 1553,
+        "3": 1212,
+        "1": 1166
+      },
+      "validation_template_groups": 8126
+    }
+  },
+  "measured_model_validated": false,
+  "focused_tests_passed": 18
+}

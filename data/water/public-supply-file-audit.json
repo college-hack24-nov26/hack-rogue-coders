@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-11-04T00:58:00.197352+00:00",
+  "pmc": {
+    "downloaded_files": 648,
+    "unique_content_files": 642,
+    "duplicate_content_files_skipped": 6,
+    "profiled_sheets": 662,
+    "errors": 0,
+    "sheets_with_usable_heading_date": 251,
+    "sheets_with_conflicting_title_date": 1,
+    "sheets_with_duplicate_serials": 11,
+    "heading_date_range": [
+      "2026-04-17",
+      "2026-10-25"
+    ],
+    "output": "data\\raw\\supply\\public-completion\\pmc\\register-sheet-audit.jsonl",
+    "meaning": "Reported scheduled/required trips. Completion, litres, village links and reasons unverified; no recipient/contact fields exported."
+  },
+  "wssd": {
+    "profiled_pdfs": 84,
+    "text_extractable_pdfs": 8,
+    "listing_report_date_range": [
+      "2025-02-24",
+      "2026-11-02"
+    ],
+    "output": "data\\raw\\supply\\public-completion\\wssd\\report-file-audit.json",
+    "meaning": "Statewide district summaries; listing report dates retained separately from content dates. Tables need visual verification; no village volumes inferred."
+  },
+  "eligible_daily_village_supply_records_added": 0,
+  "reviewed_urgency_labels_added": 0
+}

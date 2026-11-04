@@ -1,5 +1,15 @@
 # JalSathi
 
+Offline 7/15-day **water-supply** candidate training: run `train_offline.cmd` from CMD or `.\train_offline.cmd` from PowerShell. It reads local village-operation logs and makes no API/Neon calls. Commands, input template and missing-data behavior are documented in [Offline supply training](docs/OFFLINE_SUPPLY_TRAINING.md). Public hydrological archives alone do not provide the required village supply targets.
+
+Training now defaults to the project's [0-5 supply-urgency scale](docs/SUPPLY_URGENCY_SCALE.md): level 5 means reviewed tanker need within seven days. It additionally needs historical outcome labels. Use `--target sufficiency` for the earlier binary enough/shortage candidates. Neither target is an official climate-drought classification.
+
+[Public supply-data collection status](docs/PUBLIC_SUPPLY_DATA_STATUS.md): 40,297 JJM village profiles, 648 PMC tanker spreadsheets, 84 state tanker PDFs and dated PoCRA district weather are now local. These collections have not supplied the verified daily village delivery/storage history and reviewed outcomes needed to train. The remaining [authority export request](docs/SUPPLY_DATA_ACCESS_REQUEST.md) is prepared, not submitted.
+
+**Simulated fields are now prepared for prototype training:** run `.\train_offline.cmd --data-mode simulation --target urgency` in PowerShell. The separate dataset contains 40,297 hypothetical episodes and 80,594 labelled horizon examples. Full dataset checks passed; no model was fitted on that dataset during preparation. See [simulation assumptions and commands](docs/SIMULATED_SUPPLY_TRAINING.md). This mode learns a simulator and does not establish real-village prediction accuracy.
+
+**Full historical archive option:** `.\train_history_offline.cmd` uses features from the screened 2021–2025 archive. All 39,240,902 candidate observations were scanned across 98 files; 37,219,643 rows retained a usable observation. The targets remain simulated. See [historical supply training](docs/HISTORICAL_SUPPLY_TRAINING.md) for the preparation, cutoff and saved-model locations.
+
 Local monorepo implementing the shared water-complaint workflow and evidence-aware farmer tools from the supplied PRD. Officials' actions are **demonstration only**, with no government integration. No production readings, village IDs, prices or model scores are fabricated.
 
 ## Run on Windows
