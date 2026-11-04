@@ -48,8 +48,11 @@ def test_signed_webhook_dedup_and_missing_location(setup,monkeypatch):
     assert deliver('fixture-msg-1','TEST FIXTURE water leak without village').json()['received']==0
     assert process_one()
     with f() as db:
-        complaints=list(db.scalars(select(Complaint)));assert len(complaints)==1;assert complaints[0].review_status=='awaiting_location'
+        assert list(db.scalars(select(Complaint)))==[]
     deliver('fixture-msg-2','LGD:TEST-A TEST FIXTURE location and description')
+    for _ in range(5):process_one()
+    with f() as db:assert list(db.scalars(select(Complaint)))==[]
+    deliver('fixture-msg-3','YES')
     for _ in range(5):process_one()
     with f() as db:
         complaints=list(db.scalars(select(Complaint)));assert len(complaints)==1;assert complaints[0].review_status=='submitted';assert complaints[0].village_id=='TEST-A';assert complaints[0].original=='TEST FIXTURE water leak without village'

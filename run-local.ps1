@@ -1,4 +1,4 @@
-param([switch]$Install,[switch]$Build)
+param([switch]$Install,[switch]$Build,[int]$ApiPort=8000,[int]$AdminPort=5173,[int]$OfficialsPort=5174,[int]$FarmerPort=8081)
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath $PSScriptRoot
 if(-not (Get-Command node -ErrorAction SilentlyContinue)) {
@@ -27,7 +27,7 @@ if($Build -or -not (Test-Path -LiteralPath 'apps\admin-web\dist\index.html') -or
     if($LASTEXITCODE -ne 0){throw 'Portal build failed'}
 }
 if($Build -or -not (Test-Path -LiteralPath 'apps\farmer-mobile\dist\index.html')){
-    npm.cmd run export -w '@jalsathi/mobile'
+    npm.cmd run export -w '@jalsathi/mobile' -- --clear
     if($LASTEXITCODE -ne 0){throw 'Farmer web export failed'}
 }
 & $pythonPath -m alembic upgrade head
@@ -49,19 +49,22 @@ if(Test-Path -LiteralPath $processFile){
     }
 }
 function Start-JalService([string]$Name,[string]$Executable,[string[]]$ServiceArguments,[string]$WorkingDirectory,[string]$ReadyUrl) {
-    if($ReadyUrl -and (Test-LocalUrl $ReadyUrl)){Write-Output "$Name already responding: $ReadyUrl";return}
+    if($ReadyUrl -and (Test-LocalUrl $ReadyUrl)){
+        if(-not @($script:startedProcesses | Where-Object {$_.name -eq $Name -and $_.url -eq $ReadyUrl}).Count){throw "$ReadyUrl is occupied by an unowned service. Select a free port; existing services were left running."}
+        Write-Output "$Name already responding: $ReadyUrl";return
+    }
     if(@($script:startedProcesses | Where-Object {$_.name -eq $Name}).Count){Write-Output "$Name process already running";return}
     $serviceProcess=Start-Process -FilePath $Executable -ArgumentList $ServiceArguments -WorkingDirectory $WorkingDirectory -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $PSScriptRoot ($Name+'.log')) -RedirectStandardError (Join-Path $PSScriptRoot ($Name+'-error.log'))
     $script:startedProcesses+=@{name=$Name;id=$serviceProcess.Id;started_at=$serviceProcess.StartTime.ToUniversalTime().ToString('o');url=$ReadyUrl}
     $script:startedProcesses | ConvertTo-Json | Set-Content -LiteralPath $processFile -Encoding UTF8
 }
-Start-JalService 'api' $pythonPath @('-m','uvicorn','services.api.main:app','--host','127.0.0.1','--port','8000') $PSScriptRoot 'http://127.0.0.1:8000/health'
+Start-JalService 'api' $pythonPath @('-m','uvicorn','services.api.main:app','--host','127.0.0.1','--port',"$ApiPort",'--no-access-log') $PSScriptRoot "http://127.0.0.1:$ApiPort/health"
 Start-JalService 'worker' $pythonPath @('-m','services.worker.main') $PSScriptRoot ''
-Start-JalService 'admin' $nodePath @(('"'+$vitePath+'"'),'preview','--host','127.0.0.1','--port','5173','--strictPort') (Join-Path $PSScriptRoot 'apps\admin-web') 'http://127.0.0.1:5173'
-Start-JalService 'officials' $nodePath @(('"'+$vitePath+'"'),'preview','--host','127.0.0.1','--port','5174','--strictPort') (Join-Path $PSScriptRoot 'apps\officials-demo-web') 'http://127.0.0.1:5174'
+Start-JalService 'admin' $nodePath @(('"'+$vitePath+'"'),'preview','--host','127.0.0.1','--port',"$AdminPort",'--strictPort') (Join-Path $PSScriptRoot 'apps\admin-web') "http://127.0.0.1:$AdminPort"
+Start-JalService 'officials' $nodePath @(('"'+$vitePath+'"'),'preview','--host','127.0.0.1','--port',"$OfficialsPort",'--strictPort') (Join-Path $PSScriptRoot 'apps\officials-demo-web') "http://127.0.0.1:$OfficialsPort"
 $farmerDirectory=Join-Path $PSScriptRoot 'apps\farmer-mobile\dist'
-Start-JalService 'farmer' $pythonPath @('-m','http.server','8081','--bind','127.0.0.1','--directory',('"'+$farmerDirectory+'"')) $PSScriptRoot 'http://127.0.0.1:8081'
-$localUrls=@('http://127.0.0.1:8000/health','http://127.0.0.1:5173','http://127.0.0.1:5174','http://127.0.0.1:8081')
+Start-JalService 'farmer' $pythonPath @('-m','http.server',"$FarmerPort",'--bind','127.0.0.1','--directory',('"'+$farmerDirectory+'"')) $PSScriptRoot "http://127.0.0.1:$FarmerPort"
+$localUrls=@("http://127.0.0.1:$ApiPort/health","http://127.0.0.1:$AdminPort","http://127.0.0.1:$OfficialsPort","http://127.0.0.1:$FarmerPort")
 $deadline=(Get-Date).AddSeconds(30)
 do {
     $pendingUrls=@($localUrls | Where-Object {-not (Test-LocalUrl $_)})
@@ -69,8 +72,8 @@ do {
     Start-Sleep -Milliseconds 500
 }while((Get-Date) -lt $deadline)
 if($pendingUrls.Count){throw ('Services did not become ready: '+($pendingUrls -join ', ')+'. Check the corresponding *-error.log files.')}
-Write-Output 'Farmer app: http://127.0.0.1:8081'
-Write-Output 'Admin: http://127.0.0.1:5173'
-Write-Output 'Officials demo: http://127.0.0.1:5174'
-Write-Output 'API documentation: http://127.0.0.1:8000/docs'
+Write-Output "Farmer app: http://127.0.0.1:$FarmerPort"
+Write-Output "Admin: http://127.0.0.1:$AdminPort (API address: http://127.0.0.1:$ApiPort)"
+Write-Output "Officials demo: http://127.0.0.1:$OfficialsPort (API address: http://127.0.0.1:$ApiPort)"
+Write-Output "API documentation: http://127.0.0.1:$ApiPort/docs"
 Write-Output 'Services keep running after this command exits. Their owned process IDs are in local-processes.json.'

@@ -1,7 +1,7 @@
 export type ReviewStatus='submitted'|'awaiting_location'|'needs_information'|'accepted'|'rejected'|'duplicate'|'withdrawn';
 export interface Profile {id:string;email:string;role:'farmer'|'admin'|'official'|'system_admin';jurisdictions:string[];preferences:Record<string,unknown>}
 export interface Village {id:string;name:string;district:string;taluka:string;jurisdiction:string;provenance:Record<string,unknown>}
-export interface Complaint {id:string;description:string;original?:string;village_id:string|null;category:string;channel?:string;review_status:ReviewStatus;service_status:string;jurisdiction:string|null;version:number;created_at:string;timeline:{kind:string;note:string;created_at:string}[]}
+export interface Complaint {id:string;description:string;original?:string;village_id:string|null;category:string;channel?:string;location?:{village:string;taluka:string;district:string}|null;gps?:{latitude:number;longitude:number}|null;review_status:ReviewStatus;service_status:string;jurisdiction:string|null;version:number;created_at:string;timeline:{kind:string;note:string;created_at:string}[]}
 export class ApiError extends Error {
   constructor(public status:number,message:string,public fields:Record<string,string>={}){super(message);this.name='ApiError'}
 }

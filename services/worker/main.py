@@ -8,48 +8,27 @@ from services.api.db import Session, Job, ProviderMessage, Complaint, Event, Vil
 from services.api.main import enqueue, latest
 from services.api.config import settings
 
-def intake(db,payload):
-    msg=db.get(ProviderMessage,payload['message_id'])
-    sender='whatsapp:'+msg.sender
-    text=msg.payload.get('text',{}).get('body','')
-    if text.strip().upper() in ['SUBSCRIBE','UNSUBSCRIBE']:
-        record_key=hashlib.sha256(msg.sender.encode()).hexdigest();old=latest(db,'whatsapp_consent',record_key)
-        opt_in=text.strip().upper()=='SUBSCRIBE';db.add(Record(kind='whatsapp_consent',key=record_key,version=old.version+1 if old else 1,payload={'opt_in':opt_in,'provider_message_id':msg.id,'purpose':'complaint_status_updates'}))
-        enqueue(db,'reply:'+msg.id,'whatsapp_reply',{'to':msg.sender,'text':'Status update consent saved: '+str(opt_in),'inbound_timestamp':msg.payload.get('timestamp'),'consent':'reply_to_consent_request'});return {'status':'consent_updated'}
-    if text.upper().startswith('STATUS '):
-        key=text.split(maxsplit=1)[1].strip();c=db.get(Complaint,key)
-        reply=f'Ticket {c.id}: review={c.review_status}; service demo={c.service_status}' if c and c.reporter_id==sender else 'Ticket unavailable for this WhatsApp sender.'
-        enqueue(db,'reply:'+msg.id,'whatsapp_reply',{'to':msg.sender,'text':reply,'inbound_timestamp':msg.payload.get('timestamp'),'consent':'reply_to_inbound_status_request'})
-        return {'status':'status_request_processed','identity':'same_provider_sender_only'}
-    # Explicit official ID is required; do not infer from a name or phone number.
-    parts=text.split()
-    village_id=next((p.split(':',1)[1] for p in parts if p.startswith('LGD:')),None)
-    v=db.get(Village,village_id) if village_id else None
-    existing=db.scalar(select(Complaint).where(Complaint.reporter_id==sender,Complaint.review_status.in_(['awaiting_location','needs_information'])).order_by(Complaint.created_at.desc()))
-    if existing:
-        c=existing
-        if v:
-            c.village_id=v.id;c.jurisdiction=v.jurisdiction;c.review_status='submitted'
-        db.add(Event(complaint_id=c.id,actor_id=sender,kind='message',note=text or 'Unsupported media preserved for review'))
-    else:
-        c=Complaint(id=uid(),reporter_id=sender,idempotency_key=msg.id,request_hash=hashlib.sha256(json.dumps(msg.payload,sort_keys=True).encode()).hexdigest(),channel='whatsapp',original=text or json.dumps(msg.payload,ensure_ascii=False),description=text or 'Media report requires text and location review',category='other',village_id=v.id if v else None,jurisdiction=v.jurisdiction if v else None,review_status='submitted' if v and len(text)>=10 else 'awaiting_location')
-        db.add(c);db.add(Event(complaint_id=c.id,actor_id=sender,kind='submitted',note='Original provider message retained; sender is not a verified landowner'))
-    db.flush()
-    reply=('तक्रार नोंदवली. Ticket: '+c.id) if c.review_status=='submitted' else ('कृपया गावाचा अधिकृत कोड LGD:<code>, जिल्हा आणि समस्येचे वर्णन पाठवा. Please provide the village code and details. Ticket: '+c.id)
-    enqueue(db,'reply:'+msg.id,'whatsapp_reply',{'to':msg.sender,'text':reply,'inbound_timestamp':msg.payload.get('timestamp'),'consent':'reply_to_inbound_report'})
-    return {'complaint_id':c.id,'status':c.review_status}
+from .whatsapp import intake
 
 def send_reply(payload):
     if not settings.allow_external_send: return {'status':'blocked','reason':'External sending explicitly disabled'}
     if not all([settings.whatsapp_access_token,settings.whatsapp_phone_number_id,settings.whatsapp_api_version]): return {'status':'blocked','reason':'WhatsApp credentials unavailable'}
-    outside=not payload.get('inbound_timestamp') or time.time()-float(payload['inbound_timestamp'])>86400
+    approved={p.strip() for p in settings.whatsapp_approved_recipients.split(',') if p.strip()}
+    if payload['to'] not in approved:return {'status':'blocked','reason':'Recipient not approved for testing'}
+    if payload.get('notification') and not payload.get('opt_in'):return {'status':'blocked','reason':'Notification consent required'}
+    try: age=time.time()-float(payload.get('inbound_timestamp') or 0)
+    except (ValueError,TypeError):age=float('inf')
+    outside=not 0<=age<86400
     if outside and not (payload.get('opt_in') is True and settings.whatsapp_status_template and settings.whatsapp_template_approved):return {'status':'blocked','reason':'Outside reply window; approved template and consent required'}
     body={'messaging_product':'whatsapp','to':payload['to'],'type':'template' if outside else 'text'}
     if outside:body['template']={'name':settings.whatsapp_status_template,'language':{'code':settings.whatsapp_template_language},'components':[{'type':'body','parameters':[{'type':'text','text':payload['text']}]}]}
-    else:body['text']={'body':payload['text']}
+    else:body['text']={'body':payload['text'][:4096]}
     import httpx
     r=httpx.post(f'https://graph.facebook.com/{settings.whatsapp_api_version}/{settings.whatsapp_phone_number_id}/messages',headers={'Authorization':'Bearer '+settings.whatsapp_access_token},json=body,timeout=30)
-    r.raise_for_status();return {'status':'sent','provider_ids':[m['id'] for m in r.json().get('messages',[])]}
+    r.raise_for_status()
+    ids=[m['id'] for m in r.json().get('messages',[]) if m.get('id')]
+    if not ids:raise ValueError('Meta did not acknowledge a message ID')
+    return {'status':'sent','provider_ids':ids}
 
 def daily_inference(db,payload):
     """Load once, batch supported locations, retain unsupported rows and reproducible lineage."""
@@ -122,14 +101,30 @@ def process_one():
         job=db.get(Job,key)
         try:
             if job.kind=='whatsapp_intake': result=intake(db,job.payload)
-            elif job.kind=='whatsapp_reply': result=send_reply(job.payload)
+            elif job.kind=='whatsapp_reply':
+                delivery=dict(job.payload)
+                if delivery.get('notification'):
+                    consent=latest(db,'whatsapp_consent',hashlib.sha256(delivery['to'].encode()).hexdigest())
+                    delivery['opt_in']=bool(consent and consent.payload['opt_in'])
+                result=send_reply(delivery)
+            elif job.kind=='whatsapp_media':
+                from .whatsapp_media import import_media
+                result=import_media(db,job.payload)
             elif job.kind=='daily_inference': result=daily_inference(db,job.payload)
             elif job.kind=='audit_delivery':
                 c=db.get(Complaint,job.payload['complaint_id'])
                 if c and c.channel=='whatsapp':
-                    phone=c.reporter_id.removeprefix('whatsapp:');messages=list(db.scalars(select(ProviderMessage).where(ProviderMessage.sender==phone).order_by(ProviderMessage.received_at.desc()).limit(1)))
+                    association=latest(db,'whatsapp_complaint',c.id)
+                    phone=association.payload['phone'] if association else c.reporter_id.removeprefix('whatsapp:')
+                    messages=list(db.scalars(select(ProviderMessage).where(ProviderMessage.sender==phone).order_by(ProviderMessage.received_at.desc()).limit(1)))
                     consent=latest(db,'whatsapp_consent',hashlib.sha256(phone.encode()).hexdigest())
-                    enqueue(db,'status:'+job.key,'whatsapp_reply',{'to':phone,'text':f'Ticket {c.id}: review {c.review_status}; service DEMO {c.service_status}.','inbound_timestamp':messages[0].payload.get('timestamp') if messages else None,'opt_in':bool(consent and consent.payload['opt_in'])})
+                    if consent and consent.payload['opt_in']:
+                        review=job.payload.get('review_status',c.review_status)
+                        service=job.payload.get('service_status',c.service_status)
+                        note=job.payload.get('note',c.admin_note)
+                        marathi=association and association.payload.get('language')=='mr'
+                        text=(f'JalSathi तक्रार स्थिती\nसंदर्भ क्रमांक: {c.id}\nपुनरावलोकन: {review}\nसेवा (demo): {service}\n{note}' if marathi else f'JalSathi Complaint Update\nReference ID: {c.id}\nReview: {review}\nService (demo): {service}\n{note}')
+                        enqueue(db,'status:'+job.key,'whatsapp_reply',{'to':phone,'text':text[:4096],'inbound_timestamp':messages[0].payload.get('timestamp') if messages else None,'opt_in':True,'notification':True})
                 result={'status':'recorded','external_handoff':False}
             elif job.kind in ['schemes_ingest','msamb_ingest','agmarknet_ingest','villages_ingest']:
                 from . import sources

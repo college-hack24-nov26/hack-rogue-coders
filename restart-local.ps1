@@ -1,5 +1,5 @@
 [CmdletBinding(SupportsShouldProcess=$true,ConfirmImpact='Low')]
-param([switch]$Build)
+param([switch]$Build,[int]$ApiPort=8000,[int]$AdminPort=5173,[int]$OfficialsPort=5174,[int]$FarmerPort=8081)
 
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath $PSScriptRoot
@@ -30,6 +30,6 @@ foreach($target in $verifiedTargets){
     }
 }
 if($PSCmdlet.ShouldProcess($PSScriptRoot,'Migrate and start local services using the current .env')){
-    & (Join-Path $PSScriptRoot 'run-local.ps1') -Build:$Build
+    & (Join-Path $PSScriptRoot 'run-local.ps1') -Build:$Build -ApiPort $ApiPort -AdminPort $AdminPort -OfficialsPort $OfficialsPort -FarmerPort $FarmerPort
     if($LASTEXITCODE -ne 0){throw 'Local startup failed. Check the displayed migration or service error.'}
 }

@@ -1,5 +1,7 @@
 # JalSathi
 
+WhatsApp complaint registration, verified farmer-account linking, shared tracking and setup instructions: [implementation and demo guide](docs/WHATSAPP_INTEGRATION.md).
+
 Local monorepo implementing the shared water-complaint workflow and evidence-aware farmer tools from the supplied PRD. Officials' actions are **demonstration only**, with no government integration. No production readings, village IDs, prices or model scores are fabricated.
 
 ## Run on Windows
@@ -57,7 +59,7 @@ Set `DATABASE_URL=postgresql+psycopg://...` with TLS parameters for Neon, run Al
 
 ## Integrations and data
 
-Webhook callback: `/api/v1/webhooks/whatsapp`. Configure Meta verification token, app secret, business phone ID and API version server-side. Signatures are checked before persisting. A report with `LGD:<imported id>` can be located; missing location remains incomplete. The worker deduplicates message IDs and replies via durable jobs. `STATUS <ticket>` only reveals a ticket belonging to that provider sender. `SUBSCRIBE`/`UNSUBSCRIBE` record status-update consent. `ALLOW_EXTERNAL_SEND=false` prevents real messages. Outside the service window, delivery also requires recorded opt-in, `WHATSAPP_STATUS_TEMPLATE`, its language and explicit `WHATSAPP_TEMPLATE_APPROVED=true` after actual provider approval. No template delivery is assumed or verified. Blocked/dead jobs can be retried by a system administrator after their cause is fixed.
+Webhook callback: `/api/v1/webhooks/whatsapp`. Configure Meta verification token, app secret, business phone ID and API version server-side. Signed messages enter a durable conversation that collects the issue and an imported village, shows a summary, and creates a shared complaint only after `YES`. Location accepts `village, taluka, district` or `LGD:<imported id>`. The real complaint UUID is its reference. Farmer app Tickets can generate a one-time `LINK` command for verified account linking and reference tracking. `HELP`, `NEW`, `CANCEL`, `STATUS <reference>` and `REPLY <reference> <text>` are supported. `SUBSCRIBE`/`UNSUBSCRIBE` control optional notifications, rechecked at dispatch. Images use the existing private inspection pipeline. `ALLOW_EXTERNAL_SEND=false` prevents real messages; enabled test sending also requires `WHATSAPP_APPROVED_RECIPIENTS`. Outside the service window, delivery requires opt-in and an actually approved status template. Blocked/dead jobs can be retried by a system administrator after their cause is fixed. Real Meta delivery remains untested; see the linked guide for commands, setup and limitations.
 
 Use `python -m scripts.manage import-evidence file.json --kind market|document|source_fetch` for reviewed real-source imports. Market objects require `source,source_date,units,market,variety,price`; documents require source/date. Admin → Sources & data flow queues weather, bounded MSAMB commodity, optional AGMARKNET, official document and directory refresh jobs. Enable `ENABLE_DAILY_INGESTION=true` only when source access and village coordinates have been reviewed. Weather retains provider-grid provenance; schemes retain actual passages and separate publication/retrieval dates. Village/source/aquifer mapping still requires reviewed evidence.
 

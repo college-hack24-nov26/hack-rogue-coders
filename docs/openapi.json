@@ -285,6 +285,37 @@
         }
       }
     },
+    "/api/v1/whatsapp/link-code": {
+      "post": {
+        "summary": "Whatsapp Link Code",
+        "operationId": "whatsapp_link_code_api_v1_whatsapp_link_code_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
     "/api/v1/complaints/mine": {
       "get": {
         "summary": "Mine",
@@ -1098,6 +1129,58 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/villages/{key}/research-predictions": {
+      "get": {
+        "summary": "Research Predictions",
+        "operationId": "research_predictions_api_v1_admin_villages__key__research_predictions_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Key"
+            }
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 7,
+              "title": "Days"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2731,6 +2814,274 @@
           }
         ]
       }
+    },
+    "/api/v1/water-data/refresh-status": {
+      "get": {
+        "summary": "Refresh Status",
+        "operationId": "refresh_status_api_v1_water_data_refresh_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/admin/water-data/refresh": {
+      "post": {
+        "summary": "Refresh Sources",
+        "operationId": "refresh_sources_api_v1_admin_water_data_refresh_post",
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water-data/catalogue": {
+      "get": {
+        "summary": "Catalogue",
+        "operationId": "catalogue_api_v1_water_data_catalogue_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/water-data/map": {
+      "get": {
+        "summary": "State Map",
+        "operationId": "state_map_api_v1_water_data_map_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "bbox",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Bbox"
+            }
+          },
+          {
+            "name": "district",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "District"
+            }
+          },
+          {
+            "name": "kinds",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Kinds"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 12000,
+              "minimum": 1,
+              "default": 4000,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/villages/{key}/water-map": {
+      "get": {
+        "summary": "Village Map",
+        "operationId": "village_map_api_v1_villages__key__water_map_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Key"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/villages/{key}/water-connections": {
+      "post": {
+        "summary": "Save Review",
+        "operationId": "save_review_api_v1_admin_villages__key__water_connections_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SourceReview"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid input; submitted values are omitted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3579,6 +3930,194 @@
           "expected_version"
         ],
         "title": "Review"
+      },
+      "SourceReview": {
+        "properties": {
+          "expected_version": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Expected Version",
+            "default": 0
+          },
+          "asset_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Asset Id"
+          },
+          "source_name": {
+            "type": "string",
+            "maxLength": 250,
+            "minLength": 2,
+            "title": "Source Name"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "groundwater",
+              "river",
+              "canal",
+              "reservoir",
+              "pipeline",
+              "industrial_pipeline",
+              "tank",
+              "treatment",
+              "intake",
+              "pump",
+              "valve",
+              "meter",
+              "other"
+            ],
+            "title": "Kind"
+          },
+          "scheme_id": {
+            "type": "string",
+            "maxLength": 150,
+            "minLength": 2,
+            "title": "Scheme Id"
+          },
+          "connection_status": {
+            "type": "string",
+            "enum": [
+              "documented",
+              "not_connected",
+              "unresolved"
+            ],
+            "title": "Connection Status"
+          },
+          "evidence_method": {
+            "type": "string",
+            "enum": [
+              "official_scheme_record",
+              "authority_gis",
+              "field_inspection"
+            ],
+            "title": "Evidence Method"
+          },
+          "evidence_url": {
+            "type": "string",
+            "maxLength": 2000,
+            "pattern": "^https://[^\\s]+$",
+            "title": "Evidence Url"
+          },
+          "evidence_note": {
+            "type": "string",
+            "maxLength": 4000,
+            "minLength": 20,
+            "title": "Evidence Note"
+          },
+          "evidence_date": {
+            "type": "string",
+            "format": "date",
+            "title": "Evidence Date"
+          },
+          "valid_until": {
+            "type": "string",
+            "format": "date",
+            "title": "Valid Until"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 90.0,
+                "minimum": -90.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 180.0,
+                "minimum": -180.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "delivery_status": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "measured",
+              "reported_stopped"
+            ],
+            "title": "Delivery Status",
+            "default": "unknown"
+          },
+          "delivered_litres_per_day": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivered Litres Per Day"
+          },
+          "delivery_observed_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivery Observed At"
+          },
+          "delivery_evidence_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 2000,
+                "pattern": "^https://[^\\s]+$"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivery Evidence Url"
+          },
+          "delivery_method": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 1000,
+                "minLength": 10
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delivery Method"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "asset_id",
+          "source_name",
+          "kind",
+          "scheme_id",
+          "connection_status",
+          "evidence_method",
+          "evidence_url",
+          "evidence_note",
+          "evidence_date",
+          "valid_until"
+        ],
+        "title": "SourceReview"
       },
       "SupplyAllocation": {
         "properties": {

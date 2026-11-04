@@ -1,7 +1,11 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
+from pydantic import field_validator
+
+ENV_FILE = Path(__file__).resolve().parents[2] / '.env'
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file='.env', extra='ignore')
+    model_config = SettingsConfigDict(env_file=ENV_FILE, env_file_encoding='utf-8', extra='ignore')
     database_url: str = 'sqlite:///./jalsathi.db'
     environment: str = 'development'
     auth_mode: str = 'local'
@@ -15,6 +19,7 @@ class Settings(BaseSettings):
     whatsapp_access_token: str = ''
     whatsapp_phone_number_id: str = ''
     whatsapp_api_version: str = ''
+    whatsapp_approved_recipients: str = ''
     allow_external_send: bool = False
     gemini_api_key: str = ''
     gemini_model: str = ''
@@ -36,5 +41,14 @@ class Settings(BaseSettings):
     whatsapp_status_template: str = ''
     whatsapp_template_language: str = 'en_US'
     whatsapp_template_approved: bool = False
+
+    @field_validator('whatsapp_app_secret', 'whatsapp_verify_token', 'whatsapp_access_token',
+                     'whatsapp_phone_number_id', 'whatsapp_api_version',
+                     'whatsapp_approved_recipients', 'whatsapp_status_template', mode='before')
+    @classmethod
+    def ignore_setup_placeholders(cls, value):
+        if isinstance(value, str) and value.strip().upper().startswith('REPLACE_WITH_'):
+            return ''
+        return value
 
 settings = Settings()

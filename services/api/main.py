@@ -82,10 +82,14 @@ def get_complaint(db, key, user):
     return c
 def detail(db,c,user):
     data = raw(c)
+    v = db.get(Village, c.village_id) if c.village_id else None
+    data['location'] = {'village':v.name,'taluka':v.taluka,'district':v.district} if v else None
+    association = latest(db, 'whatsapp_complaint', c.id) if c.channel == 'whatsapp' else None
+    data['gps'] = association.payload.get('gps') if association else None
     events = rows(db, Event, Event.complaint_id == c.id)
     events.sort(key=lambda x:x.created_at)
     if user.role == 'official':
-        data = {k:data[k] for k in ['id','description','village_id','category','review_status','service_status','jurisdiction','version','created_at','admin_note']}
+        data = {k:data[k] for k in ['id','description','village_id','category','review_status','service_status','jurisdiction','version','created_at','admin_note','channel','location','gps']}
         events = [e for e in events if e.kind.startswith('service:')]
         data['timeline'] = [{k:raw(e)[k] for k in ['kind','note','created_at']} for e in events]
         data['demo'] = True
@@ -145,10 +149,21 @@ def submit(body:ComplaintInput,idempotency_key:str=Header(min_length=8,max_lengt
     if old:
         if old.request_hash!=digest: raise HTTPException(409,'Idempotency key reused for different content')
         return detail(db,old,u)
-    c=Complaint(id=uid(),reporter_id=u.id,idempotency_key=idempotency_key,request_hash=digest,original=body.description,description=body.description,village_id=v.id,jurisdiction=v.jurisdiction,category=body.category)
-    db.add(c);event(db,c,u.id,'submitted','Report submitted by app with consent')
+    from .complaints import create_complaint
+    c=create_complaint(db,u.id,idempotency_key,body,v)
     enqueue(db,'complaint:'+c.id,'audit_delivery',{'complaint_id':c.id})
     db.commit();return detail(db,c,u)
+@app.post(P+'/whatsapp/link-code')
+def whatsapp_link_code(u:User=Depends(current),db:Session=Depends(session)):
+    require(u,['farmer'])
+    limit(db,'wa-link:'+u.id,5,600)
+    import secrets
+    code=secrets.token_urlsafe(18)
+    key=hashlib.sha256(code.encode()).hexdigest()
+    db.add(Record(kind='whatsapp_link_code',key=key,payload={'user_id':u.id,'expires_at':time.time()+600,'used':False}))
+    db.commit()
+    return {'command':'LINK '+code,'expires_in_seconds':600}
+
 @app.get(P+'/complaints/mine')
 def mine(u:User=Depends(current),db:Session=Depends(session)):
     return [detail(db,c,u) for c in rows(db,Complaint,Complaint.reporter_id==u.id)]
@@ -191,7 +206,7 @@ def review(key:str,body:Review,u:User=Depends(current),db:Session=Depends(sessio
         c.duplicate_of=target.id
     c.review_status=body.status;c.publishable=body.status=='accepted';c.admin_note=body.reason
     event(db,c,u.id,'review:'+body.status,body.reason)
-    enqueue(db,f'review:{c.id}:{c.version}', 'audit_delivery',{'complaint_id':c.id})
+    enqueue(db,f'review:{c.id}:{c.version}', 'audit_delivery',{'complaint_id':c.id,'review_status':c.review_status,'service_status':c.service_status,'note':c.admin_note})
     db.commit();return detail(db,c,u)
 @app.get(P+'/official/complaints')
 def official_queue(u:User=Depends(current),db:Session=Depends(session)):
@@ -208,7 +223,7 @@ def action(key:str,body:Action,u:User=Depends(current),db:Session=Depends(sessio
     if body.status not in allowed.get(c.service_status,set()): raise HTTPException(409,'Invalid service transition')
     if body.status=='reopened': require(u,['admin','system_admin'])
     c.service_status=body.status;event(db,c,u.id,'service:'+body.status,body.note)
-    enqueue(db,f'action:{c.id}:{c.version}','audit_delivery',{'complaint_id':c.id});db.commit();return detail(db,c,u)
+    enqueue(db,f'action:{c.id}:{c.version}','audit_delivery',{'complaint_id':c.id,'review_status':c.review_status,'service_status':c.service_status,'note':body.note});db.commit();return detail(db,c,u)
 
 @app.get(P+'/farms')
 def farms(u:User=Depends(current),db:Session=Depends(session)): return [raw(f) for f in rows(db,Farm,Farm.owner_id==u.id)]
@@ -343,13 +358,31 @@ async def whatsapp(request:Request,db:Session=Depends(session)):
     if not settings.whatsapp_app_secret or not hmac.compare_digest(signature,request.headers.get('x-hub-signature-256','')): raise HTTPException(403,'Invalid signature')
     try: data=json.loads(payload)
     except ValueError: raise HTTPException(400,'Invalid JSON')
+    if not isinstance(data,dict) or not isinstance(data.get('entry',[]),list): raise HTTPException(400,'Invalid webhook envelope')
+    def objects(value):
+        if not isinstance(value,list) or any(not isinstance(item,dict) for item in value):raise HTTPException(400,'Invalid webhook objects')
+        return value
     count=0
-    for entry in data.get('entry',[]):
-        for change in entry.get('changes',[]):
+    for entry in objects(data.get('entry',[])):
+        for change in objects(entry.get('changes',[])):
             value=change.get('value',{})
+            if not isinstance(value,dict) or not isinstance(value.get('metadata',{}),dict):raise HTTPException(400,'Invalid webhook value')
             if value.get('metadata',{}).get('phone_number_id')!=settings.whatsapp_phone_number_id: raise HTTPException(403,'Wrong business number')
-            for msg in value.get('messages',[]):
-                if not msg.get('id') or not msg.get('from'): continue
+            for receipt in objects(value.get('statuses',[])):
+                if receipt.get('id') and receipt.get('status') in ['sent','delivered','read','failed']:
+                    key=hashlib.sha256(json.dumps(receipt,sort_keys=True).encode()).hexdigest()
+                    if not latest(db,'whatsapp_receipt',key):
+                        db.add(Record(kind='whatsapp_receipt',key=key,payload=receipt));db.flush()
+                        # Retry only explicit transient provider failures, bounded by the same job attempt limit.
+                        transient=any(e.get('code') in [131000,131016,130429] for e in objects(receipt.get('errors',[])))
+                        if receipt['status']=='failed' and transient:
+                            for job in db.scalars(select(Job).where(Job.kind=='whatsapp_reply',Job.status=='completed',Job.attempts<5)):
+                                if receipt['id'] in (job.result or {}).get('provider_ids',[]):
+                                    job.status='pending';job.available_at=time.time()+min(3600,2**job.attempts*10)
+            for msg in objects(value.get('messages',[])):
+                if not isinstance(msg.get('id'),str) or not 0<len(msg['id'])<=200 or not isinstance(msg.get('from'),str) or not 0<len(msg['from'])<=100: continue
+                if any(part in msg and not isinstance(msg[part],dict) for part in ['text','image','location']):continue
+                if msg.get('type')=='text' and not isinstance(msg.get('text',{}).get('body'),str): continue
                 if db.get(ProviderMessage,msg['id']): continue
                 db.add(ProviderMessage(id=msg['id'],sender=msg['from'],payload=msg));enqueue(db,'wa:'+msg['id'],'whatsapp_intake',{'message_id':msg['id']});db.flush();count+=1
     db.commit();return {'received':count}
