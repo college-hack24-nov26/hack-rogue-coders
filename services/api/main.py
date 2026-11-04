@@ -19,10 +19,11 @@ from .db import session, User, Village, Farm, Complaint, Event, Job, Record, Pro
 from .auth import current, require, scoped, local_enabled, token, hash_password, verify_password
 from .schemas import Credentials, ComplaintInput, Review, Action, Message, FarmInput, BaselineInput, PlanInput, AssistantInput, UploadInput, EconomicsInput, ValidationResponse
 from .calculations import irrigation, budget
+from .cache import browser_json, cached_directory_rows
 from .security import limit
 
 app = FastAPI(title='JalSathi API', version='0.1.0', description='Officials actions are demonstration records, not government service actions.',responses={422:{'model':ValidationResponse,'description':'Invalid input; submitted values are omitted.'}})
-app.add_middleware(CORSMiddleware, allow_origins=settings.cors_origins.split(','), allow_credentials=True, allow_methods=['GET','POST','PATCH','PUT','DELETE'], allow_headers=['Authorization','Content-Type','Idempotency-Key'])
+app.add_middleware(CORSMiddleware, allow_origins=settings.cors_origins.split(','), allow_credentials=True, allow_methods=['GET','POST','PATCH','PUT','DELETE'], allow_headers=['Authorization','Content-Type','Idempotency-Key','If-None-Match'], expose_headers=['ETag'])
 P = '/api/v1'
 
 @app.exception_handler(RequestValidationError)
@@ -39,9 +40,14 @@ async def limit_account_endpoints(request:Request,call_next):
         provider=app.dependency_overrides.get(session,session);generator=provider();db=next(generator)
         try:
             limit(db,'account-ip:'+(request.client.host if request.client else 'unknown'),30,60)
-        except HTTPException as e:return JSONResponse(status_code=e.status_code,content={'detail':e.detail},headers=e.headers)
+        except HTTPException as e:
+            return JSONResponse(status_code=e.status_code, content={'detail':e.detail},
+                                headers={**(e.headers or {}), 'Cache-Control':'no-store'})
         finally:generator.close()
-    return await call_next(request)
+    response = await call_next(request)
+    if request.url.path.startswith(P + '/'):
+        response.headers.setdefault('Cache-Control', 'no-store')
+    return response
 
 def horizon(days:int=Query(7)):
     if days not in (7,15): raise HTTPException(422,'Horizon must be 7 or 15 days')
@@ -131,9 +137,13 @@ def preferences(body: dict, u: User=Depends(current),db:Session=Depends(session)
     if body.get('village_id'): village(db,body['village_id'])
     u.preferences={**u.preferences,**body};db.commit();return u.preferences
 @app.get(P+'/villages')
-def villages(q:str='',limit:int=Query(100,ge=1,le=500),u:User=Depends(current),db:Session=Depends(session)):
-    statement=select(Village).where(or_(Village.name.ilike('%'+q+'%'),Village.district.ilike('%'+q+'%'),Village.id==q)).limit(limit)
-    return [raw(v) for v in db.scalars(statement)]
+def villages(q:str='',limit:int=Query(100,ge=1,le=500),u:User=Depends(current),db:Session=Depends(session),
+             if_none_match: str | None = Header(default=None)):
+    def search():
+        statement = select(Village).where(or_(Village.name.ilike('%'+q+'%'), Village.district.ilike('%'+q+'%'),
+                                               Village.id == q)).order_by(Village.id).limit(limit)
+        return [raw(v) for v in db.scalars(statement)]
+    return browser_json(cached_directory_rows('village-search', (q, limit), search), if_none_match)
 
 @app.post(P+'/complaints',status_code=201)
 def submit(body:ComplaintInput,idempotency_key:str=Header(min_length=8,max_length=150),u:User=Depends(current),db:Session=Depends(session)):

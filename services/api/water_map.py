@@ -10,11 +10,12 @@ from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .auth import current, require
+from .cache import browser_json
 from .config import settings
 from .db import Record, User, Village, session
 from .water_evidence import reviews_for
@@ -136,9 +137,9 @@ def clean_feature(feature, relationship=None):
 
 
 @router.get('/water-data/catalogue')
-def catalogue(u: User = Depends(current)):
+def catalogue(u: User = Depends(current), if_none_match: str | None = Header(default=None)):
     data = snapshot('catalogue.json')
-    return {**data, 'census_used': False, 'history_min_year': 2021,
+    return browser_json({**data, 'census_used': False, 'history_min_year': 2021,
             'public_supply_collection': public_supply_collection(),
             'additional_sources': snapshot('additional-sources.json'),
             'history_collection': snapshot('history-collection.json'),
@@ -150,7 +151,7 @@ def catalogue(u: User = Depends(current)):
             'limitations': ['Latest published observations are not a real-time supply guarantee.',
                            'Monitoring stations and nearby rivers do not establish village supply connections.',
                            'Reference geometry with unknown survey date is excluded from prediction inputs.',
-                           'No 2011 population, demand or infrastructure baseline is used.']}
+                           'No 2011 population, demand or infrastructure baseline is used.']}, if_none_match)
 
 
 def public_supply_collection():

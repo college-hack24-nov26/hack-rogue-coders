@@ -3,6 +3,7 @@ os.environ['DATABASE_URL']='sqlite://'
 os.environ['AUTH_MODE']='local'
 os.environ['ENVIRONMENT']='development'
 os.environ['ALLOW_EXTERNAL_SEND']='false'
+os.environ['REDIS_URL']=''
 os.environ['LOCAL_SIGNING_KEY']='test-only-signing-key-never-for-real-accounts'
 import pytest
 from sqlalchemy import create_engine

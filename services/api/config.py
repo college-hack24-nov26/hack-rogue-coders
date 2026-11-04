@@ -1,8 +1,11 @@
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file='.env', extra='ignore')
     database_url: str = 'sqlite:///./jalsathi.db'
+    redis_url: str = ''
+    redis_directory_ttl_seconds: int = Field(default=60, ge=1, le=300)
     environment: str = 'development'
     auth_mode: str = 'local'
     local_signing_key: str = ''

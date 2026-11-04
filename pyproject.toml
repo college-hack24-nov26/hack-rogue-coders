@@ -9,6 +9,7 @@ dependencies = [
     "alembic>=1.14,<2",
     "psycopg[binary]>=3.2,<4",
     "pydantic-settings>=2.7,<3",
+    "redis>=6.4,<9",
     "pyjwt[crypto]>=2.10,<3",
     "httpx>=0.28,<1",
     "boto3>=1.36,<2",

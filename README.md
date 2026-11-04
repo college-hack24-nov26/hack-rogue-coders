@@ -42,6 +42,18 @@ API documentation: http://127.0.0.1:8000/docs. Admin: http://localhost:5173. Off
 
 For one-command local web startup, run `powershell -ExecutionPolicy Bypass -File .\run-local.ps1`. This starts the API, worker, farmer web app (8081), admin (5173) and officials demo (5174), then checks that they respond. Use `-Build` to rebuild after source changes, or `-Install` on a fresh checkout. Keep the services running while using the links; process ownership is recorded in `local-processes.json`. Provider setup and the remaining release requirements are described in [LIVE_SETUP.md](docs/LIVE_SETUP.md).
 
+### Optional Redis cache
+
+Redis caches village directory searches and the statewide registry used by the system-admin prediction list for 60 seconds by default. Reviewed balances and staff jurisdiction checks use current database records. If Redis is unavailable, the API reads the directory from the database.
+
+With Docker available, start a local Redis instance and set `REDIS_URL=redis://127.0.0.1:6379/0` in the API's `.env`, then restart the API. The cache lifetime is set by `REDIS_DIRECTORY_TTL_SECONDS` (1–300 seconds). Leave `REDIS_URL` blank to run without Redis. [Official Redis image](https://hub.docker.com/_/redis)
+
+```powershell
+docker run --rm -d --name jalsathi-redis -p 127.0.0.1:6379:6379 redis:8-alpine redis-server --maxmemory 128mb --maxmemory-policy allkeys-lru
+```
+
+The village directory, prediction list and water catalogue use private browser caching with ETag revalidation. Authentication still runs before a `304` response. The local admin and officials preview servers let browsers cache versioned JavaScript and CSS while checking the HTML for updates.
+
 ## Import real geography and provision staff
 
 No test village data is seeded into the application. Provide an official versioned directory CSV with columns `id,name,district,taluka,jurisdiction,latitude,longitude` and import:

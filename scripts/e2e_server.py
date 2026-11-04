@@ -8,6 +8,7 @@ os.environ['CORS_ORIGINS']='http://localhost:5183,http://localhost:5184,http://l
 os.environ['ENVIRONMENT']='development'
 os.environ['AUTH_MODE']='local'
 os.environ['ALLOW_EXTERNAL_SEND']='false'
+os.environ['REDIS_URL']=''
 os.environ['GEMINI_API_KEY']=''
 os.environ['GEMINI_MODEL']=''
 artifact_root=Path(testdir.name)/'artifacts'

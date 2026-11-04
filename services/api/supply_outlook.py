@@ -5,10 +5,11 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 from zoneinfo import ZoneInfo
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Header, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from .auth import current, require, scoped
+from .cache import browser_json, cached_directory_rows
 from .config import settings
 from .db import Record, User, Village, session
 from services.worker.village_supply_predictions import LEVELS, SCENARIO_METADATA, SNAPSHOT
@@ -51,6 +52,7 @@ def supply_predictions(
     limit: int = Query(25, ge=1, le=100),
     u: User = Depends(current),
     db: Session = Depends(session),
+    if_none_match: str | None = Header(default=None),
 ):
     from .main import baseline_data
 
@@ -62,12 +64,16 @@ def supply_predictions(
     statement = select(Village.id, Village.name, Village.district, Village.taluka)
     if u.role != 'system_admin':
         statement = statement.where(Village.jurisdiction.in_(u.jurisdictions))
-    registry = list(db.execute(statement))
-    districts = sorted({row.district for row in registry})
+    def directory():
+        return [dict(row) for row in db.execute(statement).mappings()]
+
+    # Scoped staff read the live directory so jurisdiction changes take effect immediately.
+    registry = cached_directory_rows('statewide-prediction-directory', (), directory) if u.role == 'system_admin' else directory()
+    districts = sorted({row['district'] for row in registry})
     query = q.strip().casefold()
-    villages = [row for row in registry if (not district or row.district == district) and (
-        not query or any(query in str(value).casefold() for value in row))]
-    keys = {row.id for row in villages}
+    villages = [row for row in registry if (not district or row['district'] == district) and (
+        not query or any(query in str(value).casefold() for value in row.values()))]
+    keys = {row['id'] for row in villages}
 
     # Use the same versioned balances as the village details, without queries per village.
     records = {}
@@ -80,14 +86,15 @@ def supply_predictions(
                   reviewed_shortage=0, reviewed_enough=0, missing_reviewed_inputs=0, missing_scenario_inputs=0)
     results = []
     for village in villages:
-        estimate = scenario_for(snapshot, village.id)
+        village_id = village['id']
+        estimate = scenario_for(snapshot, village_id)
         level = estimate['scenarios'].get(scenario, {}).get(str(days))
         counts['scenario_scored' if level is not None else 'missing_scenario_inputs'] += 1
         if level is not None and level >= 2:
             counts['scenario_shortage'] += 1
         reviewed = {'verdict': 'insufficient_data', 'shortage_litres': None}
-        if all((kind, f'{village.id}:{sector}') in records for kind in ('baseline', 'supply') for sector in SECTORS):
-            balance = summarize(baseline_data(db, village.id, days, records=records, issue=issue), issue)
+        if all((kind, f'{village_id}:{sector}') in records for kind in ('baseline', 'supply') for sector in SECTORS):
+            balance = summarize(baseline_data(db, village_id, days, records=records, issue=issue), issue)
             reviewed = {key: balance[key] for key in ('verdict', 'shortage_litres', 'first_shortage_date')}
         bucket = {'not_enough': 'reviewed_shortage', 'enough': 'reviewed_enough', 'insufficient_data': 'missing_reviewed_inputs'}
         counts[bucket[reviewed['verdict']]] += 1
@@ -95,15 +102,15 @@ def supply_predictions(
                 or view == 'scenario_shortage' and (level is None or level < 2)
                 or view == 'insufficient_data' and reviewed['verdict'] != 'insufficient_data'):
             continue
-        results.append({**village._asdict(), 'reviewed': reviewed, 'scenario_level': level,
+        results.append({**village, 'reviewed': reviewed, 'scenario_level': level,
                         'scenario_label': LEVELS.get(level), 'reference_date': estimate.get('reference_date'),
                         'household_basis': estimate.get('household_basis'), 'missing_scenario_inputs': estimate.get('missing_inputs', [])})
     results.sort(key=lambda row: (row['reviewed']['verdict'] != 'not_enough',
                 -(row['reviewed']['shortage_litres'] or 0),
                 -(row['scenario_level'] if row['scenario_level'] is not None else -1), row['name'].casefold(), row['id']))
-    return {'days': days, 'scenario': scenario, 'scenarios': SCENARIO_METADATA, 'issued_on': issue.isoformat(),
+    return browser_json({'days': days, 'scenario': scenario, 'scenarios': SCENARIO_METADATA, 'issued_on': issue.isoformat(),
             'scenario_generated_at': snapshot['generated_at'], 'scenario_model_run': snapshot['model_run'],
-            'counts': counts, 'districts': districts, 'total': len(results), 'rows': results[offset:offset+limit]}
+            'counts': counts, 'districts': districts, 'total': len(results), 'rows': results[offset:offset+limit]}, if_none_match)
 
 
 def summarize(data, issue):
